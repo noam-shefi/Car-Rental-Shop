@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BusinessModelHardwareStore
+{
+    // Cart
+    public class Cart
+    {
+        // ProductID
+        private int ProductID;
+        public int MyProductID { get { return this.ProductID; } set { this.ProductID = value; } }
+
+        // Username
+        private string Username;
+        public string MyUsername { get { return this.Username; } set { this.Username = value; } }
+
+        // Price
+        private decimal Price;
+        public decimal MyPrice { get { return this.Price; } set { this.Price = value; } }
+
+        // Quantity
+        private int Quantity;
+        public int MyQuantity { get { return this.Quantity; } set { this.Quantity = value; } }
+    }
+}

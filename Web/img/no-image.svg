@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Car image placeholder">
+  <rect width="640" height="360" rx="24" fill="#252532" />
+  <path d="M122 238h396l-25-67a35 35 0 0 0-33-23H215a35 35 0 0 0-31 19l-26 47-36 11z" fill="#7c3aed" />
+  <path d="M215 163h245a20 20 0 0 1 19 13l13 36H177l21-39a20 20 0 0 1 17-10z" fill="#c4b5fd" />
+  <path d="M315 162v50" stroke="#252532" stroke-width="8" />
+  <circle cx="208" cy="240" r="32" fill="#101018" stroke="#c4b5fd" stroke-width="10" />
+  <circle cx="432" cy="240" r="32" fill="#101018" stroke="#c4b5fd" stroke-width="10" />
+</svg>

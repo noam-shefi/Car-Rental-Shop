@@ -1,0 +1,19 @@
+[
+  {
+	"Name": "Web and local services",
+	"Projects": [
+	  {
+		"Path": "WcfServiceHardwareStore\\WcfServiceHardwareStore.csproj",
+		"Action": "StartWithoutDebugging"
+	  },
+	  {
+		"Path": "visa\\",
+		"Action": "StartWithoutDebugging"
+	  },
+	  {
+		"Path": "Web\\",
+		"Action": "Start"
+	  }
+	]
+  }
+]
