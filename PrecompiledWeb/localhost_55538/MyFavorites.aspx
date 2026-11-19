@@ -1,4 +1,4 @@
-﻿<%@ page title="המועדפים שלי" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="MyFavorites, App_Web_53vxbbw0" %>
+﻿<%@ page title="המועדפים שלי" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="MyFavorites, App_Web_pskrdzto" %>
 
 <asp:Content ID="FavoritesContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <main class="container py-4" dir="rtl">
@@ -12,12 +12,12 @@
                         <article class="card h-100 bg-dark text-white border-secondary">
                             <img src='<%# GetImageUrl(Eval("MyPicture")) %>' class="card-img-top p-3" style="height:220px;object-fit:contain" alt="תמונת הרכב" />
                             <div class="card-body">
-                                <h2 class="h5"><%#: Eval("MyManufacturer") %> <%#: Eval("MyProductName") %></h2>
+                                <h2 class="h5"><%#: Eval("MyManufacturer") %> <%#: Eval("MyModelName") %></h2>
                                 <p>₪<%#: Eval("MyPrice", "{0:0.##}") %> ליום</p>
                                 <p class="small text-secondary">נוסף למועדפים: <%# Eval("MyFavoriteDateAdded", "{0:dd/MM/yyyy}") %></p>
                                 <div class="d-flex gap-2">
-                                    <a class="btn btn-outline-light" href='<%# "CarDetails.aspx?id=" + Eval("MyProductID") %>'>פרטים והזמנה</a>
-                                    <asp:LinkButton ID="btnRemove" runat="server" CssClass="btn btn-outline-danger" CommandName="RemoveFavorite" CommandArgument='<%# Eval("MyProductID") %>'>הסרה</asp:LinkButton>
+                                    <a class="btn btn-outline-light" href='<%# "CarDetails.aspx?id=" + Eval("MyCarID") %>'>פרטים והזמנה</a>
+                                    <asp:LinkButton ID="btnRemove" runat="server" CssClass="btn btn-outline-danger" CommandName="RemoveFavorite" CommandArgument='<%# Eval("MyCarID") %>'>הסרה</asp:LinkButton>
                                 </div>
                             </div>
                         </article>

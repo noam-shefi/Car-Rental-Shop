@@ -221,14 +221,14 @@ public partial class AccountUser : System.Web.UI.Page
                                            .Where(od => od.MyOrderID == orderId)
                                            .ToList();
 
-                var allProducts = _ws.showAllProduct();
+                var allProducts = _ws.GetAllFleetCars();
 
                 var detailedItemsWithNames = orderDetailsItems.Join(
                     allProducts,
-                    od => od.MyProductID,
-                    p => p.MyProductID,
+                    od => od.MyCarID,
+                    p => p.MyCarID,
                     (od, p) => new {
-                        MyProductName = p.MyProductName,
+                        MyModelName = p.MyModelName,
                         MyQuantity = od.MyQuantity,
                         MyUnitPrice = od.MyUnitPrice
                     }).ToList();

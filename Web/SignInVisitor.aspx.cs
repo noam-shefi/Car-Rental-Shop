@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ServiceReference1;
-using BusinessModelHardwareStore;
+using BusinessModelCarRental;
 
 public partial class Login : System.Web.UI.Page
 {

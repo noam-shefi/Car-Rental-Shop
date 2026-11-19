@@ -111,7 +111,7 @@
     <Compile Include="UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="BrandWindow.xaml">
+    <Page Include="MakeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -119,7 +119,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CategoryWindow.xaml">
+    <Page Include="VehicleCategoryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,11 +139,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BrandWindow.xaml.cs">
-      <DependentUpon>BrandWindow.xaml</DependentUpon>
+    <Compile Include="MakeWindow.xaml.cs">
+      <DependentUpon>MakeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CategoryWindow.xaml.cs">
-      <DependentUpon>CategoryWindow.xaml</DependentUpon>
+    <Compile Include="VehicleCategoryWindow.xaml.cs">
+      <DependentUpon>VehicleCategoryWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ContactWindow.xaml.cs">
       <DependentUpon>ContactWindow.xaml</DependentUpon>
@@ -163,7 +163,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ProductWindow.xaml">
+    <Page Include="CarInventoryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -181,8 +181,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProductWindow.xaml.cs">
-      <DependentUpon>ProductWindow.xaml</DependentUpon>
+    <Compile Include="CarInventoryWindow.xaml.cs">
+      <DependentUpon>CarInventoryWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -219,17 +219,17 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\BusinessModelHardwareStore.Brand.datasource" />
-    <None Include="Properties\DataSources\BusinessModelHardwareStore.BuildMyPC.datasource" />
-    <None Include="Properties\DataSources\BusinessModelHardwareStore.Cart.datasource" />
-    <None Include="Properties\DataSources\BusinessModelHardwareStore.Category.datasource" />
-    <None Include="Properties\DataSources\BusinessModelHardwareStore.Contact.datasource" />
-    <None Include="Properties\DataSources\BusinessModelHardwareStore.Order.datasource" />
-    <None Include="Properties\DataSources\BusinessModelHardwareStore.OrderDetails.datasource" />
-    <None Include="Properties\DataSources\BusinessModelHardwareStore.Product.datasource" />
-    <None Include="Properties\DataSources\BusinessModelHardwareStore.Review.datasource" />
-    <None Include="Properties\DataSources\BusinessModelHardwareStore.ShippingAddress.datasource" />
-    <None Include="Properties\DataSources\BusinessModelHardwareStore.User.datasource" />
+    <None Include="Properties\DataSources\BusinessModelCarRental.Make.datasource" />
+    <None Include="Properties\DataSources\BusinessModelCarRental.BuildMyPC.datasource" />
+    <None Include="Properties\DataSources\BusinessModelCarRental.Cart.datasource" />
+    <None Include="Properties\DataSources\BusinessModelCarRental.VehicleCategory.datasource" />
+    <None Include="Properties\DataSources\BusinessModelCarRental.Contact.datasource" />
+    <None Include="Properties\DataSources\BusinessModelCarRental.Order.datasource" />
+    <None Include="Properties\DataSources\BusinessModelCarRental.OrderDetails.datasource" />
+    <None Include="Properties\DataSources\BusinessModelCarRental.Car.datasource" />
+    <None Include="Properties\DataSources\BusinessModelCarRental.Review.datasource" />
+    <None Include="Properties\DataSources\BusinessModelCarRental.ShippingAddress.datasource" />
+    <None Include="Properties\DataSources\BusinessModelCarRental.User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -255,13 +255,13 @@
     <Content Include="Rotativa\wkhtmltopdf.exe" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\BusinessModelHardwareStore.csproj">
+    <ProjectReference Include="..\ClassLibrary1\BusinessModelCarRental.csproj">
       <Project>{a5edcc23-be61-4a00-a6ff-bd5b29f04d2c}</Project>
-      <Name>BusinessModelHardwareStore</Name>
+      <Name>BusinessModelCarRental</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ClassLibrary2\ViewModelHardwareStore.csproj">
+    <ProjectReference Include="..\ClassLibrary2\ViewModelCarRental.csproj">
       <Project>{e3ee7929-e267-4f89-9c67-77d6fad9db4b}</Project>
-      <Name>ViewModelHardwareStore</Name>
+      <Name>ViewModelCarRental</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

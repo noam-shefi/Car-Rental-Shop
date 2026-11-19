@@ -197,7 +197,7 @@
                                         <table class="table table-dark-custom text-center">
                                             <thead>
                                                 <tr>
-                                                    <th>Product Name</th>
+                                                    <th>Car Name</th>
                                                     <th>Quantity</th>
                                                     <th>Unit Price</th>
                                                     <th>Subtotal</th>
@@ -207,7 +207,7 @@
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                             <tr>
-                                                <td class="text-start ps-3 fw-bold text-white"><%# Eval("MyProductName") %></td>
+                                                <td class="text-start ps-3 fw-bold text-white"><%# Eval("MyModelName") %></td>
                                                 <td class="fw-bold text-info"><%# Eval("MyQuantity") %></td>
                                                 <td><%# Eval("MyUnitPrice") %> ₪</td>
                                                 <td class="text-success fw-bold"><%# Convert.ToDecimal(Eval("MyQuantity")) * Convert.ToDecimal(Eval("MyUnitPrice")) %> ₪</td>

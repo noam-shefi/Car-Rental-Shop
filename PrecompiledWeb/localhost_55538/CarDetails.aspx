@@ -1,4 +1,4 @@
-﻿<%@ page title="פרטי רכב" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="CarDetails, App_Web_53vxbbw0" %>
+﻿<%@ page title="פרטי רכב" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="CarDetails, App_Web_pskrdzto" %>
 
 <asp:Content ID="CarDetailsContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:ScriptManager ID="bookingScriptManager" runat="server" />
@@ -11,19 +11,14 @@
                 <div class="col-lg-6"><asp:Image ID="imgCar" runat="server" CssClass="img-fluid rounded bg-dark p-3 w-100" Style="height:360px;object-fit:contain" AlternateText="תמונת הרכב" /></div>
                 <div class="col-lg-6 text-white">
                     <h1><asp:Literal ID="litTitle" runat="server" /></h1>
-                    <p class="text-secondary"><asp:Literal ID="litDescription" runat="server" /></p>
+                    <p class="text-secondary car-description"><asp:Literal ID="litDescription" runat="server" /></p>
                     <div class="fs-4 fw-bold">₪<asp:Literal ID="litPrice" runat="server" /> <small class="fs-6">ליום</small></div>
                     <p class="mt-2">דירוג: <asp:Literal ID="litRating" runat="server" /> (<asp:Literal ID="litReviewCount" runat="server" /> ביקורות)</p>
-                    <dl class="row">
-                        <dt class="col-4">שנה</dt><dd class="col-8"><asp:Literal ID="litYear" runat="server" /></dd>
-                        <dt class="col-4">קטגוריה</dt><dd class="col-8"><asp:Literal ID="litCategory" runat="server" /></dd>
-                        <dt class="col-4">סניף</dt><dd class="col-8"><asp:Literal ID="litBranch" runat="server" /></dd>
-                        <dt class="col-4">מושבים</dt><dd class="col-8"><asp:Literal ID="litSeats" runat="server" /></dd>
-                        <dt class="col-4">דלק</dt><dd class="col-8"><asp:Literal ID="litFuel" runat="server" /></dd>
-                        <dt class="col-4">טווח</dt><dd class="col-8"><asp:Literal ID="litRange" runat="server" /></dd>
-                        <dt class="col-4">תיבת הילוכים</dt><dd class="col-8"><asp:Literal ID="litTransmission" runat="server" /></dd>
-                        <dt class="col-4">מקום למטען</dt><dd class="col-8"><asp:Literal ID="litLuggage" runat="server" /></dd>
-                        <dt class="col-4">מלאי</dt><dd class="col-8"><asp:Literal ID="litStock" runat="server" /></dd>
+                    <dl class="row car-specifications">
+                        <dt class="col-4">פרטי הרכב</dt><dd class="col-8">שנה: <asp:Literal ID="litYear" runat="server" /> · קטגוריה: <asp:Literal ID="litCategory" runat="server" /></dd>
+                        <dt class="col-4">נוחות ומטען</dt><dd class="col-8">מושבים: <asp:Literal ID="litSeats" runat="server" /> · מקום למטען: <asp:Literal ID="litLuggage" runat="server" /></dd>
+                        <dt class="col-4">מפרט טכני</dt><dd class="col-8">דלק: <asp:Literal ID="litFuel" runat="server" /> · טווח: <asp:Literal ID="litRange" runat="server" /> · תיבת הילוכים: <asp:Literal ID="litTransmission" runat="server" /></dd>
+                        <dt class="col-4">מיקום וזמינות</dt><dd class="col-8">סניף: <asp:Literal ID="litBranch" runat="server" /> · מלאי: <asp:Literal ID="litStock" runat="server" /></dd>
                     </dl>
                     <asp:Label ID="lblMessage" runat="server" CssClass="text-warning d-block mb-2" />
                     <div class="d-flex gap-2 mb-3">
@@ -69,6 +64,14 @@
     </main>
     <style>
         .rental-date-selected { outline: 2px solid #a855f7; outline-offset: -2px; }
+        .car-description {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+        }
+        .car-specifications dt,
+        .car-specifications dd { margin-bottom: .65rem; }
     </style>
     <script>
         (function () {

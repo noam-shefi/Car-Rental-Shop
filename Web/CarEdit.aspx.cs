@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BusinessModelHardwareStore;
+using BusinessModelCarRental;
 
 public partial class CarEdit : Page
 {
@@ -57,7 +57,7 @@ public partial class CarEdit : Page
     {
         try
         {
-            Product car;
+            Car car;
             using (var service = new CarRentalServiceClient())
                 car = service.GetCar(carID);
             if (car == null)
@@ -68,11 +68,11 @@ public partial class CarEdit : Page
             }
             litHeading.Text = "עריכת רכב";
             txtManufacturer.Text = car.MyManufacturer;
-            txtModel.Text = car.MyProductName;
+            txtModel.Text = car.MyModelName;
             txtYear.Text = car.MyYear.ToString();
             ddlCarCategory.SelectedValue = car.MyCarCategory;
             txtPrice.Text = car.MyPrice.ToString(CultureInfo.InvariantCulture);
-            txtStock.Text = car.MyStockQuantity.ToString();
+            txtStock.Text = car.MyFleetQuantity.ToString();
             txtImage.Text = car.MyPicture;
             txtDescription.Text = car.MyDescription;
             txtSeats.Text = car.MySeats.HasValue ? car.MySeats.Value.ToString() : string.Empty;
@@ -91,12 +91,12 @@ public partial class CarEdit : Page
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
-        int year, stock;
+        int year, fleetQuantity;
         decimal price;
         int? seats, range, luggage;
         if ((!isEdit && (string.IsNullOrWhiteSpace(txtManufacturer.Text) || string.IsNullOrWhiteSpace(txtModel.Text))) ||
             !int.TryParse(txtYear.Text, out year) || !decimal.TryParse(txtPrice.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out price) ||
-            !int.TryParse(txtStock.Text, out stock) || (!isEdit && stock < 0) ||
+            !int.TryParse(txtStock.Text, out fleetQuantity) || (!isEdit && fleetQuantity < 0) ||
             !TryOptionalInt(txtSeats.Text, out seats) || !TryOptionalInt(txtRange.Text, out range) || !TryOptionalInt(txtLuggage.Text, out luggage))
         {
             lblMessage.Text = "יש למלא יצרן, דגם, שנה, מחיר וכמות תקינים; מפרטים מספריים אופציונליים חייבים להיות מספרים.";
@@ -105,24 +105,24 @@ public partial class CarEdit : Page
 
         try
         {
-            int brandID = GetOrCreateBrand(txtManufacturer.Text.Trim());
-            int categoryID;
+            int makeID = GetOrCreateBrand(txtManufacturer.Text.Trim());
+            int vehicleCategoryID;
             using (var legacy = new ServiceReference1.Service1Client("BasicHttpBinding_IService1"))
             {
-                var categories = legacy.showAllCategory();
-                if (categories == null || categories.Length == 0)
+                var vehicleCategories = legacy.GetAllVehicleCategories();
+                if (vehicleCategories == null || vehicleCategories.Length == 0)
                     throw new InvalidOperationException("יש ליצור קטגוריה לפני הוספת רכב.");
-                categoryID = categories[0].MyCategoryID;
+                vehicleCategoryID = vehicleCategories[0].MyVehicleCategoryID;
             }
 
-            var car = new Product
+            var car = new Car
             {
-                MyProductID = carID,
-                MyProductName = txtModel.Text.Trim(),
-                MyCategoryID = categoryID,
-                MyBrandID = brandID,
+                MyCarID = carID,
+                MyModelName = txtModel.Text.Trim(),
+                MyVehicleCategoryID = vehicleCategoryID,
+                MyMakeID = makeID,
                 MyPrice = price,
-                MyStockQuantity = stock,
+                MyFleetQuantity = fleetQuantity,
                 MyDescription = txtDescription.Text.Trim(),
                 MyPicture = txtImage.Text.Trim(),
                 MyIsCar = true,
@@ -159,14 +159,14 @@ public partial class CarEdit : Page
     {
         using (var client = new ServiceReference1.Service1Client("BasicHttpBinding_IService1"))
         {
-            var brand = client.showAllBrand().FirstOrDefault(item => string.Equals(item.MyBrandName, manufacturer, StringComparison.OrdinalIgnoreCase));
-            if (brand != null)
-                return brand.MyBrandID;
-            client.AddBrand(manufacturer, string.Empty, string.Empty, string.Empty);
-            brand = client.showAllBrand().FirstOrDefault(item => string.Equals(item.MyBrandName, manufacturer, StringComparison.OrdinalIgnoreCase));
-            if (brand == null)
+            var make = client.GetAllMakes().FirstOrDefault(item => string.Equals(item.MyMakeName, manufacturer, StringComparison.OrdinalIgnoreCase));
+            if (make != null)
+                return make.MyMakeID;
+            client.AddMake(manufacturer, string.Empty, string.Empty, string.Empty);
+            make = client.GetAllMakes().FirstOrDefault(item => string.Equals(item.MyMakeName, manufacturer, StringComparison.OrdinalIgnoreCase));
+            if (make == null)
                 throw new InvalidOperationException("לא ניתן ליצור את היצרן שנבחר.");
-            return brand.MyBrandID;
+            return make.MyMakeID;
         }
     }
 

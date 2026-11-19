@@ -21,16 +21,16 @@ public partial class CheckoutUser : System.Web.UI.Page
     {
         string username = Session["Username"].ToString();
 
-        var cartItems = _shopWS.ListCartWithProductDetails(username);
-        var allProducts = _shopWS.showAllProduct();
+        var cartItems = _shopWS.ListCartWithCarDetails(username);
+        var allProducts = _shopWS.GetAllFleetCars();
 
         if (cartItems != null && cartItems.Length > 0 && allProducts != null)
         {
             var combinedItems = from cart in cartItems
-                                join prod in allProducts on cart.MyProductID equals prod.MyProductID
+                                join prod in allProducts on cart.MyCarID equals prod.MyCarID
                                 select new
                                 {
-                                    MyProductName = prod.MyProductName,
+                                    MyModelName = prod.MyModelName,
                                     MyQuantity = cart.MyQuantity,
                                     MyPrice = prod.MyPrice
                                 };
@@ -143,7 +143,7 @@ public partial class CheckoutUser : System.Web.UI.Page
                 return;
             }
 
-            var cartItems = _shopWS.ListCartWithProductDetails(username);
+            var cartItems = _shopWS.ListCartWithCarDetails(username);
             if (cartItems == null || cartItems.Length == 0) return;
 
             if (!Convert.ToBoolean(Session["HasAddressRecord"]))
@@ -185,7 +185,7 @@ public partial class CheckoutUser : System.Web.UI.Page
             {
                 foreach (var item in cartItems)
                 {
-                    int prodID = Convert.ToInt32(item.MyProductID);
+                    int prodID = Convert.ToInt32(item.MyCarID);
                     int qty = Convert.ToInt32(item.MyQuantity);
                     decimal finalUnitPrice = Convert.ToDecimal(Convert.ToDouble(item.MyPrice));
 
@@ -193,7 +193,7 @@ public partial class CheckoutUser : System.Web.UI.Page
                 }
             }
 
-            var allProducts = _shopWS.showAllProduct();
+            var allProducts = _shopWS.GetAllFleetCars();
 
             _shopWS.DeleteCart(username);
 
@@ -214,16 +214,16 @@ public partial class CheckoutUser : System.Web.UI.Page
     }
 
     private void GenerateAndDownloadPDF(int orderID, string username, double totalPrice,
-                                        BusinessModelHardwareStore.Cart[] cartItems,
-                                        BusinessModelHardwareStore.Product[] allProducts,
+                                        BusinessModelCarRental.Cart[] cartItems,
+                                        BusinessModelCarRental.Car[] allProducts,
                                         string country, string city, string street, string floor, string zip, string notes,
                                         string cardLastFour)
     {
         var orderDetails = from cart in cartItems
-                           join prod in allProducts on cart.MyProductID equals prod.MyProductID
+                           join prod in allProducts on cart.MyCarID equals prod.MyCarID
                            select new
                            {
-                               ProductName = prod.MyProductName,
+                               ModelName = prod.MyModelName,
                                Quantity = cart.MyQuantity,
                                UnitPrice = prod.MyPrice,
                                TotalPrice = (double)prod.MyPrice * cart.MyQuantity
@@ -345,7 +345,7 @@ public partial class CheckoutUser : System.Web.UI.Page
         foreach (var item in orderDetails)
         {
             html.Append("<tr>");
-            html.Append("  <td>" + item.ProductName + "</td>");
+            html.Append("  <td>" + item.ModelName + "</td>");
             html.Append("  <td class='right mono'>" + item.Quantity + "</td>");
             html.Append("  <td class='right mono'>&#8362;" + Convert.ToDouble(item.UnitPrice).ToString("N2") + "</td>");
             html.Append("  <td class='right mono'>&#8362;" + item.TotalPrice.ToString("N2") + "</td>");

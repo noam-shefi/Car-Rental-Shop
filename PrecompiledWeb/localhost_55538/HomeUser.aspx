@@ -1,4 +1,4 @@
-﻿<%@ page title="Home - ByteForge" language="C#" masterpagefile="~/MasterPageUser.master" autoeventwireup="true" inherits="HomeUser, App_Web_53vxbbw0" %>
+﻿<%@ page title="Home - ByteForge" language="C#" masterpagefile="~/MasterPageUser.master" autoeventwireup="true" inherits="HomeUser, App_Web_pskrdzto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
@@ -89,7 +89,7 @@
         </p>
 
         <div class="mt-5">
-            <a href="ShopUser.aspx" class="btn user-cta-btn me-3 px-5 py-3">
+            <a href="BrowseCars.aspx" class="btn user-cta-btn me-3 px-5 py-3">
                 <i class="fas fa-shopping-cart me-2"></i>Explore Shop
             </a>
             <a href="CartUser.aspx" class="btn btn-outline-light px-5 py-3">
@@ -110,7 +110,7 @@
             <div class="card-light" style="flex: 0 1 280px; padding: 1.5rem;">
                 <i class="fas fa-microchip fa-2x mb-3" style="color: #4facfe;"></i>
                 <h4 class="text-white">Premium Hardware</h4>
-                <p class="text-secondary-light mt-2" style="font-size: 0.9rem;">Only top-tier brands and verified original components.</p>
+                <p class="text-secondary-light mt-2" style="font-size: 0.9rem;">Only top-tier makes and verified original components.</p>
             </div>
             <div class="card-light" style="flex: 0 1 280px; padding: 1.5rem;">
                 <i class="fas fa-shipping-fast fa-2x mb-3" style="color: #00f2fe;"></i>
@@ -146,7 +146,7 @@
                 <div class="step-number" style="color: #00f2fe;">02</div>
                 <h3 class="text-white mb-2">AI Evaluation</h3>
                 <p class="text-secondary-light" style="font-size: 0.95rem;">
-                    Our localized smart engine processes your criteria against current product catalog features.
+                    Our localized smart engine processes your criteria against current car catalog features.
                 </p>
             </div>
 
@@ -221,7 +221,7 @@
         <p class="big-title mb-4" style="font-size: 1.5rem; color: white;">
             Explore the latest high-performance components available for your next build.
         </p>
-        <a href="ShopUser.aspx" class="btn btn-light px-5 py-2 fw-bold" 
+        <a href="BrowseCars.aspx" class="btn btn-light px-5 py-2 fw-bold" 
            style="color: #000 !important; background-color: white !important; border-radius: 30px; font-size: 1.1rem;">
             Shop Now
         </a>

@@ -111,7 +111,7 @@
             <h4 class="text-white fw-bold mb-4">Order Summary</h4>
         
             <div class="row gx-0 text-secondary small fw-bold mb-2 pb-1 border-bottom border-secondary" style="opacity: 0.6;">
-                <div class="col-6 text-start">Product</div>
+                <div class="col-6 text-start">Car</div>
                 <div class="col-2 text-center">Quantity</div>
                 <div class="col-4 text-end">Total</div>
             </div>
@@ -121,7 +121,7 @@
                     <ItemTemplate>
                         <div class="row gx-0 text-white small py-2 align-items-center border-bottom border-dark" style="--bs-border-opacity: .4;">
                             <div class="col-6 text-truncate fw-medium text-start" style="max-width: 100%;">
-                                <%# DataBinder.Eval(Container.DataItem, "MyProductName") %>
+                                <%# DataBinder.Eval(Container.DataItem, "MyModelName") %>
                             </div>
                             <div class="col-2 text-center text-secondary">
                                 <%# DataBinder.Eval(Container.DataItem, "MyQuantity") %>

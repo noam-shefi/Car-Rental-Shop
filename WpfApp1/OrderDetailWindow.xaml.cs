@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using BusinessModelHardwareStore;
+using BusinessModelCarRental;
 
 namespace WpfApp1
 {
@@ -36,7 +36,7 @@ namespace WpfApp1
             try
             {
                 if (!int.TryParse(TxtOrderID.Text, out int orderID) ||
-                    !int.TryParse(TxtProductID.Text, out int productID) ||
+                    !int.TryParse(TxtProductID.Text, out int carID) ||
                     !int.TryParse(TxtQuantity.Text, out int quantity) ||
                     !decimal.TryParse(TxtUnitPrice.Text, out decimal unitPrice))
                 {
@@ -44,7 +44,7 @@ namespace WpfApp1
                     return;
                 }
 
-                ws.AddOrderDetails(orderID, productID, quantity, unitPrice);
+                ws.AddOrderDetails(orderID, carID, quantity, unitPrice);
 
                 MessageBox.Show("Order detail record added successfully!");
                 LoadOrderDetails();
@@ -80,11 +80,11 @@ namespace WpfApp1
                 }
 
                 int orderID = string.IsNullOrWhiteSpace(TxtOrderID.Text) ? current.MyOrderID : int.Parse(TxtOrderID.Text);
-                int productID = string.IsNullOrWhiteSpace(TxtProductID.Text) ? current.MyProductID : int.Parse(TxtProductID.Text);
+                int carID = string.IsNullOrWhiteSpace(TxtProductID.Text) ? current.MyCarID : int.Parse(TxtProductID.Text);
                 int quantity = string.IsNullOrWhiteSpace(TxtQuantity.Text) ? current.MyQuantity : int.Parse(TxtQuantity.Text);
                 decimal unitPrice = string.IsNullOrWhiteSpace(TxtUnitPrice.Text) ? current.MyUnitPrice : decimal.Parse(TxtUnitPrice.Text);
 
-                ws.UpdateOrderDetails(orderID, productID, quantity, unitPrice, detailIDToUpdate);
+                ws.UpdateOrderDetails(orderID, carID, quantity, unitPrice, detailIDToUpdate);
 
                 MessageBox.Show($"Order Detail ID {detailIDToUpdate} updated successfully!");
                 LoadOrderDetails();
@@ -135,7 +135,7 @@ namespace WpfApp1
                 selectedDetailIDFromGrid = selectedDetail.MyOrderDetailsID;
                 TxtTargetDetailID.Text = selectedDetail.MyOrderDetailsID.ToString();
                 TxtOrderID.Text = selectedDetail.MyOrderID.ToString();
-                TxtProductID.Text = selectedDetail.MyProductID.ToString();
+                TxtProductID.Text = selectedDetail.MyCarID.ToString();
                 TxtQuantity.Text = selectedDetail.MyQuantity.ToString();
                 TxtUnitPrice.Text = selectedDetail.MyUnitPrice.ToString();
             }

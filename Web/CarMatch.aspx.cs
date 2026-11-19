@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using BusinessModelHardwareStore;
+using BusinessModelCarRental;
 
 public partial class CarMatch : Page
 {
@@ -18,9 +18,9 @@ public partial class CarMatch : Page
 
         try
         {
-            Product[] available;
+            Car[] available;
             using (var service = new CarRentalServiceClient())
-                available = service.GetCars().Where(car => car.MyStockQuantity > 0).ToArray();
+                available = service.GetCars().Where(car => car.MyFleetQuantity > 0).ToArray();
             if (available.Length == 0)
             {
                 lblMessage.Text = "אין כרגע רכבים עם מלאי זמין במערכת.";
@@ -28,11 +28,11 @@ public partial class CarMatch : Page
                 return;
             }
 
-            string category = InferCategory(description);
-            Product selected = available.FirstOrDefault(car => string.Equals(car.MyCarCategory, category, StringComparison.OrdinalIgnoreCase)) ?? available.OrderByDescending(car => car.MyAverageRating).First();
-            litCar.Text = HttpUtility.HtmlEncode((selected.MyManufacturer + " " + selected.MyProductName).Trim());
-            litReason.Text = HttpUtility.HtmlEncode(BuildReason(category, selected));
-            lnkCar.NavigateUrl = "CarDetails.aspx?id=" + selected.MyProductID;
+            string vehicleCategory = InferCategory(description);
+            Car selected = available.FirstOrDefault(car => string.Equals(car.MyCarCategory, vehicleCategory, StringComparison.OrdinalIgnoreCase)) ?? available.OrderByDescending(car => car.MyAverageRating).First();
+            litCar.Text = HttpUtility.HtmlEncode((selected.MyManufacturer + " " + selected.MyModelName).Trim());
+            litReason.Text = HttpUtility.HtmlEncode(BuildReason(vehicleCategory, selected));
+            lnkCar.NavigateUrl = "CarDetails.aspx?id=" + selected.MyCarID;
             pnlRecommendation.Visible = true;
             lblMessage.Text = "ההתאמה מבוססת על מילות מפתח ותכונות הרכב. לא בוצעה בדיקת זמינות לתאריכי הטיול.";
         }
@@ -57,13 +57,13 @@ public partial class CarMatch : Page
         return terms.Any(term => text.IndexOf(term, StringComparison.OrdinalIgnoreCase) >= 0);
     }
 
-    private static string BuildReason(string category, Product car)
+    private static string BuildReason(string vehicleCategory, Car car)
     {
         string reason;
-        if (category == "family") reason = "הקטגוריה מתאימה לנסיעה משפחתית ולנוסעים נוספים.";
-        else if (category == "suv") reason = "רכב SUV מתאים יותר למסלול שמדגיש טבע או נסיעה מחוץ לעיר.";
-        else if (category == "sports") reason = "רכב הספורט מתאים לנסיעה שבה חוויית הנהיגה חשובה במיוחד.";
+        if (vehicleCategory == "family") reason = "הקטגוריה מתאימה לנסיעה משפחתית ולנוסעים נוספים.";
+        else if (vehicleCategory == "suv") reason = "רכב SUV מתאים יותר למסלול שמדגיש טבע או נסיעה מחוץ לעיר.";
+        else if (vehicleCategory == "sports") reason = "רכב הספורט מתאים לנסיעה שבה חוויית הנהיגה חשובה במיוחד.";
         else reason = "רכב סדאן הוא בחירה שימושית לנסיעה יומיומית ולמסלולים עירוניים.";
-        return reason + " ברכב יש " + car.MyStockQuantity + " יחידות רשומות במלאי ודירוג ממוצע " + car.MyAverageRating.ToString("0.0") + ".";
+        return reason + " ברכב יש " + car.MyFleetQuantity + " יחידות רשומות במלאי ודירוג ממוצע " + car.MyAverageRating.ToString("0.0") + ".";
     }
 }

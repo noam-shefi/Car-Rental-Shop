@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BusinessModelCarRental" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BusinessModelCarRental" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfShippingAddress">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ShippingAddress" nillable="true" type="tns:ShippingAddress" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfShippingAddress" nillable="true" type="tns:ArrayOfShippingAddress" />
+  <xs:complexType name="ShippingAddress">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MyAdditionalInstructions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyCity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyCountryRegion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyFloor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyStreetAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyUsername" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyZipCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ShippingAddress" nillable="true" type="tns:ShippingAddress" />
+  <xs:complexType name="ArrayOfUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MyAdmin" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MyEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyFirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyJoinDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MyLastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyPassword" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyPhoneNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyUsername" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ArrayOfCar">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Car" nillable="true" type="tns:Car" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCar" nillable="true" type="tns:ArrayOfCar" />
+  <xs:complexType name="Car">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MyAverageRating" type="xs:double" />
+      <xs:element minOccurs="0" name="MyBranchCity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyBranchID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MyBranchName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyCarCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyCarID" type="xs:int" />
+      <xs:element minOccurs="0" name="MyDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyFavoriteDateAdded" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MyFleetQuantity" type="xs:int" />
+      <xs:element minOccurs="0" name="MyFuelType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyIsCar" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MyLuggageCapacity" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MyMakeID" type="xs:int" />
+      <xs:element minOccurs="0" name="MyManufacturer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyModelName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyPicture" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyPrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MyRangeKm" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MyReviewCount" type="xs:int" />
+      <xs:element minOccurs="0" name="MySeats" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MyTransmission" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyVehicleCategoryID" type="xs:int" />
+      <xs:element minOccurs="0" name="MyYear" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Car" nillable="true" type="tns:Car" />
+  <xs:complexType name="ArrayOfBranch">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Branch" nillable="true" type="tns:Branch" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBranch" nillable="true" type="tns:ArrayOfBranch" />
+  <xs:complexType name="Branch">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MyAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyBranchID" type="xs:int" />
+      <xs:element minOccurs="0" name="MyBranchName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyCity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyPhone" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Branch" nillable="true" type="tns:Branch" />
+  <xs:complexType name="ArrayOfOrder">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Order" nillable="true" type="tns:Order" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrder" nillable="true" type="tns:ArrayOfOrder" />
+  <xs:complexType name="Order">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MyAdditionalInstructions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyCancellationRequested" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MyCarID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MyCarName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyDelivered" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MyIsRental" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MyOrderDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MyOrderID" type="xs:int" />
+      <xs:element minOccurs="0" name="MyRentalEndDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MyRentalStartDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MyRentalStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyTotalPrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MyUsername" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Order" nillable="true" type="tns:Order" />
+  <xs:complexType name="ArrayOfReview">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Review" nillable="true" type="tns:Review" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReview" nillable="true" type="tns:ArrayOfReview" />
+  <xs:complexType name="Review">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MyCarID" type="xs:int" />
+      <xs:element minOccurs="0" name="MyRating" type="xs:int" />
+      <xs:element minOccurs="0" name="MyRentalOrderID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MyRev" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyReviewDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MyReviewID" type="xs:int" />
+      <xs:element minOccurs="0" name="MyUsername" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Review" nillable="true" type="tns:Review" />
+  <xs:complexType name="ArrayOfMake">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Make" nillable="true" type="tns:Make" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMake" nillable="true" type="tns:ArrayOfMake" />
+  <xs:complexType name="Make">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MyCountryOfOrigin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyMakeID" type="xs:int" />
+      <xs:element minOccurs="0" name="MyMakeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyWebsiteURL" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Make" nillable="true" type="tns:Make" />
+  <xs:complexType name="ArrayOfCart">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Cart" nillable="true" type="tns:Cart" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCart" nillable="true" type="tns:ArrayOfCart" />
+  <xs:complexType name="Cart">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MyCarID" type="xs:int" />
+      <xs:element minOccurs="0" name="MyPrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MyQuantity" type="xs:int" />
+      <xs:element minOccurs="0" name="MyUsername" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Cart" nillable="true" type="tns:Cart" />
+  <xs:complexType name="ArrayOfVehicleCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VehicleCategory" nillable="true" type="tns:VehicleCategory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVehicleCategory" nillable="true" type="tns:ArrayOfVehicleCategory" />
+  <xs:complexType name="VehicleCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MyDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyVehicleCategoryID" type="xs:int" />
+      <xs:element minOccurs="0" name="MyVehicleCategoryName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VehicleCategory" nillable="true" type="tns:VehicleCategory" />
+  <xs:complexType name="ArrayOfContact">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Contact" nillable="true" type="tns:Contact" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContact" nillable="true" type="tns:ArrayOfContact" />
+  <xs:complexType name="Contact">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MyContactID" type="xs:int" />
+      <xs:element minOccurs="0" name="MyDateSent" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MyEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyFullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MySubject" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyTreated" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MyUsername" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Contact" nillable="true" type="tns:Contact" />
+  <xs:complexType name="ArrayOfOrderDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderDetails" nillable="true" type="tns:OrderDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderDetails" nillable="true" type="tns:ArrayOfOrderDetails" />
+  <xs:complexType name="OrderDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MyCarID" type="xs:int" />
+      <xs:element minOccurs="0" name="MyOrderDetailsID" type="xs:int" />
+      <xs:element minOccurs="0" name="MyOrderID" type="xs:int" />
+      <xs:element minOccurs="0" name="MyQuantity" type="xs:int" />
+      <xs:element minOccurs="0" name="MyUnitPrice" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderDetails" nillable="true" type="tns:OrderDetails" />
+</xs:schema>

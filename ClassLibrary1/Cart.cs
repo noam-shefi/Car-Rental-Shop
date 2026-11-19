@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessModelHardwareStore
+namespace BusinessModelCarRental
 {
     // Cart
     public class Cart
     {
-        // ProductID
-        private int ProductID;
-        public int MyProductID { get { return this.ProductID; } set { this.ProductID = value; } }
+        // CarID
+        private int CarID;
+        public int MyCarID { get { return this.CarID; } set { this.CarID = value; } }
 
         // Username
         private string Username;

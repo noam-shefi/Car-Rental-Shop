@@ -7,7 +7,7 @@ using System.Web;
 using System.Data;
 using System.Data.OleDb;
 
-namespace ViewModelHardwareStore
+namespace ViewModelCarRental
 {
     public class ReviewDB
     {
@@ -22,12 +22,12 @@ namespace ViewModelHardwareStore
             return ds.Tables[0].Rows.Count >= 1;
         }
 
-        // AddReview
-        public void AddReview(string Username, int ProductID, string Rev, int Rating)
+        // AddCarReview
+        public void AddCarReview(string Username, int CarID, string Rev, int Rating)
         {
             string sql = string.Format(
                 "insert into [Review] ([Username], [ProductID], [Rev], [Rating]) values ('{0}', {1}, '{2}', {3})",
-                Username, ProductID, Rev, Rating);
+                Username, CarID, Rev, Rating);
             db.DoCommand(sql);
         }
 
@@ -38,12 +38,12 @@ namespace ViewModelHardwareStore
             db.DoCommand(sql);
         }
 
-        // UpdateReview
-        public void UpdateReview(string Username, int ProductID, string Rev, int Rating, int ReviewID)
+        // UpdateCarReview
+        public void UpdateCarReview(string Username, int CarID, string Rev, int Rating, int ReviewID)
         {
             string sql = string.Format(
                 "update [Review] set [Username]='{0}', [ProductID]={1}, [Rev]='{2}', [Rating]={3} where [ReviewID]={4}",
-                Username, ProductID, Rev, Rating, ReviewID);
+                Username, CarID, Rev, Rating, ReviewID);
             db.DoCommand(sql);
         }
 
@@ -68,10 +68,10 @@ namespace ViewModelHardwareStore
             return db.Selectcommand(sql);
         }
 
-        // ShowAllProductReview
-        public DataSet ShowAllProductReview(int ProductID)
+        // ShowAllCarReviews
+        public DataSet ShowAllCarReviews(int CarID)
         {
-            string sql = string.Format("select * from [Review] where [ProductID]={0}", ProductID);
+            string sql = string.Format("select * from [Review] where [ProductID]={0}", CarID);
             return db.Selectcommand(sql);
         }
     }

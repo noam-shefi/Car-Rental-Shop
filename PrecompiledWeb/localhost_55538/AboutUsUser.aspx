@@ -1,39 +1,39 @@
-﻿<%@ page title="About ByteForge" language="C#" masterpagefile="~/MasterPageUser.master" autoeventwireup="true" inherits="AboutUsUser, App_Web_53vxbbw0" %>
+﻿<%@ page title="About Car Rental" language="C#" masterpagefile="~/MasterPageUser.master" autoeventwireup="true" inherits="AboutUsUser, App_Web_pskrdzto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="about-container">
         <div class="about-card fade-in">
-            <h2 class="form-title">The ByteForge Standard</h2>
-            
+            <h2 class="form-title">About Car Rental</h2>
+
             <div class="about-content">
                 <p class="about-text">
-                    Established in <span class="highlight">2025 in Nofit</span>, <span class="highlight">ByteForge</span> was created to redefine the hardware experience. We serve everyone—from hardcore gamers and creative professionals to home and business users.
+                    Find a car for your journey by comparing vehicles, prices and specifications in our rental catalog.
                 </p>
 
                 <p class="about-text sub-text">
-                    We don’t just sell components; we engineer power. Every part in our catalog is hand-picked for <span class="highlight">uncompromising reliability and elite performance</span>.
+                    Choose your dates, check availability and send a rental request for approval. Payment takes place outside the website.
                 </p>
 
                 <div class="features-list">
                     <div class="feature-item">
-                        <i class="fas fa-microchip"></i>
+                        <i class="fas fa-car"></i>
                         <div class="feature-info">
-                            <h4>Master-Level Assembly</h4>
-                            <p>Premium cable management and optimized airflow are standard in every build we forge.</p>
+                            <h4>Explore the Fleet</h4>
+                            <p>Compare vehicle vehicleCategories, specifications and customer reviews.</p>
                         </div>
                     </div>
                     <div class="feature-item">
-                        <i class="fas fa-layer-group"></i>
+                        <i class="fas fa-calendar-alt"></i>
                         <div class="feature-info">
-                            <h4>The Ultimate Inventory</h4>
-                            <p>From CPUs to peripherals, we stock everything you need under one roof with 100% genuine quality.</p>
+                            <h4>Check Availability</h4>
+                            <p>Select pickup and return dates before sending a rental request.</p>
                         </div>
                     </div>
                     <div class="feature-item">
-                        <i class="fas fa-store-alt"></i>
+                        <i class="fas fa-map-marker-alt"></i>
                         <div class="feature-info">
-                            <h4>Visit Us in Nofit</h4>
-                            <p>Experience our hardware in person at our physical showroom and get expert face-to-face advice.</p>
+                            <h4>Find a Branch</h4>
+                            <p>See the branch associated with each car in the catalog.</p>
                         </div>
                     </div>
                 </div>

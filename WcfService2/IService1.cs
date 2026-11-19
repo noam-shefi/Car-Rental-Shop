@@ -23,49 +23,49 @@ namespace WcfService2
         // TODO: Add your service operations here
 
 
-        // Brand
+        // Make
         [OperationContract]
-        bool isExistBrand(int BrandID);
+        bool MakeExists(int MakeID);
         [OperationContract]
-        void AddBrand(string BrandName, string CountryOfOrigin, string WebsiteURL, string Description);
+        void AddMake(string MakeName, string CountryOfOrigin, string WebsiteURL, string Description);
         [OperationContract]
-        void DeleteBrand(int BrandID);
+        void DeleteMake(int MakeID);
         [OperationContract]
-        void UpdateBrand(string BrandName, string CountryOfOrigin, string WebsiteURL, string Description, int BrandID);
+        void UpdateMake(string MakeName, string CountryOfOrigin, string WebsiteURL, string Description, int MakeID);
         [OperationContract]
-        DataSet showAllBrand();
+        DataSet GetAllMakes();
         [OperationContract]
-        DataSet showBrand(int BrandID);
+        DataSet GetMake(int MakeID);
 
         // Cart
         [OperationContract]
-        bool isExistCart(int ProductID, string Username);
+        bool isExistCart(int CarID, string Username);
         [OperationContract]
-        void AddCart(int ProductID, string Username, decimal Price, string Picture, int Quantity);
+        void AddCart(int CarID, string Username, decimal Price, string Picture, int Quantity);
         [OperationContract]
         void DeleteCart(string Username);
         [OperationContract]
-        void UpdateCart(int Quantity, string ProductID, string Username);
+        void UpdateCart(int Quantity, string CarID, string Username);
         [OperationContract]
         DataSet showAllCart();
         [OperationContract]
-        DataSet showCart(int ProductID, string Username);
+        DataSet showCart(int CarID, string Username);
         [OperationContract]
-        void DeletePruductFromCart(string ProductID, string Username);
+        void DeleteCarFromCart(string CarID, string Username);
         [OperationContract]
-        bool isExistProductInCart(int ProductID, string Username);
+        bool CarExistsInCart(int CarID, string Username);
         [OperationContract]
         void CopyData(string Username, decimal Price);
         [OperationContract]
         string OrderInfo(string Username, decimal Price);
         [OperationContract]
-        bool UpdateCartQuantity(string Username, string ProductID, int newQuantity);
+        bool UpdateCartQuantity(string Username, string CarID, int newQuantity);
         [OperationContract]
         decimal GetCartTotalPrice(string Username);
         [OperationContract]
         int CountItemsInCart(string Username);
         [OperationContract]
-        DataSet ListCartWithProductDetails(string Username);
+        DataSet ListCartWithCarDetails(string Username);
     }
 
 

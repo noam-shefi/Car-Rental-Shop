@@ -2,30 +2,30 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.ServiceModel;
-using BusinessModelHardwareStore;
+using BusinessModelCarRental;
 
 [ServiceContract(Name = "IService1", Namespace = "http://tempuri.org/")]
 public interface ICarRentalServiceContract
 {
-    [OperationContract] List<Product> GetCars();
-    [OperationContract] List<Product> SearchCars(string search, string category, decimal? maximumPrice, DateTime? startDate, DateTime? endDate);
-    [OperationContract] Product GetCar(int productID);
-    [OperationContract] int AddCar(Product car);
-    [OperationContract] void UpdateCar(Product car);
-    [OperationContract] void DeleteCar(int productID);
-    [OperationContract] void SetCarStock(int productID, int quantity);
+    [OperationContract] List<Car> GetCars();
+    [OperationContract] List<Car> SearchCars(string search, string vehicleCategory, decimal? maximumPrice, DateTime? startDate, DateTime? endDate);
+    [OperationContract] Car GetCar(int carID);
+    [OperationContract] int AddCar(Car car);
+    [OperationContract] void UpdateCar(Car car);
+    [OperationContract] void DeleteCar(int carID);
+    [OperationContract] void SetCarFleetQuantity(int carID, int quantity);
     [OperationContract] List<Branch> GetBranches();
     [OperationContract] void AddBranch(Branch branch);
     [OperationContract] void DeleteBranch(int branchID);
-    [OperationContract] List<Product> GetFavorites(string username);
-    [OperationContract] void SetFavorite(string username, int productID, bool isFavorite);
+    [OperationContract] List<Car> GetFavorites(string username);
+    [OperationContract] void SetFavorite(string username, int carID, bool isFavorite);
     [OperationContract] bool IsRentalAvailable(int carID, DateTime startDate, DateTime endDate, int requiredStock);
-    [OperationContract] List<DateTime> GetUnavailableRentalDates(int carID, DateTime firstDate, DateTime lastDate, int stock);
+    [OperationContract] List<DateTime> GetUnavailableRentalDates(int carID, DateTime firstDate, DateTime lastDate, int fleetQuantity);
     [OperationContract] int CreateRentalOrder(string username, int carID, DateTime startDate, DateTime endDate);
     [OperationContract] List<Order> GetRentalOrders(string username);
     [OperationContract] bool RequestRentalCancellation(int orderID, string username);
     [OperationContract] bool SetRentalStatus(int orderID, string status, bool cancellationRequested, string requiredUsername);
-    [OperationContract] List<Review> GetRentalReviewsForCar(int productID);
+    [OperationContract] List<Review> GetRentalReviewsForCar(int carID);
     [OperationContract] bool CanReviewRental(string username, int orderID);
     [OperationContract] void AddRentalReview(string username, int orderID, int rating, string comment);
     [OperationContract] bool IsEmailRegistered(string email, string exceptUsername);
@@ -51,20 +51,20 @@ public sealed class CarRentalServiceClient : IDisposable
         service = factory.CreateChannel();
     }
 
-    public List<Product> GetCars() { return service.GetCars(); }
-    public List<Product> SearchCars(string search, string category, decimal? maximumPrice, DateTime? startDate, DateTime? endDate) { return service.SearchCars(search, category, maximumPrice, startDate, endDate); }
-    public Product GetCar(int id) { return service.GetCar(id); }
-    public int AddCar(Product car) { return service.AddCar(car); }
-    public void UpdateCar(Product car) { service.UpdateCar(car); }
+    public List<Car> GetCars() { return service.GetCars(); }
+    public List<Car> SearchCars(string search, string vehicleCategory, decimal? maximumPrice, DateTime? startDate, DateTime? endDate) { return service.SearchCars(search, vehicleCategory, maximumPrice, startDate, endDate); }
+    public Car GetCar(int id) { return service.GetCar(id); }
+    public int AddCar(Car car) { return service.AddCar(car); }
+    public void UpdateCar(Car car) { service.UpdateCar(car); }
     public void DeleteCar(int id) { service.DeleteCar(id); }
-    public void SetCarStock(int id, int quantity) { service.SetCarStock(id, quantity); }
+    public void SetCarFleetQuantity(int id, int quantity) { service.SetCarFleetQuantity(id, quantity); }
     public List<Branch> GetBranches() { return service.GetBranches(); }
     public void AddBranch(Branch branch) { service.AddBranch(branch); }
     public void DeleteBranch(int id) { service.DeleteBranch(id); }
-    public List<Product> GetFavorites(string username) { return service.GetFavorites(username); }
+    public List<Car> GetFavorites(string username) { return service.GetFavorites(username); }
     public void SetFavorite(string username, int id, bool value) { service.SetFavorite(username, id, value); }
-    public bool IsRentalAvailable(int id, DateTime start, DateTime end, int stock) { return service.IsRentalAvailable(id, start, end, stock); }
-    public List<DateTime> GetUnavailableRentalDates(int id, DateTime first, DateTime last, int stock) { return service.GetUnavailableRentalDates(id, first, last, stock); }
+    public bool IsRentalAvailable(int id, DateTime start, DateTime end, int fleetQuantity) { return service.IsRentalAvailable(id, start, end, fleetQuantity); }
+    public List<DateTime> GetUnavailableRentalDates(int id, DateTime first, DateTime last, int fleetQuantity) { return service.GetUnavailableRentalDates(id, first, last, fleetQuantity); }
     public int CreateRentalOrder(string username, int id, DateTime start, DateTime end) { return service.CreateRentalOrder(username, id, start, end); }
     public List<Order> GetRentalOrders(string username) { return service.GetRentalOrders(username); }
     public bool RequestRentalCancellation(int id, string username) { return service.RequestRentalCancellation(id, username); }

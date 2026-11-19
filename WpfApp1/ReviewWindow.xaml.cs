@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using BusinessModelHardwareStore;
+using BusinessModelCarRental;
 
 namespace WpfApp1
 {
@@ -41,7 +41,7 @@ namespace WpfApp1
                     return;
                 }
 
-                if (!int.TryParse(TxtProductID.Text, out int productID))
+                if (!int.TryParse(TxtProductID.Text, out int carID))
                 {
                     MessageBox.Show("Please enter a valid Vehicle ID.");
                     return;
@@ -51,7 +51,7 @@ namespace WpfApp1
                 string revComment = TxtRev.Text;
                 int rating = CmbRating.SelectedIndex + 1;
 
-                ws.AddReview(username, productID, revComment, rating);
+                ws.AddCarReview(username, carID, revComment, rating);
 
                 MessageBox.Show("Review added successfully!");
                 LoadReviews();
@@ -87,11 +87,11 @@ namespace WpfApp1
                 }
 
                 string username = string.IsNullOrWhiteSpace(TxtUsername.Text) ? current.MyUsername : TxtUsername.Text;
-                int productID = string.IsNullOrWhiteSpace(TxtProductID.Text) ? current.MyProductID : int.Parse(TxtProductID.Text);
+                int carID = string.IsNullOrWhiteSpace(TxtProductID.Text) ? current.MyCarID : int.Parse(TxtProductID.Text);
                 string revComment = string.IsNullOrWhiteSpace(TxtRev.Text) ? current.MyRev : TxtRev.Text;
                 int rating = CmbRating.SelectedIndex + 1;
 
-                ws.UpdateReview(username, productID, revComment, rating, reviewIDToUpdate);
+                ws.UpdateCarReview(username, carID, revComment, rating, reviewIDToUpdate);
 
                 MessageBox.Show($"Review ID {reviewIDToUpdate} updated successfully!");
                 LoadReviews();
@@ -142,7 +142,7 @@ namespace WpfApp1
                 selectedReviewIDFromGrid = selectedReview.MyReviewID;
                 TxtTargetReviewID.Text = selectedReview.MyReviewID.ToString();
                 TxtUsername.Text = selectedReview.MyUsername;
-                TxtProductID.Text = selectedReview.MyProductID.ToString();
+                TxtProductID.Text = selectedReview.MyCarID.ToString();
                 TxtRev.Text = selectedReview.MyRev;
 
                 if (selectedReview.MyRating >= 1 && selectedReview.MyRating <= 5)

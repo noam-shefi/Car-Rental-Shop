@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
-using BusinessModelHardwareStore;
+using BusinessModelCarRental;
 
-namespace ViewModelHardwareStore
+namespace ViewModelCarRental
 {
     public class OrderDB
     {
@@ -204,7 +204,7 @@ namespace ViewModelHardwareStore
             return true;
         }
 
-        public List<DateTime> GetUnavailableRentalDates(int carID, DateTime firstDate, DateTime lastDate, int stock)
+        public List<DateTime> GetUnavailableRentalDates(int carID, DateTime firstDate, DateTime lastDate, int fleetQuantity)
         {
             DateTime first = firstDate.Date;
             DateTime last = lastDate.Date;
@@ -212,7 +212,7 @@ namespace ViewModelHardwareStore
                 throw new ArgumentException("The date range is invalid.");
 
             List<DateTime> unavailable = new List<DateTime>();
-            if (stock <= 0)
+            if (fleetQuantity <= 0)
             {
                 for (DateTime date = first; date <= last; date = date.AddDays(1))
                     unavailable.Add(date);
@@ -241,7 +241,7 @@ namespace ViewModelHardwareStore
             for (DateTime date = first; date <= last; date = date.AddDays(1))
             {
                 int reserved;
-                if (reservationsByDate.TryGetValue(date, out reserved) && reserved >= stock)
+                if (reservationsByDate.TryGetValue(date, out reserved) && reserved >= fleetQuantity)
                     unavailable.Add(date);
             }
             return unavailable;
@@ -251,8 +251,8 @@ namespace ViewModelHardwareStore
         {
             lock (bookingLock)
             {
-                Product car = new ProductDB { db = this.db }.GetCar(carID);
-                if (car == null || !IsRentalAvailable(carID, startDate, endDate, car.MyStockQuantity))
+                Car car = new CarDB { db = this.db }.GetCar(carID);
+                if (car == null || !IsRentalAvailable(carID, startDate, endDate, car.MyFleetQuantity))
                     throw new InvalidOperationException("The selected car is not available for those dates.");
 
                 // The original Order table requires every customer to have a shipping-address row.
@@ -337,7 +337,7 @@ namespace ViewModelHardwareStore
         private Order MapRentalOrder(DataRow row)
         {
             int carID = Convert.ToInt32(row["CarID"]);
-            Product car = new ProductDB { db = this.db }.GetCar(carID);
+            Car car = new CarDB { db = this.db }.GetCar(carID);
             return new Order
             {
                 MyOrderID = Convert.ToInt32(row["OrderID"]),
@@ -346,7 +346,7 @@ namespace ViewModelHardwareStore
                 MyTotalPrice = Convert.ToDecimal(row["TotalPrice"]),
                 MyIsRental = true,
                 MyCarID = carID,
-                MyCarName = car == null ? "" : (car.MyManufacturer + " " + car.MyProductName),
+                MyCarName = car == null ? "" : (car.MyManufacturer + " " + car.MyModelName),
                 MyRentalStartDate = row.IsNull("RentalStartDate") ? (DateTime?)null : Convert.ToDateTime(row["RentalStartDate"]),
                 MyRentalEndDate = row.IsNull("RentalEndDate") ? (DateTime?)null : Convert.ToDateTime(row["RentalEndDate"]),
                 MyRentalStatus = row["RentalStatus"].ToString(),

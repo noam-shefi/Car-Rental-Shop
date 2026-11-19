@@ -1,9 +1,9 @@
-﻿<%@ page title="Contact ByteForge" language="C#" masterpagefile="~/MasterPageUser.master" autoeventwireup="true" inherits="ContactUser, App_Web_53vxbbw0" %>
+﻿<%@ page title="Contact Car Rental" language="C#" masterpagefile="~/MasterPageUser.master" autoeventwireup="true" inherits="ContactUser, App_Web_pskrdzto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="contact-container">
         <div class="contact-card fade-in">
-            <h2 class="form-title">Contact the Forge</h2>
+            <h2 class="form-title">Contact Us</h2>
             
             <asp:Label ID="lblStatus" runat="server" CssClass="info-label" Visible="false"></asp:Label>
 
@@ -11,8 +11,8 @@
                 <div class="contact-info-sidebar">
                     <h3 class="sidebar-title">Get in Touch</h3>
                     <div class="info-item">
-                        <i class="fas fa-location-dot"></i>
-                        <span>Nofit, Israel</span>
+                        <i class="fas fa-car"></i>
+                        <span>Questions about a rental? Send us a message.</span>
                     </div>
                 </div>
 

@@ -1,14 +1,14 @@
-﻿<%@ Page Title="ByteForge Cart" Language="C#" MasterPageFile="~/MasterPageUser.master" AutoEventWireup="true" CodeFile="CartUser.aspx.cs" Inherits="CartUser" %>
+﻿<%@ Page Title="Legacy Cart" Language="C#" MasterPageFile="~/MasterPageUser.master" AutoEventWireup="true" CodeFile="CartUser.aspx.cs" Inherits="CartUser" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="container my-5">
-        <h2 class="gradient-text fw-bold mb-4">Your Shopping Cart</h2>
+        <h2 class="gradient-text fw-bold mb-4">Your Legacy Cart</h2>
 
         <div id="divEmptyCart" runat="server" class="text-center py-5 my-5" visible="false">
             <i class="bi bi-cart-x text-secondary mb-3" style="font-size: 4rem;"></i>
             <h3 class="text-white fw-bold">Your cart is empty</h3>
-            <p class="text-muted fs-5 mb-4">Looks like you haven't added any hardware to your forge yet.</p>
-            <a href="ShopUser.aspx" class="btn btn-gradient px-4 py-2">Go Shopping</a>
+            <p class="text-muted fs-5 mb-4">There are no items in this legacy cart.</p>
+            <a href="Cars.aspx" class="btn btn-gradient px-4 py-2">Browse cars</a>
         </div>
 
         <div id="divCartContent" runat="server" class="row g-4">
@@ -17,7 +17,7 @@
                     <table class="table table-dark align-middle mb-0 border-0">
                         <thead>
                             <tr class="text-secondary border-bottom border-secondary">
-                                <th scope="col" style="width: 45%;">Product</th>
+                                <th scope="col" style="width: 45%;">Car</th>
                                 <th scope="col" class="text-center" style="width: 15%;">Price</th>
                                 <th scope="col" class="text-center" style="width: 20%;">Quantity</th>
                                 <th scope="col" class="text-center" style="width: 20%;">Total</th>
@@ -30,13 +30,13 @@
                                     <tr class="border-bottom border-dark">
                                         <td class="py-3">
                                             <div class="d-flex align-items-center">
-                                                <asp:HiddenField ID="hfProductID" runat="server" Value='<%# Eval("MyProductID") %>' />
+                                                <asp:HiddenField ID="hfProductID" runat="server" Value='<%# Eval("MyCarID") %>' />
                                     
                                                 <div class="me-3 bg-dark d-flex align-items-center justify-content-center rounded" style="width: 80px; height: 80px; border: 1px solid rgba(255,255,255,0.1); flex-shrink: 0;">
-                                                    <img src='<%# GetCartProductImageUrl(Eval("MyProductID")) %>' class="img-fluid rounded" style="max-height: 72px; max-width: 72px; object-fit: contain;" alt='Product Image' />
+                                                    <img src='<%# GetCartProductImageUrl(Eval("MyCarID")) %>' class="img-fluid rounded" style="max-height: 72px; max-width: 72px; object-fit: contain;" alt='Car Image' />
                                                 </div>
 
-                                                <span class="text-white fw-semibold fs-6"><%# GetProductName(Eval("MyProductID")) %></span>
+                                                <span class="text-white fw-semibold fs-6"><%# GetProductName(Eval("MyCarID")) %></span>
                                             </div>
                                         </td>
                                         <td class="text-center text-white py-3">
@@ -92,7 +92,7 @@
 
                     <asp:Panel ID="pnlStockError" runat="server" Visible="false" CssClass="alert alert-danger border-danger bg-dark text-danger my-3 p-3 rounded">
                         <h6 class="fw-bold mb-2"><i class="bi bi-exclamation-triangle-fill me-2"></i>Out of Stock Items:</h6>
-                        <p class="small mb-2">We don't have enough stock for the following items:</p>
+                        <p class="small mb-2">We don't have enough fleetQuantity for the following items:</p>
                         <ul class="mb-2 ps-3 small text-white fw-semibold">
                             <asp:Literal ID="litMissingProducts" runat="server"></asp:Literal>
                         </ul>
@@ -102,7 +102,7 @@
                     <asp:Button ID="btnCheckout" runat="server" Text="Proceed to Checkout" OnClick="btnCheckout_Click" CssClass="btn w-100 btn-gradient py-3 fs-5 mt-2 shadow" />
                     
                     <div class="text-center mt-3">
-                        <a href="ShopUser.aspx" class="text-secondary small text-decoration-none"><i class="bi bi-arrow-left me-1"></i> Continue Shopping</a>
+                        <a href="BrowseCars.aspx" class="text-secondary small text-decoration-none"><i class="bi bi-arrow-left me-1"></i> Continue Shopping</a>
                     </div>
                 </div>
             </div>

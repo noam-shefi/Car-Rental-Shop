@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
-using ViewModelHardwareStore;
+using ViewModelCarRental;
 
 namespace WcfService2
 {
@@ -31,78 +31,78 @@ namespace WcfService2
             }
             return composite;
         }
-        // Brand
-        public bool isExistBrand(int BrandID)
+        // Make
+        public bool MakeExists(int MakeID)
         {
-            BrandDB b = new BrandDB();
-            return b.isExistBrand(BrandID);
+            MakeDB b = new MakeDB();
+            return b.MakeExists(MakeID);
         }
-        public void AddBrand(string BrandName, string CountryOfOrigin, string WebsiteURL, string Description)
+        public void AddMake(string MakeName, string CountryOfOrigin, string WebsiteURL, string Description)
         {
-            BrandDB b = new BrandDB();
-            b.AddBrand(BrandName, CountryOfOrigin, WebsiteURL, Description);
+            MakeDB b = new MakeDB();
+            b.AddMake(MakeName, CountryOfOrigin, WebsiteURL, Description);
         }
-        public void DeleteBrand(int BrandID)
+        public void DeleteMake(int MakeID)
         {
-            BrandDB b = new BrandDB();
-            b.DeleteBrand(BrandID);
+            MakeDB b = new MakeDB();
+            b.DeleteMake(MakeID);
         }
-        public void UpdateBrand(string BrandName, string CountryOfOrigin, string WebsiteURL, string Description, int BrandID)
+        public void UpdateMake(string MakeName, string CountryOfOrigin, string WebsiteURL, string Description, int MakeID)
         {
-            BrandDB b = new BrandDB();
-            b.UpdateBrand(BrandName, CountryOfOrigin, WebsiteURL, Description, BrandID);
+            MakeDB b = new MakeDB();
+            b.UpdateMake(MakeName, CountryOfOrigin, WebsiteURL, Description, MakeID);
         }
-        public DataSet showAllBrand()
+        public DataSet GetAllMakes()
         {
-            BrandDB b = new BrandDB();
-            return b.showAllBrand();
+            MakeDB b = new MakeDB();
+            return b.GetAllMakes();
         }
-        public DataSet showBrand(int BrandID)
+        public DataSet GetMake(int MakeID)
         {
-            BrandDB b = new BrandDB();
-            return b.showBrand(BrandID);
+            MakeDB b = new MakeDB();
+            return b.GetMake(MakeID);
         }
 
         // Cart
-        public bool isExistCart(int ProductID, string Username)
+        public bool isExistCart(int CarID, string Username)
         {
             CartDB c = new CartDB();
-            return c.isExistCart(ProductID, Username);
+            return c.isExistCart(CarID, Username);
         }
-        public void AddCart(int ProductID, string Username, decimal Price, string Picture, int Quantity)
+        public void AddCart(int CarID, string Username, decimal Price, string Picture, int Quantity)
         {
             CartDB c = new CartDB();
-            c.AddCart(ProductID, Username, Price, Picture, Quantity);
+            c.AddCart(CarID, Username, Price, Picture, Quantity);
         }
         public void DeleteCart(string Username)
         {
             CartDB c = new CartDB();
             c.DeleteCart(Username);
         }
-        public void UpdateCart(int Quantity, string ProductID, string Username)
+        public void UpdateCart(int Quantity, string CarID, string Username)
         {
             CartDB c = new CartDB();
-            c.UpdateCart(Quantity, ProductID, Username);
+            c.UpdateCart(Quantity, CarID, Username);
         }
         public DataSet showAllCart()
         {
             CartDB c = new CartDB();
             return c.showAllCart();
         }
-        public DataSet showCart(int ProductID, string Username)
+        public DataSet showCart(int CarID, string Username)
         {
             CartDB c = new CartDB();
-            return c.showCart(ProductID, Username);
+            return c.showCart(CarID, Username);
         }
-        public void DeletePruductFromCart(string ProductID, string Username)
+        public void DeleteCarFromCart(string CarID, string Username)
         {
             CartDB c = new CartDB();
-            c.DeletePruductFromCart(ProductID, Username);
+            c.DeleteCarFromCart(CarID, Username);
         }
-        public bool isExistProductInCart(int ProductID, string Username)
+        public bool CarExistsInCart(int CarID, string Username)
         {
             CartDB c = new CartDB();
-            return c.isExistProductInCart(ProductID, Username);
+            return c.CarExistsInCart(CarID, Username);
         }
         public void CopyData(string Username, decimal Price)
         {
@@ -114,10 +114,10 @@ namespace WcfService2
             CartDB c = new CartDB();
             return c.OrderInfo(Username, Price);
         }
-        public bool UpdateCartQuantity(string Username, string ProductID, int newQuantity)
+        public bool UpdateCartQuantity(string Username, string CarID, int newQuantity)
         {
             CartDB c = new CartDB();
-            return c.UpdateCartQuantity(Username, ProductID, newQuantity);
+            return c.UpdateCartQuantity(Username, CarID, newQuantity);
         }
         public decimal GetCartTotalPrice(string Username)
         {
@@ -129,10 +129,10 @@ namespace WcfService2
             CartDB c = new CartDB();
             return c.CountItemsInCart(Username);
         }
-        public DataSet ListCartWithProductDetails(string Username)
+        public DataSet ListCartWithCarDetails(string Username)
         {
             CartDB c = new CartDB();
-            return c.ListCartWithProductDetails(Username);
+            return c.ListCartWithCarDetails(Username);
         }
 
     }

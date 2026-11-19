@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
-using BusinessModelHardwareStore;
+using BusinessModelCarRental;
 
-namespace ViewModelHardwareStore
+namespace ViewModelCarRental
 {
     public class OrderDetailsDB
     {
@@ -23,12 +23,12 @@ namespace ViewModelHardwareStore
         }
 
         // AddOrderDetails
-        public void AddOrderDetails(int OrderID, int ProductID, int Quantity, decimal UnitPrice)
+        public void AddOrderDetails(int OrderID, int CarID, int Quantity, decimal UnitPrice)
         {
             string sql = "INSERT INTO [OrderDetails] ([OrderID], [ProductID], [Quantity], [UnitPrice]) VALUES (?, ?, ?, ?)";
             OleDbCommand cmd = new OleDbCommand(sql);
             cmd.Parameters.AddWithValue("?", OrderID);
-            cmd.Parameters.AddWithValue("?", ProductID);
+            cmd.Parameters.AddWithValue("?", CarID);
             cmd.Parameters.AddWithValue("?", Quantity);
             cmd.Parameters.AddWithValue("?", UnitPrice);
 
@@ -46,12 +46,12 @@ namespace ViewModelHardwareStore
         }
 
         // UpdateOrderDetails
-        public void UpdateOrderDetails(int OrderID, int ProductID, int Quantity, decimal UnitPrice, int OrderDetailsID)
+        public void UpdateOrderDetails(int OrderID, int CarID, int Quantity, decimal UnitPrice, int OrderDetailsID)
         {
             string sql = "UPDATE [OrderDetails] SET [OrderID] = ?, [ProductID] = ?, [Quantity] = ?, [UnitPrice] = ? WHERE [OrderDetailsID] = ?";
             OleDbCommand cmd = new OleDbCommand(sql);
             cmd.Parameters.AddWithValue("?", OrderID);
-            cmd.Parameters.AddWithValue("?", ProductID);
+            cmd.Parameters.AddWithValue("?", CarID);
             cmd.Parameters.AddWithValue("?", Quantity);
             cmd.Parameters.AddWithValue("?", UnitPrice);
             cmd.Parameters.AddWithValue("?", OrderDetailsID);
@@ -74,7 +74,7 @@ namespace ViewModelHardwareStore
                 {
                     MyOrderDetailsID = Convert.ToInt32(row["OrderDetailsID"]),
                     MyOrderID = Convert.ToInt32(row["OrderID"]),
-                    MyProductID = Convert.ToInt32(row["ProductID"]),
+                    MyCarID = Convert.ToInt32(row["ProductID"]),
                     MyQuantity = Convert.ToInt32(row["Quantity"]),
                     MyUnitPrice = Convert.ToDecimal(row["UnitPrice"])
                 });
@@ -100,7 +100,7 @@ namespace ViewModelHardwareStore
             {
                 MyOrderDetailsID = Convert.ToInt32(row["OrderDetailsID"]),
                 MyOrderID = Convert.ToInt32(row["OrderID"]),
-                MyProductID = Convert.ToInt32(row["ProductID"]),
+                MyCarID = Convert.ToInt32(row["ProductID"]),
                 MyQuantity = Convert.ToInt32(row["Quantity"]),
                 MyUnitPrice = Convert.ToDecimal(row["UnitPrice"])
             };

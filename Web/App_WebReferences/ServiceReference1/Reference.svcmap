@@ -22,12 +22,12 @@
     <MetadataSource Address="http://localhost:56829/Service1.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service11.xsd" MetadataType="Schema" ID="555975f2-c640-4b8f-8bf3-0afa47260372" SourceId="1" SourceUrl="http://localhost:56828/Service1.svc?xsd=xsd1" />
-    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="a83952a7-6231-4bf4-96c5-17290dfab12a" SourceId="1" SourceUrl="http://localhost:56828/Service1.svc?wsdl" />
-    <MetadataFile FileName="Service13.xsd" MetadataType="Schema" ID="d7f4f8a7-2061-4355-bcad-742faf581d45" SourceId="1" SourceUrl="http://localhost:56828/Service1.svc?xsd=xsd3" />
-    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="040402c1-bfff-4d1c-a1a7-aed32c467ac2" SourceId="1" SourceUrl="http://localhost:56828/Service1.svc?xsd=xsd0" />
-    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="83915316-889b-4c8b-928c-2a81edd01113" SourceId="1" SourceUrl="http://localhost:56828/Service1.svc?disco" />
-    <MetadataFile FileName="Service12.xsd" MetadataType="Schema" ID="69e82eec-eb51-43de-bdea-94ab95101994" SourceId="1" SourceUrl="http://localhost:56828/Service1.svc?xsd=xsd2" />
+    <MetadataFile FileName="tempuri.org.wsdl" MetadataType="Wsdl" ID="a83952a7-6231-4bf4-96c5-17290dfab12a" SourceId="1" SourceUrl="http://localhost:56829/Service1.svc?wsdl" />
+    <MetadataFile FileName="tempuri.org.xsd" MetadataType="Schema" ID="040402c1-bfff-4d1c-a1a7-aed32c467ac2" SourceId="1" SourceUrl="http://localhost:56829/Service1.svc?xsd=xsd0" />
+    <MetadataFile FileName="schemas.microsoft.com.2003.10.Serialization.xsd" MetadataType="Schema" ID="555975f2-c640-4b8f-8bf3-0afa47260372" SourceId="1" SourceUrl="http://localhost:56829/Service1.svc?xsd=xsd1" />
+    <MetadataFile FileName="BusinessModelCarRental.xsd" MetadataType="Schema" ID="d7f4f8a7-2061-4355-bcad-742faf581d45" SourceId="1" SourceUrl="http://localhost:56829/Service1.svc?xsd=xsd2" />
+    <MetadataFile FileName="schemas.microsoft.com.2003.10.Serialization.Arrays.xsd" MetadataType="Schema" ID="69e82eec-eb51-43de-bdea-94ab95101994" SourceId="1" SourceUrl="http://localhost:56829/Service1.svc?xsd=xsd3" />
+    <MetadataFile FileName="WcfServiceCarRental.xsd" MetadataType="Schema" ID="83915316-889b-4c8b-928c-2a81edd01113" SourceId="1" SourceUrl="http://localhost:56829/Service1.svc?xsd=xsd4" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

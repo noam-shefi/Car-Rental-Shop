@@ -22,23 +22,23 @@ namespace WpfApp1
 
 
         // 1. Products
-        private void OpenProducts_Click(object sender, RoutedEventArgs e)
+        private void OpenCars_Click(object sender, RoutedEventArgs e)
         {
-            ProductWindow win = new ProductWindow();
+            CarInventoryWindow win = new CarInventoryWindow();
             win.Show();
         }
 
         // 2. Brands
         private void OpenBrands_Click(object sender, RoutedEventArgs e)
         {
-            BrandWindow win = new BrandWindow();
+            MakeWindow win = new MakeWindow();
             win.Show();
         }
 
         // 3. Categories
         private void OpenCategories_Click(object sender, RoutedEventArgs e)
         {
-            CategoryWindow win = new CategoryWindow();
+            VehicleCategoryWindow win = new VehicleCategoryWindow();
             win.Show();
         }
 

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
-using BusinessModelHardwareStore;
+using BusinessModelCarRental;
 
-namespace ViewModelHardwareStore
+namespace ViewModelCarRental
 {
     public class ContactDB
     {

@@ -23,7 +23,7 @@ public partial class CartUser : System.Web.UI.Page
     private void RefreshCartView()
     {
         string username = GetCurrentUsername();
-        var cartItems = _ws.ListCartWithProductDetails(username);
+        var cartItems = _ws.ListCartWithCarDetails(username);
 
         if (cartItems != null && cartItems.Length > 0)
         {
@@ -44,21 +44,21 @@ public partial class CartUser : System.Web.UI.Page
 
                 if (priceToUse == -1)
                 {
-                    var realProduct = GetProductById(item.MyProductID);
+                    var realProduct = GetProductById(item.MyCarID);
                     if (realProduct != null)
                         priceToUse = Convert.ToDecimal(realProduct.Price);
                 }
 
                 totalCartPrice += priceToUse * item.MyQuantity;
 
-                var product = GetProductById(item.MyProductID);
-                if (product != null)
+                var car = GetProductById(item.MyCarID);
+                if (car != null)
                 {
-                    int availableStock = Convert.ToInt32(product.MyStockQuantity);
+                    int availableStock = Convert.ToInt32(car.MyFleetQuantity);
 
                     if (item.MyQuantity > availableStock)
                     {
-                        outOfStockProducts.Add(string.Format("<li>{0}</li>", product.MyProductName));
+                        outOfStockProducts.Add(string.Format("<li>{0}</li>", car.MyModelName));
                     }
                 }
             }
@@ -112,11 +112,11 @@ public partial class CartUser : System.Web.UI.Page
             if (currentQuantity > 1)
                 _ws.UpdateCartQuantity(username, productIDInt, currentQuantity - 1);
             else
-                _ws.DeletePruductFromCart(productIDInt, username);
+                _ws.DeleteCarFromCart(productIDInt, username);
         }
         else if (e.CommandName == "RemoveItem")
         {
-            _ws.DeletePruductFromCart(productIDInt, username);
+            _ws.DeleteCarFromCart(productIDInt, username);
         }
 
         RefreshCartView();
@@ -132,7 +132,7 @@ public partial class CartUser : System.Web.UI.Page
     protected void btnCheckout_Click(object sender, EventArgs e)
     {
         string username = GetCurrentUsername();
-        var cartItems = _ws.ListCartWithProductDetails(username);
+        var cartItems = _ws.ListCartWithCarDetails(username);
 
         if (cartItems != null && cartItems.Length > 0)
         {
@@ -141,8 +141,8 @@ public partial class CartUser : System.Web.UI.Page
 
             foreach (var item in cartItems)
             {
-                var product = GetProductById(item.MyProductID);
-                if (product != null && item.MyQuantity > Convert.ToInt32(product.MyStockQuantity))
+                var car = GetProductById(item.MyCarID);
+                if (car != null && item.MyQuantity > Convert.ToInt32(car.MyFleetQuantity))
                 {
                     hasStockIssue = true;
                     break;
@@ -152,7 +152,7 @@ public partial class CartUser : System.Web.UI.Page
 
                 if (priceToUse == -1)
                 {
-                    var realProduct = GetProductById(item.MyProductID);
+                    var realProduct = GetProductById(item.MyCarID);
                     if (realProduct != null)
                         priceToUse = Convert.ToDecimal(realProduct.Price);
                 }
@@ -179,12 +179,12 @@ public partial class CartUser : System.Web.UI.Page
     {
         if (productIDObj == null) return null;
 
-        int productID = Convert.ToInt32(productIDObj);
-        var allProducts = _ws.showAllProduct();
+        int carID = Convert.ToInt32(productIDObj);
+        var allProducts = _ws.GetAllFleetCars();
 
         if (allProducts != null)
         {
-            return allProducts.FirstOrDefault(p => p.MyProductID == productID);
+            return allProducts.FirstOrDefault(p => p.MyCarID == carID);
         }
 
         return null;
@@ -192,21 +192,21 @@ public partial class CartUser : System.Web.UI.Page
 
     public string GetProductName(object productIDObj)
     {
-        var product = GetProductById(productIDObj);
-        return product != null ? product.MyProductName : "Unknown Product";
+        var car = GetProductById(productIDObj);
+        return car != null ? car.MyModelName : "Unknown Product";
     }
 
     public string GetCartProductImageUrl(object productIDObj)
     {
-        var product = GetProductById(productIDObj);
+        var car = GetProductById(productIDObj);
 
-        if (product == null || product.MyPicture == null ||
-            string.IsNullOrEmpty(product.MyPicture.ToString()))
+        if (car == null || car.MyPicture == null ||
+            string.IsNullOrEmpty(car.MyPicture.ToString()))
         {
             return "img/no-image.png";
         }
 
-        string base64String = product.MyPicture.ToString();
+        string base64String = car.MyPicture.ToString();
 
         if (base64String.StartsWith("data:image"))
             return base64String;

@@ -46,7 +46,7 @@ public partial class ManageUsers : Page
     protected void rptUsers_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
         if (e.Item.ItemType != ListItemType.Item && e.Item.ItemType != ListItemType.AlternatingItem) return;
-        BusinessModelHardwareStore.User user = (BusinessModelHardwareStore.User)e.Item.DataItem;
+        BusinessModelCarRental.User user = (BusinessModelCarRental.User)e.Item.DataItem;
         LinkButton role = (LinkButton)e.Item.FindControl("btnRole");
         LinkButton delete = (LinkButton)e.Item.FindControl("btnDelete");
         bool self = string.Equals(user.MyUsername, administrator, StringComparison.OrdinalIgnoreCase);

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareStore", "HardwareStore\HardwareStore.csproj", "{5AD2B94C-4276-4DEF-9778-A3D8F4A64490}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental", "CarRental\CarRental.csproj", "{5AD2B94C-4276-4DEF-9778-A3D8F4A64490}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceHardwareStore", "WcfServiceHardwareStore\WcfServiceHardwareStore.csproj", "{B89B4D80-1F70-4953-B531-10B00D10EC53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceCarRental", "WcfServiceCarRental\WcfServiceCarRental.csproj", "{B89B4D80-1F70-4953-B531-10B00D10EC53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessModelHardwareStore", "ClassLibrary1\BusinessModelHardwareStore.csproj", "{A5EDCC23-BE61-4A00-A6FF-BD5B29F04D2C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessModelCarRental", "ClassLibrary1\BusinessModelCarRental.csproj", "{A5EDCC23-BE61-4A00-A6FF-BD5B29F04D2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModelHardwareStore", "ClassLibrary2\ViewModelHardwareStore.csproj", "{E3EE7929-E267-4F89-9C67-77D6FAD9DB4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModelCarRental", "ClassLibrary2\ViewModelCarRental.csproj", "{E3EE7929-E267-4F89-9C67-77D6FAD9DB4B}"
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web", "Web\", "{0C859AE2-325F-479F-AA0D-C0D1E5599614}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -17,7 +17,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web", "Web\", "{0C859AE2-32
 	EndProjectSection
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
-		ProjectReferences = "{a5edcc23-be61-4a00-a6ff-bd5b29f04d2c}|ClassLibrary1.dll;"
+		ProjectReferences = "{a5edcc23-be61-4a00-a6ff-bd5b29f04d2c}|BusinessModelCarRental.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_55538"
 		Debug.AspNetCompiler.PhysicalPath = "Web\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_55538\"

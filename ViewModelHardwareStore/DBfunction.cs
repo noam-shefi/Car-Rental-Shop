@@ -7,14 +7,14 @@ using System.Web;
 using System.Data;
 using System.Data.OleDb;
 
-namespace ViewModelHardwareStore
+namespace ViewModelCarRental
 {
     public class DBfunction
     {
         private string connectionstr;
         public DBfunction()
         {
-            //C:\Users\Magsihim_AI\Downloads\HardwareStore\ViewModelHardwareStore\App_Data\HardwareStore.accdb
+            //C:\Users\Magsihim_AI\Downloads\CarRental\ViewModelCarRental\App_Data\CarRental.accdb
 
             //this.connectionstr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + AppDomain.CurrentDomain.BaseDirectory+"/App_Data/Database4.accdb";
             this.connectionstr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Magsihim_AI\Downloads\HardwareStore\ViewModelHardwareStore\App_Data\HardwareStore.accdb";

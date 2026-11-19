@@ -19,7 +19,7 @@
                         <i class="fas fa-car"></i>
                         <div class="feature-info">
                             <h4>Explore the Fleet</h4>
-                            <p>Compare vehicle categories, specifications and customer reviews.</p>
+                            <p>Compare vehicle vehicleCategories, specifications and customer reviews.</p>
                         </div>
                     </div>
                     <div class="feature-item">

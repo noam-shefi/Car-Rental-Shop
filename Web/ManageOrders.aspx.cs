@@ -50,7 +50,7 @@ public partial class ManageOrders : Page
     {
         if (e.Item.ItemType != ListItemType.Item && e.Item.ItemType != ListItemType.AlternatingItem)
             return;
-        BusinessModelHardwareStore.Order order = (BusinessModelHardwareStore.Order)e.Item.DataItem;
+        BusinessModelCarRental.Order order = (BusinessModelCarRental.Order)e.Item.DataItem;
         bool pending = order.MyRentalStatus == "pending";
         bool cancellationRequested = order.MyRentalStatus == "cancellation requested";
         bool approved = order.MyRentalStatus == "approved";

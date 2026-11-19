@@ -83,13 +83,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\BusinessModelHardwareStore.csproj">
+    <ProjectReference Include="..\ClassLibrary1\BusinessModelCarRental.csproj">
       <Project>{a5edcc23-be61-4a00-a6ff-bd5b29f04d2c}</Project>
-      <Name>BusinessModelHardwareStore</Name>
+      <Name>BusinessModelCarRental</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ClassLibrary2\ViewModelHardwareStore.csproj">
+    <ProjectReference Include="..\ClassLibrary2\ViewModelCarRental.csproj">
       <Project>{e3ee7929-e267-4f89-9c67-77d6fad9db4b}</Project>
-      <Name>ViewModelHardwareStore</Name>
+      <Name>ViewModelCarRental</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

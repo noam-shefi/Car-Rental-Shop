@@ -1,10 +1,10 @@
-﻿using BusinessModelHardwareStore;
+﻿using BusinessModelCarRental;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 
-namespace ViewModelHardwareStore
+namespace ViewModelCarRental
 {
     public class CartDB
     {
@@ -23,11 +23,11 @@ namespace ViewModelHardwareStore
         }
 
         // AddCart
-        public void AddCart(int ProductID, string Username, int Quantity)
+        public void AddCart(int CarID, string Username, int Quantity)
         {
             string getPriceSql = "SELECT Price FROM Product WHERE ProductID = ?";
             OleDbCommand getPriceCmd = new OleDbCommand(getPriceSql);
-            getPriceCmd.Parameters.AddWithValue("?", ProductID);
+            getPriceCmd.Parameters.AddWithValue("?", CarID);
 
             DataSet ds = db.SelectcommandInjection(getPriceCmd);
 
@@ -41,7 +41,7 @@ namespace ViewModelHardwareStore
 
             OleDbCommand cmd = new OleDbCommand(sql);
 
-            cmd.Parameters.AddWithValue("?", ProductID);
+            cmd.Parameters.AddWithValue("?", CarID);
             cmd.Parameters.AddWithValue("?", Username);
             cmd.Parameters.AddWithValue("?", price);
             cmd.Parameters.AddWithValue("?", Quantity);
@@ -70,7 +70,7 @@ namespace ViewModelHardwareStore
                 list.Add(new Cart
                 {
                     MyUsername = row["Username"].ToString(),
-                    MyProductID = Convert.ToInt32(row["ProductID"]),
+                    MyCarID = Convert.ToInt32(row["ProductID"]),
                     MyQuantity = Convert.ToInt32(row["Quantity"]),
                     MyPrice = row["Price"] != DBNull.Value ? Convert.ToDecimal(row["Price"]) : 0
                 });
@@ -91,7 +91,7 @@ namespace ViewModelHardwareStore
                 list.Add(new Cart
                 {
                     MyUsername = row["Username"].ToString(),
-                    MyProductID = Convert.ToInt32(row["ProductID"]),
+                    MyCarID = Convert.ToInt32(row["ProductID"]),
                     MyQuantity = Convert.ToInt32(row["Quantity"]),
                     MyPrice = row["Price"] != DBNull.Value ? Convert.ToDecimal(row["Price"]) : 0
                 });
@@ -99,22 +99,22 @@ namespace ViewModelHardwareStore
             return list;
         }
 
-        // DeletePruductFromCart
-        public void DeletePruductFromCart(int ProductID, string Username)
+        // DeleteCarFromCart
+        public void DeleteCarFromCart(int CarID, string Username)
         {
             string sql = "DELETE FROM Cart WHERE ProductID = ? AND Username = ?";
             OleDbCommand cmd = new OleDbCommand(sql);
-            cmd.Parameters.AddWithValue("?", ProductID);
+            cmd.Parameters.AddWithValue("?", CarID);
             cmd.Parameters.AddWithValue("?", Username);
             db.DoCommandInjection(cmd);
         }
 
-        // isExistProductInCart
-        public bool isExistProductInCart(int ProductID, string Username)
+        // CarExistsInCart
+        public bool CarExistsInCart(int CarID, string Username)
         {
             string sql = "SELECT * FROM Cart WHERE ProductID = ? AND Username = ?";
             OleDbCommand cmd = new OleDbCommand(sql);
-            cmd.Parameters.AddWithValue("?", ProductID);
+            cmd.Parameters.AddWithValue("?", CarID);
             cmd.Parameters.AddWithValue("?", Username);
             DataSet ds = db.SelectcommandInjection(cmd);
             return ds.Tables[0].Rows.Count > 0;
@@ -133,12 +133,12 @@ namespace ViewModelHardwareStore
         }
 
         // UpdateCartQuantity
-        public bool UpdateCartQuantity(string Username, int ProductID, int newQuantity)
+        public bool UpdateCartQuantity(string Username, int CarID, int newQuantity)
         {
             string sql = "UPDATE Cart SET Quantity = ? WHERE ProductID = ? AND Username = ?";
             OleDbCommand cmd = new OleDbCommand(sql);
             cmd.Parameters.AddWithValue("?", newQuantity);
-            cmd.Parameters.AddWithValue("?", ProductID);
+            cmd.Parameters.AddWithValue("?", CarID);
             cmd.Parameters.AddWithValue("?", Username);
             db.DoCommandInjection(cmd);
             return true;
@@ -172,8 +172,8 @@ namespace ViewModelHardwareStore
             return 0;
         }
 
-        // ListCartWithProductDetails
-        public List<Cart> ListCartWithProductDetails(string Username)
+        // ListCartWithCarDetails
+        public List<Cart> ListCartWithCarDetails(string Username)
         {
             string sql = @"SELECT Cart.ProductID, Product.Price, Cart.Quantity
                            FROM Cart
@@ -187,7 +187,7 @@ namespace ViewModelHardwareStore
             {
                 list.Add(new Cart
                 {
-                    MyProductID = Convert.ToInt32(row["ProductID"]),
+                    MyCarID = Convert.ToInt32(row["ProductID"]),
                     MyPrice = Convert.ToDecimal(row["Price"]),
                     MyQuantity = Convert.ToInt32(row["Quantity"]),
                     MyUsername = Username
@@ -196,8 +196,8 @@ namespace ViewModelHardwareStore
             return list;
         }
 
-        // GetProductTotalPriceInCart
-        public decimal GetProductTotalPriceInCart(string Username, int ProductID)
+        // GetCarTotalPriceInCart
+        public decimal GetCarTotalPriceInCart(string Username, int CarID)
         {
             string sql = @"SELECT Product.Price * Cart.Quantity
                            FROM Cart
@@ -205,7 +205,7 @@ namespace ViewModelHardwareStore
                            WHERE Cart.Username = ? AND Cart.ProductID = ?";
             OleDbCommand cmd = new OleDbCommand(sql);
             cmd.Parameters.AddWithValue("?", Username);
-            cmd.Parameters.AddWithValue("?", ProductID);
+            cmd.Parameters.AddWithValue("?", CarID);
             DataSet ds = db.SelectcommandInjection(cmd);
             if (ds.Tables[0].Rows.Count > 0 && ds.Tables[0].Rows[0][0] != DBNull.Value)
             {
@@ -215,12 +215,12 @@ namespace ViewModelHardwareStore
         }
 
         // UpdateCartPrice
-        public bool UpdateCartPrice(string Username, int ProductID, decimal NewPrice)
+        public bool UpdateCartPrice(string Username, int CarID, decimal NewPrice)
         {
             string sql = "UPDATE Cart SET Price = ? WHERE ProductID = ? AND Username = ?";
             OleDbCommand cmd = new OleDbCommand(sql);
             cmd.Parameters.AddWithValue("?", NewPrice);
-            cmd.Parameters.AddWithValue("?", ProductID);
+            cmd.Parameters.AddWithValue("?", CarID);
             cmd.Parameters.AddWithValue("?", Username);
             db.DoCommandInjection(cmd);
             return true;
@@ -238,7 +238,7 @@ namespace ViewModelHardwareStore
                 DataRow row = ds.Tables[0].Rows[0];
                 return new Cart
                 {
-                    MyProductID = Convert.ToInt32(row["ProductID"]),
+                    MyCarID = Convert.ToInt32(row["ProductID"]),
                     MyQuantity = Convert.ToInt32(row["Quantity"]),
                     MyPrice = row["Price"] != DBNull.Value ? Convert.ToDecimal(row["Price"]) : 0
                     // MyUsername לא מושם כאן לבקשת השם
@@ -247,12 +247,12 @@ namespace ViewModelHardwareStore
             return null;
         }
 
-        // showProductInCart
-        public Cart showProductInCart(int ProductID, string Username)
+        // GetCarInCart
+        public Cart GetCarInCart(int CarID, string Username)
         {
             string sql = "SELECT * FROM Cart WHERE ProductID = ? AND Username = ?";
             OleDbCommand cmd = new OleDbCommand(sql);
-            cmd.Parameters.AddWithValue("?", ProductID);
+            cmd.Parameters.AddWithValue("?", CarID);
             cmd.Parameters.AddWithValue("?", Username);
             DataSet ds = db.SelectcommandInjection(cmd);
             if (ds.Tables[0].Rows.Count > 0)
@@ -261,7 +261,7 @@ namespace ViewModelHardwareStore
                 return new Cart
                 {
                     MyUsername = row["Username"].ToString(),
-                    MyProductID = Convert.ToInt32(row["ProductID"]),
+                    MyCarID = Convert.ToInt32(row["ProductID"]),
                     MyQuantity = Convert.ToInt32(row["Quantity"]),
                     MyPrice = row["Price"] != DBNull.Value ? Convert.ToDecimal(row["Price"]) : 0
                 };
@@ -270,22 +270,22 @@ namespace ViewModelHardwareStore
         }
 
         // IncreaseQuantityByOne
-        public void IncreaseQuantityByOne(string Username, int ProductID)
+        public void IncreaseQuantityByOne(string Username, int CarID)
         {
             string sql = "UPDATE Cart SET Quantity = Quantity + 1 WHERE Username = ? AND ProductID = ?";
             OleDbCommand cmd = new OleDbCommand(sql);
             cmd.Parameters.AddWithValue("?", Username);
-            cmd.Parameters.AddWithValue("?", ProductID);
+            cmd.Parameters.AddWithValue("?", CarID);
             db.DoCommandInjection(cmd);
         }
 
         // DecreaseQuantityByOne
-        public void DecreaseQuantityByOne(string Username, int ProductID)
+        public void DecreaseQuantityByOne(string Username, int CarID)
         {
             string sql = "UPDATE Cart SET Quantity = Quantity - 1 WHERE Username = ? AND ProductID = ? AND Quantity > 0";
             OleDbCommand cmd = new OleDbCommand(sql);
             cmd.Parameters.AddWithValue("?", Username);
-            cmd.Parameters.AddWithValue("?", ProductID);
+            cmd.Parameters.AddWithValue("?", CarID);
             db.DoCommandInjection(cmd);
         }
     }

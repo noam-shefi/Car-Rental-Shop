@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessModelHardwareStore
+namespace BusinessModelCarRental
 {
     // OrderDetails
     public class OrderDetails
@@ -17,9 +17,9 @@ namespace BusinessModelHardwareStore
         private int OrderID;
         public int MyOrderID { get { return this.OrderID; } set { this.OrderID = value; } }
 
-        // ProductID
-        private int ProductID;
-        public int MyProductID { get { return this.ProductID; } set { this.ProductID = value; } }
+        // CarID
+        private int CarID;
+        public int MyCarID { get { return this.CarID; } set { this.CarID = value; } }
 
         // Quantity
         private int Quantity;

@@ -49,7 +49,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Review ID" Binding="{Binding MyReviewID}" Width="1*"/>
                     <DataGridTextColumn Header="Username" Binding="{Binding MyUsername}" Width="1.5*"/>
-                    <DataGridTextColumn Header="Vehicle ID" Binding="{Binding MyProductID}" Width="Auto" MinWidth="120"/>
+                    <DataGridTextColumn Header="Vehicle ID" Binding="{Binding MyCarID}" Width="Auto" MinWidth="120"/>
                     <DataGridTextColumn Header="Rating" Binding="{Binding MyRating}" Width="1*"/>
                     <DataGridTextColumn Header="Review Comment" Binding="{Binding MyRev}" Width="3.5*"/>
                 </DataGrid.Columns>

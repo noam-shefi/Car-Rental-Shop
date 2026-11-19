@@ -4,12 +4,12 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using BusinessModelHardwareStore;
+using BusinessModelCarRental;
 
 public partial class CarDetails : Page
 {
     private int carID;
-    private Product car;
+    private Car car;
     private readonly HashSet<DateTime> unavailableDates = new HashSet<DateTime>();
 
     protected void Page_Load(object sender, EventArgs e)
@@ -53,20 +53,20 @@ public partial class CarDetails : Page
             pnlDetails.Visible = true;
             pnlNotFound.Visible = false;
             imgCar.ImageUrl = GetImageUrl(car.MyPicture);
-            litTitle.Text = HttpUtility.HtmlEncode((car.MyManufacturer + " " + car.MyProductName).Trim());
+            litTitle.Text = HttpUtility.HtmlEncode((car.MyManufacturer + " " + car.MyModelName).Trim());
             litDescription.Text = HttpUtility.HtmlEncode(string.IsNullOrWhiteSpace(car.MyDescription) ? "ללא תיאור נוסף." : car.MyDescription);
             litPrice.Text = car.MyPrice.ToString("0.##", CultureInfo.InvariantCulture);
             litRating.Text = car.MyAverageRating.ToString("0.0", CultureInfo.InvariantCulture);
             litReviewCount.Text = car.MyReviewCount.ToString(CultureInfo.InvariantCulture);
             litYear.Text = car.MyYear > 0 ? car.MyYear.ToString() : "לא צוין";
-            litCategory.Text = HttpUtility.HtmlEncode(CarRentalDisplay.Category(car.MyCarCategory));
+            litCategory.Text = HttpUtility.HtmlEncode(CarRentalDisplay.VehicleCategory(car.MyCarCategory));
             litBranch.Text = string.IsNullOrWhiteSpace(car.MyBranchName) ? "לא משויך לסניף" : HttpUtility.HtmlEncode(car.MyBranchName + " — " + car.MyBranchCity);
             litSeats.Text = FormatOptional(car.MySeats);
             litFuel.Text = HttpUtility.HtmlEncode(string.IsNullOrWhiteSpace(car.MyFuelType) ? "לא צוין" : car.MyFuelType);
             litRange.Text = car.MyRangeKm.HasValue ? car.MyRangeKm.Value + " ק״מ" : "לא צוין";
             litTransmission.Text = HttpUtility.HtmlEncode(string.IsNullOrWhiteSpace(car.MyTransmission) ? "לא צוין" : car.MyTransmission);
             litLuggage.Text = FormatOptional(car.MyLuggageCapacity);
-            litStock.Text = car.MyStockQuantity.ToString();
+            litStock.Text = car.MyFleetQuantity.ToString();
 
             string username = CurrentUsername;
             bool signedIn = !string.IsNullOrWhiteSpace(username);
@@ -76,14 +76,14 @@ public partial class CarDetails : Page
             if (signedIn)
             {
                 using (var service = new CarRentalServiceClient())
-                    btnFavorite.Text = service.GetFavorites(username).Any(favorite => favorite.MyProductID == carID) ? "הסרה מהמועדפים" : "הוספה למועדפים";
+                    btnFavorite.Text = service.GetFavorites(username).Any(favorite => favorite.MyCarID == carID) ? "הסרה מהמועדפים" : "הוספה למועדפים";
             }
 
-            pnlBooking.Visible = signedIn && car.MyStockQuantity > 0;
-            btnCheckAvailability.Visible = car.MyStockQuantity > 0;
+            pnlBooking.Visible = signedIn && car.MyFleetQuantity > 0;
+            btnCheckAvailability.Visible = car.MyFleetQuantity > 0;
             using (var service = new CarRentalServiceClient())
             {
-                var unavailable = service.GetUnavailableRentalDates(carID, DateTime.Today, DateTime.Today.AddYears(1), car.MyStockQuantity);
+                var unavailable = service.GetUnavailableRentalDates(carID, DateTime.Today, DateTime.Today.AddYears(1), car.MyFleetQuantity);
                 unavailableDates.Clear();
                 foreach (DateTime date in unavailable)
                     unavailableDates.Add(date.Date);
@@ -138,7 +138,7 @@ public partial class CarDetails : Page
         {
             using (var service = new CarRentalServiceClient())
             {
-                bool exists = service.GetFavorites(username).Any(favorite => favorite.MyProductID == carID);
+                bool exists = service.GetFavorites(username).Any(favorite => favorite.MyCarID == carID);
                 service.SetFavorite(username, carID, !exists);
             }
             LoadCar();
@@ -161,7 +161,7 @@ public partial class CarDetails : Page
         {
             using (var service = new CarRentalServiceClient())
             {
-                if (!service.IsRentalAvailable(carID, startDate, endDate, car.MyStockQuantity))
+                if (!service.IsRentalAvailable(carID, startDate, endDate, car.MyFleetQuantity))
                 {
                     lblMessage.Text = "הרכב אינו זמין בתאריכים שנבחרו.";
                     return;

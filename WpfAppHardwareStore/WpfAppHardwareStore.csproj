@@ -49,13 +49,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BusinessModelHardwareStore\BusinessModelHardwareStore.csproj">
-      <Project>{06300f5e-0381-4e4e-9a21-990a3310497c}</Project>
-      <Name>BusinessModelHardwareStore</Name>
+    <ProjectReference Include="..\ClassLibrary1\BusinessModelCarRental.csproj">
+      <Project>{A5EDCC23-BE61-4A00-A6FF-BD5B29F04D2C}</Project>
+      <Name>BusinessModelCarRental</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ViewModelHardwareStore\ViewModelHardwareStore.csproj">
-      <Project>{f64aa82e-1e6f-4042-8307-f74a7c42b491}</Project>
-      <Name>ViewModelHardwareStore</Name>
+    <ProjectReference Include="..\ClassLibrary2\ViewModelCarRental.csproj">
+      <Project>{E3EE7929-E267-4F89-9C67-77D6FAD9DB4B}</Project>
+      <Name>ViewModelCarRental</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using BusinessModelHardwareStore;
+using BusinessModelCarRental;
 
 namespace WpfApp1
 {
@@ -54,7 +54,7 @@ namespace WpfApp1
             try
             {
                 string username = TxtUsername.Text.Trim();
-                if (!int.TryParse(TxtProductID.Text.Trim(), out int productId) || string.IsNullOrWhiteSpace(username))
+                if (!int.TryParse(TxtProductID.Text.Trim(), out int carId) || string.IsNullOrWhiteSpace(username))
                 {
                     MessageBox.Show("Please enter a valid Username and Product ID.");
                     return;
@@ -62,7 +62,7 @@ namespace WpfApp1
 
                 int qty = int.TryParse(TxtQuantity.Text, out int q) ? q : 1;
 
-                ws.AddCart(productId, username, qty);
+                ws.AddCart(carId, username, qty);
 
                 decimal realPrice = -1;
 
@@ -72,20 +72,20 @@ namespace WpfApp1
                 }
                 else
                 {
-                    var allProducts = ws.showAllProduct();
+                    var allProducts = ws.GetAllFleetCars();
                     if (allProducts != null)
                     {
-                        var product = allProducts.FirstOrDefault(p => p.MyProductID == productId);
-                        if (product != null)
+                        var car = allProducts.FirstOrDefault(p => p.MyCarID == carId);
+                        if (car != null)
                         {
-                            realPrice = product.MyPrice;
+                            realPrice = car.MyPrice;
                         }
                     }
                 }
 
                 if (realPrice >= 0)
                 {
-                    ws.UpdateCartPrice(username, productId, realPrice);
+                    ws.UpdateCartPrice(username, carId, realPrice);
                 }
                 else
                 {
@@ -105,7 +105,7 @@ namespace WpfApp1
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
             string username = TxtUsername.Text.Trim();
-            if (!int.TryParse(TxtProductID.Text.Trim(), out int productId) || string.IsNullOrWhiteSpace(username))
+            if (!int.TryParse(TxtProductID.Text.Trim(), out int carId) || string.IsNullOrWhiteSpace(username))
             {
                 MessageBox.Show("Missing valid Username and Product ID keys for update.");
                 return;
@@ -119,11 +119,11 @@ namespace WpfApp1
 
             try
             {
-                ws.UpdateCartQuantity(username, productId, newQty);
+                ws.UpdateCartQuantity(username, carId, newQty);
 
                 if (decimal.TryParse(TxtPrice.Text, out decimal price))
                 {
-                    ws.UpdateCartPrice(username, productId, price);
+                    ws.UpdateCartPrice(username, carId, price);
                 }
 
                 MessageBox.Show("Cart line quantity updated.");
@@ -139,7 +139,7 @@ namespace WpfApp1
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
             string username = TxtUsername.Text.Trim();
-            if (!int.TryParse(TxtProductID.Text.Trim(), out int productId) || string.IsNullOrWhiteSpace(username))
+            if (!int.TryParse(TxtProductID.Text.Trim(), out int carId) || string.IsNullOrWhiteSpace(username))
             {
                 MessageBox.Show("Please select a valid row to remove from cart.");
                 return;
@@ -147,7 +147,7 @@ namespace WpfApp1
 
             try
             {
-                ws.DeletePruductFromCart(productId, username);
+                ws.DeleteCarFromCart(carId, username);
                 MessageBox.Show("Product removed from this user's cart.");
                 LoadCarts();
                 ClearFields();
@@ -180,9 +180,9 @@ namespace WpfApp1
                     {
                         foreach (var cart in allCarts)
                         {
-                            if (cart.MyProductID == productIdToPurge)
+                            if (cart.MyCarID == productIdToPurge)
                             {
-                                ws.DeletePruductFromCart(productIdToPurge, cart.MyUsername);
+                                ws.DeleteCarFromCart(productIdToPurge, cart.MyUsername);
                                 counter++;
                             }
                         }
@@ -248,7 +248,7 @@ namespace WpfApp1
 
         private void RefreshFormAfterQuickAction(string user, int pid)
         {
-            var updated = ws.showProductInCart(pid, user);
+            var updated = ws.GetCarInCart(pid, user);
             if (updated != null)
             {
                 TxtQuantity.Text = updated.MyQuantity.ToString();
@@ -268,10 +268,10 @@ namespace WpfApp1
                     dynamic selectedCart = CartGrid.SelectedItem;
 
                     selectedUsernameFromGrid = selectedCart.MyUsername;
-                    selectedProductIDFromGrid = selectedCart.MyProductID;
+                    selectedProductIDFromGrid = selectedCart.MyCarID;
 
                     TxtUsername.Text = selectedCart.MyUsername;
-                    TxtProductID.Text = selectedCart.MyProductID.ToString();
+                    TxtProductID.Text = selectedCart.MyCarID.ToString();
                     TxtQuantity.Text = selectedCart.MyQuantity.ToString();
                     TxtPrice.Text = selectedCart.MyPrice.ToString();
                 }

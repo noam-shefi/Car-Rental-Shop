@@ -1,4 +1,4 @@
-﻿<%@ page title="ניהול סניפים" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="ManageBranches, App_Web_53vxbbw0" %>
+﻿<%@ page title="ניהול סניפים" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="ManageBranches, App_Web_pskrdzto" %>
 
 <asp:Content ID="BranchesContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <main class="container py-4" dir="rtl">

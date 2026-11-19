@@ -39,7 +39,7 @@ public partial class MyOrders : Page
         if (e.Item.ItemType != ListItemType.Item && e.Item.ItemType != ListItemType.AlternatingItem)
             return;
 
-        BusinessModelHardwareStore.Order order = (BusinessModelHardwareStore.Order)e.Item.DataItem;
+        BusinessModelCarRental.Order order = (BusinessModelCarRental.Order)e.Item.DataItem;
         LinkButton cancel = (LinkButton)e.Item.FindControl("btnCancel");
         cancel.Visible = order.MyRentalStatus == "pending" || order.MyRentalStatus == "approved";
         HyperLink review = (HyperLink)e.Item.FindControl("lnkReview");

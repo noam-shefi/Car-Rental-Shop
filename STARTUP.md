@@ -1,14 +1,18 @@
 # Running the web application locally
 
+If Visual Studio reports that `HardwareStore.sln` changed outside the environment, choose **Reload**. If the prompt is no longer available, stop debugging, close the solution, and reopen the existing `HardwareStore.sln`; do not save the stale in-memory solution or create a replacement. Stop any old IIS Express session before pressing F5 so the updated local service path is loaded.
+
 The web site needs its local WCF service, and the older checkout pages also use the local payment test service. The addresses must match the IIS Express ports:
 
 - Web: `http://localhost:55538/`
 - WCF service: `http://localhost:56829/Service1.svc`
 - Payment test service: `http://localhost:53701/visa.asmx`
 
-In Visual Studio, select **Web and local services** in the startup profile dropdown and press F5. The profile starts the WCF and payment services before the web site. If the profile is not available, enable **Multi-Project Launch Profiles** under Tools > Options > Preview Features, then reload the solution. Alternatively, use the solution's **Configure Startup Projects** dialog to start `WcfServiceHardwareStore`, `visa`, and `Web`, in that order.
+In Visual Studio, select **Web and local services** in the startup profile dropdown and press F5. The profile starts the WCF and payment services before the web site. If the profile is not available, enable **Multi-Project Launch Profiles** under Tools > Options > Preview Features, then reload the solution. Alternatively, use the solution's **Configure Startup Projects** dialog to start `WcfServiceCarRental`, `visa`, and `Web`, in that order.
 
-The Access database and Microsoft Access Database Engine (ACE OLE DB provider) must also be available. The database path is configured in `ClassLibrary2\DBfunction.cs` and must point to the local `HardwareStore.accdb` file. IIS Express and its process architecture must be compatible with the installed provider.
+The Access database and Microsoft Access Database Engine (ACE OLE DB provider) must also be available. The database path is configured in `ClassLibrary2\DBfunction.cs` and currently points to `ClassLibrary2\App_Data\HardwareStore.accdb` using an absolute machine-specific path. IIS Express and its process architecture must be compatible with the installed provider.
+
+The separate `ViewModelHardwareStore\App_Data\HardwareStore.accdb` is a different, legacy schema and must not be substituted for the active database. The data project copies its source database into the build output; that output copy can become stale. Neither physical database has been migrated or renamed. Before any database migration, stop all writers and follow the backup, migration and validation checklist in `DOMAIN_CONVERSION_AUDIT.md`.
 
 If a service does not start, check whether another application is using its port and whether the corresponding URL opens. Changing a service port requires updating its IIS Express settings and all matching client addresses in `Web\Web.config` (and `WpfApp1\App.config` if using the WPF app).
 

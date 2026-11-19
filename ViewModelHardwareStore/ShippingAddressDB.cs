@@ -7,7 +7,7 @@ using System.Web;
 using System.Data;
 using System.Data.OleDb;
 
-namespace ViewModelHardwareStore
+namespace ViewModelCarRental
 {
     public class ShippingAddressDB
     {

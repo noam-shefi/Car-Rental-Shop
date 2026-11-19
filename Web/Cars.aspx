@@ -20,21 +20,21 @@
                 <ItemTemplate>
                     <div class="col-md-6 col-xl-4">
                         <article class="car-card card h-100 bg-dark text-white border-secondary">
-                            <a href='<%# "CarDetails.aspx?id=" + Eval("MyProductID") %>' class="text-decoration-none text-white">
+                            <a href='<%# "CarDetails.aspx?id=" + Eval("MyCarID") %>' class="text-decoration-none text-white">
                                 <img src='<%# GetImageUrl(Eval("MyPicture")) %>' class="card-img-top p-3" style="height:220px;object-fit:contain" alt="תמונת רכב" />
                                 <div class="card-body">
-                                    <h2 class="h5 car-name"><%#: Eval("MyManufacturer") %> <%#: Eval("MyProductName") %></h2>
+                                    <h2 class="h5 car-name"><%#: Eval("MyManufacturer") %> <%#: Eval("MyModelName") %></h2>
                                     <p class="text-secondary car-description"><%#: Eval("MyDescription") %></p>
                                 </div>
                             </a>
                             <div class="card-body pt-0">
-                                <div class="d-flex justify-content-between"><span><%#: CarRentalDisplay.Category(Eval("MyCarCategory")) %></span><strong>₪<%#: Eval("MyPrice", "{0:0.##}") %> ליום</strong></div>
+                                <div class="d-flex justify-content-between"><span><%#: CarRentalDisplay.VehicleCategory(Eval("MyCarCategory")) %></span><strong>₪<%#: Eval("MyPrice", "{0:0.##}") %> ליום</strong></div>
                                 <div class="small mt-2">דירוג: <%#: Eval("MyAverageRating", "{0:0.0}") %> (<%#: Eval("MyReviewCount") %> ביקורות)</div>
                                 <div class="small"><%#: Eval("MyBranchCity") %></div>
                                 <div class="mt-3 d-flex gap-2">
-                                    <a class="btn btn-outline-light" href='<%# "CarDetails.aspx?id=" + Eval("MyProductID") %>'>פרטים והזמנה</a>
-                                    <asp:LinkButton ID="btnEdit" runat="server" Visible='<%# IsAdministrator %>' CssClass="btn btn-outline-info" PostBackUrl='<%# "CarEdit.aspx?id=" + Eval("MyProductID") %>'>עריכה</asp:LinkButton>
-                                    <asp:LinkButton ID="btnDelete" runat="server" Visible='<%# IsAdministrator %>' CssClass="btn btn-outline-danger" CommandName="DeleteCar" CommandArgument='<%# Eval("MyProductID") %>' OnClientClick="return confirm('למחוק את הרכב מהקטלוג?');">מחיקה</asp:LinkButton>
+                                    <a class="btn btn-outline-light" href='<%# "CarDetails.aspx?id=" + Eval("MyCarID") %>'>פרטים והזמנה</a>
+                                    <asp:LinkButton ID="btnEdit" runat="server" Visible='<%# IsAdministrator %>' CssClass="btn btn-outline-info" PostBackUrl='<%# "CarEdit.aspx?id=" + Eval("MyCarID") %>'>עריכה</asp:LinkButton>
+                                    <asp:LinkButton ID="btnDelete" runat="server" Visible='<%# IsAdministrator %>' CssClass="btn btn-outline-danger" CommandName="DeleteCar" CommandArgument='<%# Eval("MyCarID") %>' OnClientClick="return confirm('למחוק את הרכב מהקטלוג?');">מחיקה</asp:LinkButton>
                                 </div>
                             </div>
                         </article>

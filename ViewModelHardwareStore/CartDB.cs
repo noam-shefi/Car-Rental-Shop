@@ -7,7 +7,7 @@ using System.Web;
 using System.Data;
 using System.Data.OleDb;
 
-namespace ViewModelHardwareStore
+namespace ViewModelCarRental
 {
     public class CartDB
     {
@@ -15,19 +15,19 @@ namespace ViewModelHardwareStore
         public DBfunction db = new DBfunction();
 
         // isExistCart
-        public bool isExistCart(int ProductID, string Username)
+        public bool isExistCart(int CarID, string Username)
         {
-            string sql = string.Format("select * from [Cart] where [ProductID]={0} and [Username]='{1}'", ProductID, Username);
+            string sql = string.Format("select * from [Cart] where [ProductID]={0} and [Username]='{1}'", CarID, Username);
             DataSet ds = db.Selectcommand(sql);
             return ds.Tables[0].Rows.Count >= 1;
         }
 
         // AddCart
-        public void AddCart(int ProductID, string Username, decimal Price, string Picture, int Quantity)
+        public void AddCart(int CarID, string Username, decimal Price, string Picture, int Quantity)
         {
             string sql = string.Format(
                 "insert into [Cart] ([ProductID], [Username], [Price], [Picture], [Quantity]) values ({0}, '{1}', {2}, '{3}', {4})",
-                ProductID, Username, Price, Picture, Quantity);
+                CarID, Username, Price, Picture, Quantity);
             db.DoCommand(sql);
         }
 
@@ -40,9 +40,9 @@ namespace ViewModelHardwareStore
 
 
         // UpdateCart
-        public void UpdateCart(int Quantity, string ProductID, string Username)
+        public void UpdateCart(int Quantity, string CarID, string Username)
         {
-            string sql = string.Format("UPDATE Cart SET quantity={0} WHERE [ProductID]= '{1}' AND [Username]='{2}'", Quantity, ProductID, Username);
+            string sql = string.Format("UPDATE Cart SET quantity={0} WHERE [ProductID]= '{1}' AND [Username]='{2}'", Quantity, CarID, Username);
             db.DoCommand(sql);
         }
 
@@ -54,23 +54,23 @@ namespace ViewModelHardwareStore
         }
 
         // showCart
-        public DataSet showCart(int ProductID, string Username)
+        public DataSet showCart(int CarID, string Username)
         {
-            string sql = string.Format("select * from [Cart] where [ProductID]={0} and [Username]='{1}'", ProductID, Username);
+            string sql = string.Format("select * from [Cart] where [ProductID]={0} and [Username]='{1}'", CarID, Username);
             return db.Selectcommand(sql);
         }
 
-        // DeletePruductFromCart
-        public void DeletePruductFromCart(string ProductID, string Username)
+        // DeleteCarFromCart
+        public void DeleteCarFromCart(string CarID, string Username)
         {
-            string queryStr = string.Format("DELETE from tempCart WHERE [ProductID]= '{0}' and [Username]='{1}'", ProductID, Username);
+            string queryStr = string.Format("DELETE from tempCart WHERE [ProductID]= '{0}' and [Username]='{1}'", CarID, Username);
             db.DoCommand(queryStr);
         }
 
-        // isExistProductInCart
-        public bool isExistProductInCart(int ProductID, string Username)
+        // CarExistsInCart
+        public bool CarExistsInCart(int CarID, string Username)
         {
-            string sql = string.Format("select * from Cart where ProductID='{0}' and [Username]='{1}'", ProductID, Username);
+            string sql = string.Format("select * from Cart where ProductID='{0}' and [Username]='{1}'", CarID, Username);
             DataSet ds = db.Selectcommand(sql);
             return ds.Tables[0].Rows.Count >= 1;
         }
@@ -123,12 +123,12 @@ namespace ViewModelHardwareStore
             DataSet ds2 = db.Selectcommand(sql3);
             for (int i = 0; i < ds2.Tables[0].Rows.Count; i++)
             {
-                int ProductID = Convert.ToInt32(ds2.Tables[0].Rows[i]["ProductID"]);
+                int CarID = Convert.ToInt32(ds2.Tables[0].Rows[i]["ProductID"]);
                 int Quantity = Convert.ToInt32(ds2.Tables[0].Rows[i]["Quantity"]);
 
                 string sql4 = string.Format(
                     "INSERT INTO [OrderDetails] ([OrderID], [ProductID], [Quantity]) VALUES ({0}, {1}, {2})",
-                    HeshbonetNo, ProductID, Quantity);
+                    HeshbonetNo, CarID, Quantity);
                 db.DoCommand(sql4);
             }
         }
@@ -148,11 +148,11 @@ namespace ViewModelHardwareStore
         }
 
         // UpdateCartQuantity
-        public bool UpdateCartQuantity(string Username, string ProductID, int newQuantity)
+        public bool UpdateCartQuantity(string Username, string CarID, int newQuantity)
         {
-            string sql = string.Format("UPDATE Cart SET quantity={0} WHERE [ProductID]= '{1}' AND [Username]='{2}'", newQuantity, ProductID, Username);
+            string sql = string.Format("UPDATE Cart SET quantity={0} WHERE [ProductID]= '{1}' AND [Username]='{2}'", newQuantity, CarID, Username);
             db.DoCommand(sql);
-            string checkQuery = string.Format("SELECT COUNT(*) FROM Cart WHERE [ProductID]= '{0}' AND [Username]='{1}' AND Quantity={2}", ProductID, Username, newQuantity);
+            string checkQuery = string.Format("SELECT COUNT(*) FROM Cart WHERE [ProductID]= '{0}' AND [Username]='{1}' AND Quantity={2}", CarID, Username, newQuantity);
             DataSet ds = db.Selectcommand(checkQuery);
             return ds.Tables[0].Rows.Count > 0;
         }
@@ -183,8 +183,8 @@ namespace ViewModelHardwareStore
             return count;
         }
 
-        // ListCartWithProductDetails
-        public DataSet ListCartWithProductDetails(string Username)
+        // ListCartWithCarDetails
+        public DataSet ListCartWithCarDetails(string Username)
         {
             string sql = string.Format(
                 "SELECT Cart.ProductID, Product.ProductName, Product.Price, Cart.Quantity " +

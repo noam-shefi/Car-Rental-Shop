@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
-using BusinessModelHardwareStore;
+using BusinessModelCarRental;
 
-namespace ViewModelHardwareStore
+namespace ViewModelCarRental
 {
     public class ReviewDB
     {
@@ -21,13 +21,13 @@ namespace ViewModelHardwareStore
             return ds.Tables[0].Rows.Count > 0;
         }
 
-        // AddReview
-        public void AddReview(string Username, int ProductID, string Rev, int Rating)
+        // AddCarReview
+        public void AddCarReview(string Username, int CarID, string Rev, int Rating)
         {
             string sql = "INSERT INTO [Review] ([Username], [ProductID], [Rev], [Rating]) VALUES (?, ?, ?, ?)";
             OleDbCommand cmd = new OleDbCommand(sql);
             cmd.Parameters.AddWithValue("?", Username);
-            cmd.Parameters.AddWithValue("?", ProductID);
+            cmd.Parameters.AddWithValue("?", CarID);
             cmd.Parameters.AddWithValue("?", Rev);
             cmd.Parameters.AddWithValue("?", Rating);
             db.DoCommandInjection(cmd);
@@ -42,13 +42,13 @@ namespace ViewModelHardwareStore
             db.DoCommandInjection(cmd);
         }
 
-        // UpdateReview
-        public void UpdateReview(string Username, int ProductID, string Rev, int Rating, int ReviewID)
+        // UpdateCarReview
+        public void UpdateCarReview(string Username, int CarID, string Rev, int Rating, int ReviewID)
         {
             string sql = "UPDATE [Review] SET [Username] = ?, [ProductID] = ?, [Rev] = ?, [Rating] = ? WHERE [ReviewID] = ?";
             OleDbCommand cmd = new OleDbCommand(sql);
             cmd.Parameters.AddWithValue("?", Username);
-            cmd.Parameters.AddWithValue("?", ProductID);
+            cmd.Parameters.AddWithValue("?", CarID);
             cmd.Parameters.AddWithValue("?", Rev);
             cmd.Parameters.AddWithValue("?", Rating);
             cmd.Parameters.AddWithValue("?", ReviewID);
@@ -69,7 +69,7 @@ namespace ViewModelHardwareStore
                 {
                     MyReviewID = Convert.ToInt32(row["ReviewID"]),
                     MyUsername = row["Username"].ToString(),
-                    MyProductID = Convert.ToInt32(row["ProductID"]),
+                    MyCarID = Convert.ToInt32(row["ProductID"]),
                     MyRev = row["Rev"].ToString(),
                     MyRating = Convert.ToInt32(row["Rating"])
                 });
@@ -92,7 +92,7 @@ namespace ViewModelHardwareStore
             {
                 MyReviewID = Convert.ToInt32(row["ReviewID"]),
                 MyUsername = row["Username"].ToString(),
-                MyProductID = Convert.ToInt32(row["ProductID"]),
+                MyCarID = Convert.ToInt32(row["ProductID"]),
                 MyRev = row["Rev"].ToString(),
                 MyRating = Convert.ToInt32(row["Rating"])
             };
@@ -113,7 +113,7 @@ namespace ViewModelHardwareStore
                 {
                     MyReviewID = Convert.ToInt32(row["ReviewID"]),
                     MyUsername = row["Username"].ToString(),
-                    MyProductID = Convert.ToInt32(row["ProductID"]),
+                    MyCarID = Convert.ToInt32(row["ProductID"]),
                     MyRev = row["Rev"].ToString(),
                     MyRating = Convert.ToInt32(row["Rating"])
                 });
@@ -121,12 +121,12 @@ namespace ViewModelHardwareStore
             return list;
         }
 
-        // ShowAllProductReview
-        public List<Review> ShowAllProductReview(int ProductID)
+        // ShowAllCarReviews
+        public List<Review> ShowAllCarReviews(int CarID)
         {
             string sql = "SELECT * FROM [Review] WHERE [ProductID] = ?";
             OleDbCommand cmd = new OleDbCommand(sql);
-            cmd.Parameters.AddWithValue("?", ProductID);
+            cmd.Parameters.AddWithValue("?", CarID);
             DataSet ds = db.SelectcommandInjection(cmd);
 
             List<Review> list = new List<Review>();
@@ -136,7 +136,7 @@ namespace ViewModelHardwareStore
                 {
                     MyReviewID = Convert.ToInt32(row["ReviewID"]),
                     MyUsername = row["Username"].ToString(),
-                    MyProductID = Convert.ToInt32(row["ProductID"]),
+                    MyCarID = Convert.ToInt32(row["ProductID"]),
                     MyRev = row["Rev"].ToString(),
                     MyRating = Convert.ToInt32(row["Rating"])
                 });
@@ -144,10 +144,10 @@ namespace ViewModelHardwareStore
             return list;
         }
 
-        public List<Review> GetRentalReviewsForCar(int productID)
+        public List<Review> GetRentalReviewsForCar(int carID)
         {
             OleDbCommand command = new OleDbCommand("SELECT * FROM [Review] WHERE [ProductID]=? AND [RentalOrderID] IS NOT NULL ORDER BY [ReviewDate] DESC");
-            command.Parameters.AddWithValue("?", productID);
+            command.Parameters.AddWithValue("?", carID);
             DataSet ds = db.SelectcommandInjection(command);
             List<Review> reviews = new List<Review>();
             foreach (DataRow row in ds.Tables[0].Rows)
@@ -185,7 +185,7 @@ namespace ViewModelHardwareStore
             {
                 MyReviewID = Convert.ToInt32(row["ReviewID"]),
                 MyUsername = row["Username"].ToString(),
-                MyProductID = Convert.ToInt32(row["ProductID"]),
+                MyCarID = Convert.ToInt32(row["ProductID"]),
                 MyRev = row["Rev"].ToString(),
                 MyRating = Convert.ToInt32(row["Rating"]),
                 MyRentalOrderID = row.IsNull("RentalOrderID") ? (int?)null : Convert.ToInt32(row["RentalOrderID"]),

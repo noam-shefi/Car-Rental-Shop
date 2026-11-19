@@ -7,7 +7,7 @@ using System.Web;
 using System.Data;
 using System.Data.OleDb;
 
-namespace ViewModelHardwareStore
+namespace ViewModelCarRental
 {
     public class OrderDetailsDB
     {
@@ -23,11 +23,11 @@ namespace ViewModelHardwareStore
         }
 
         // AddOrderDetails
-        public void AddOrderDetails(int OrderID, int ProductID, int Quantity, decimal UnitPrice)
+        public void AddOrderDetails(int OrderID, int CarID, int Quantity, decimal UnitPrice)
         {
             string sql = string.Format(
                 "insert into [OrderDetails] ([OrderID], [ProductID], [Quantity], [UnitPrice]) values ({0}, {1}, {2}, {3})",
-                OrderID, ProductID, Quantity, UnitPrice);
+                OrderID, CarID, Quantity, UnitPrice);
             db.DoCommand(sql);
         }
 
@@ -39,11 +39,11 @@ namespace ViewModelHardwareStore
         }
 
         // UpdateOrderDetails
-        public void UpdateOrderDetails(int OrderID, int ProductID, int Quantity, decimal UnitPrice, int OrderDetailsID)
+        public void UpdateOrderDetails(int OrderID, int CarID, int Quantity, decimal UnitPrice, int OrderDetailsID)
         {
             string sql = string.Format(
                 "update [Category] set [OrderID]={0}, [ProductID]={1}, [Quantity]={2}, [UnitPrice]={3} where [OrderDetailsID]={2}",
-                OrderID, ProductID, Quantity, UnitPrice, OrderDetailsID);
+                OrderID, CarID, Quantity, UnitPrice, OrderDetailsID);
             db.DoCommand(sql);
         }
 

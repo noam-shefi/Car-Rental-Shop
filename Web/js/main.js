@@ -64,7 +64,7 @@
         }
     });
 
-    // ProductList categories carousel
+    // ProductList vehicleCategories carousel
     $(".productImg-carousel").owlCarousel({
         autoplay: true,
         smartSpeed: 1500,
@@ -130,7 +130,7 @@
 
 
 
-    // Product Quantity
+    // Car Quantity
     $('.quantity button').on('click', function () {
         var button = $(this);
         var oldValue = button.parent().parent().find('input').val();

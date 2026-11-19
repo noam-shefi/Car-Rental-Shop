@@ -3,7 +3,7 @@
 	"Name": "Web and local services",
 	"Projects": [
 	  {
-		"Path": "WcfServiceHardwareStore\\WcfServiceHardwareStore.csproj",
+		"Path": "WcfServiceCarRental\\WcfServiceCarRental.csproj",
 		"Action": "StartWithoutDebugging"
 	  },
 	  {

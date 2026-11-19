@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="home, App_Web_53vxbbw0" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="home, App_Web_pskrdzto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
@@ -82,6 +82,9 @@
 
 <section class="py-5 section-bg-blue">
     <div class="container py-5 text-center">
+        <p class="big-title text-secondary-light mb-3" style="font-size: 1.25rem;">
+            <asp:Literal ID="litWelcome" runat="server"></asp:Literal>
+        </p>
         <h1 class="big-title gradient-text" style="font-size: 3rem;">
             מוצאים את הרכב המתאים לכל נסיעה
         </h1>
