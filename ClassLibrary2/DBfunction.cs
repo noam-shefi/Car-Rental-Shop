@@ -20,7 +20,7 @@ namespace ViewModelCarRental
             //C:\Users\Magsihim_AI\Downloads\CarRental\ViewModelCarRental\App_Data\CarRental.accdb
 
             //this.connectionstr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + AppDomain.CurrentDomain.BaseDirectory+"/App_Data/Database4.accdb";
-            this.connectionstr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\noams\Downloads\HardwareStore(1)\HardwareStore\ClassLibrary2\App_Data\HardwareStore.accdb";
+            this.connectionstr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ResolveDatabasePath();
 
             lock (schemaLock)
             {
@@ -30,6 +30,26 @@ namespace ViewModelCarRental
                     schemaInitialized = true;
                 }
             }
+        }
+
+        private static string ResolveDatabasePath()
+        {
+            const string fileName = "HardwareStore.accdb";
+            string overridePath = Environment.GetEnvironmentVariable("CARRENTAL_DB_PATH");
+            if (!string.IsNullOrEmpty(overridePath) && System.IO.File.Exists(overridePath))
+                return overridePath;
+
+            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            var dir = new System.IO.DirectoryInfo(baseDir);
+            while (dir != null)
+            {
+                string candidate = System.IO.Path.Combine(dir.FullName, "ClassLibrary2", "App_Data", fileName);
+                if (System.IO.File.Exists(candidate))
+                    return candidate;
+                dir = dir.Parent;
+            }
+
+            return System.IO.Path.Combine(baseDir, "App_Data", fileName);
         }
 
         // update, insert , delete

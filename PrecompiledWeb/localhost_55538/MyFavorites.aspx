@@ -1,4 +1,4 @@
-﻿<%@ page title="המועדפים שלי" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="MyFavorites, App_Web_pskrdzto" %>
+﻿<%@ page title="המועדפים שלי" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="MyFavorites, App_Web_mis1waoc" %>
 
 <asp:Content ID="FavoritesContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <main class="container py-4" dir="rtl">

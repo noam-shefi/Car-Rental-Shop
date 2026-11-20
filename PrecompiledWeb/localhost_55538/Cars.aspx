@@ -1,4 +1,4 @@
-﻿<%@ page title="השכרת רכבים" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="Cars, App_Web_pskrdzto" %>
+﻿<%@ page title="השכרת רכבים" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="Cars, App_Web_mis1waoc" %>
 
 <asp:Content ID="CarsContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <section class="container py-4" dir="rtl">

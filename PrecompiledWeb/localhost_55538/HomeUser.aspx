@@ -1,4 +1,4 @@
-﻿<%@ page title="Home - ByteForge" language="C#" masterpagefile="~/MasterPageUser.master" autoeventwireup="true" inherits="HomeUser, App_Web_pskrdzto" %>
+﻿<%@ page title="Home - ByteForge" language="C#" masterpagefile="~/MasterPageUser.master" autoeventwireup="true" inherits="HomeUser, App_Web_mis1waoc" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 

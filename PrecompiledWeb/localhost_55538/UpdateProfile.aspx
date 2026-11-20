@@ -1,4 +1,4 @@
-﻿<%@ page title="עדכון פרופיל" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="UpdateProfile, App_Web_pskrdzto" %>
+﻿<%@ page title="עדכון פרופיל" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="UpdateProfile, App_Web_mis1waoc" %>
 
 <asp:Content ID="ProfileContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <main class="container py-4" dir="rtl">

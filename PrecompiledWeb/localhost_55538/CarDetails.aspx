@@ -1,4 +1,4 @@
-﻿<%@ page title="פרטי רכב" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="CarDetails, App_Web_pskrdzto" %>
+﻿<%@ page title="פרטי רכב" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="CarDetails, App_Web_mis1waoc" %>
 
 <asp:Content ID="CarDetailsContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:ScriptManager ID="bookingScriptManager" runat="server" />

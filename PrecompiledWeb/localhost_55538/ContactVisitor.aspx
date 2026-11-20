@@ -1,4 +1,4 @@
-﻿<%@ page title="Contact Car Rental" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="Contact, App_Web_pskrdzto" %>
+﻿<%@ page title="Contact Car Rental" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="Contact, App_Web_mis1waoc" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="contact-container">

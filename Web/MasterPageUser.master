@@ -73,8 +73,9 @@
         .navbar .nav-link {
             color: #ffffff !important;
             transition: all 0.3s ease;
-            position: relative; 
-            border-bottom: none !important; 
+            position: relative;
+            border-bottom: none !important;
+            text-align: center;
         }
 
         .navbar .gradient-btn {
@@ -85,12 +86,13 @@
         .navbar .gradient-btn::after {
             content: '';
             position: absolute;
-            left: 0;
-            right: 0;
-            height: 3px; 
+            left: 10px;
+            right: 10px;
+            height: 3px;
             background-color: #ffffff;
-            bottom: 12px; 
+            bottom: 12px;
             transform: scaleX(0);
+            transform-origin: center;
             opacity: 0;
             transition: all 0.3s ease;
         }
@@ -328,7 +330,7 @@
                         <a runat="server" href="MyFavorites.aspx" class="nav-item nav-link">מועדפים</a>
                         <a runat="server" href="UpdateProfile.aspx" class="nav-item nav-link">הפרופיל שלי</a>
                         <asp:PlaceHolder ID="phAdminLinks" runat="server" Visible="false">
-                            <a runat="server" href="CarEdit.aspx" class="nav-item nav-link">ניהול צי</a>
+                            <a runat="server" href="CarEdit.aspx" class="nav-item nav-link">ניהול רכבים</a>
                             <a runat="server" href="ManageFleet.aspx" class="nav-item nav-link">ניהול מלאי</a>
                             <a runat="server" href="ManageOrders.aspx" class="nav-item nav-link">ניהול הזמנות</a>
                             <a runat="server" href="ManageBranches.aspx" class="nav-item nav-link">ניהול סניפים</a>

@@ -1,4 +1,4 @@
-﻿<%@ page title="ניהול משתמשים" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="ManageUsers, App_Web_pskrdzto" %>
+﻿<%@ page title="ניהול משתמשים" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="ManageUsers, App_Web_mis1waoc" %>
 
 <asp:Content ID="UsersContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <main class="container py-4" dir="rtl">

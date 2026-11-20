@@ -22,7 +22,7 @@
                         <span class="badge bg-dark text-info border border-info px-3 py-2">
                             VehicleCategory: <asp:Literal ID="litCategory" runat="server"></asp:Literal>
                         </span>
-                        <span class="badge bg-dark text-purple border border-purple px-3 py-2">
+                        <span class="badge bg-dark text-accent border border-accent px-3 py-2">
                             Make: <asp:Literal ID="litBrand" runat="server"></asp:Literal>
                         </span>
                     </div>
@@ -125,8 +125,8 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(0, 170, 255, 0.3);
         }
-        .border-purple { border-color: #9900ff !important; }
-        .text-purple { color: #9900ff !important; }
+        .border-accent { border-color: #ffb347 !important; }
+        .text-accent { color: #ffb347 !important; }
         .form-select, .form-control { border-color: rgba(255,255,255,0.1) !important; }
         .form-select:focus, .form-control:focus { background-color: #17171c !important; box-shadow: 0 0 0 0.25rem rgba(0, 170, 255, 0.25); color: #fff; }
     </style>

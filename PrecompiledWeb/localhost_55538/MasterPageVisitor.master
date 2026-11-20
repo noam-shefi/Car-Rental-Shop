@@ -1,4 +1,4 @@
-﻿<%@ master language="C#" autoeventwireup="true" inherits="MasterPageVisitor, App_Web_nq41q5ek" %>
+﻿<%@ master language="C#" autoeventwireup="true" inherits="MasterPageVisitor, App_Web_k2rtupwj" %>
 
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
@@ -276,7 +276,7 @@
                             <a href="MyFavorites.aspx" class="nav-item nav-link">מועדפים</a>
                             <a href="UpdateProfile.aspx" class="nav-item nav-link">הפרופיל שלי</a>
                             <% if (Session["isAdmin"] != null && Convert.ToBoolean(Session["isAdmin"])) { %>
-                                <a href="Cars.aspx" class="nav-item nav-link">ניהול צי</a>
+                                <a href="Cars.aspx" class="nav-item nav-link">ניהול רכבים</a>
                                 <a href="ManageFleet.aspx" class="nav-item nav-link">ניהול מלאי</a>
                                 <a href="ManageOrders.aspx" class="nav-item nav-link">ניהול הזמנות</a>
                                 <a href="ManageBranches.aspx" class="nav-item nav-link">ניהול סניפים</a>

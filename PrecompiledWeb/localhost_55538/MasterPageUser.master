@@ -1,4 +1,4 @@
-﻿<%@ master language="C#" autoeventwireup="true" inherits="MasterPageUser, App_Web_nq41q5ek" %>
+﻿<%@ master language="C#" autoeventwireup="true" inherits="MasterPageUser, App_Web_k2rtupwj" %>
 
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
@@ -328,7 +328,7 @@
                         <a runat="server" href="MyFavorites.aspx" class="nav-item nav-link">מועדפים</a>
                         <a runat="server" href="UpdateProfile.aspx" class="nav-item nav-link">הפרופיל שלי</a>
                         <asp:PlaceHolder ID="phAdminLinks" runat="server" Visible="false">
-                            <a runat="server" href="CarEdit.aspx" class="nav-item nav-link">ניהול צי</a>
+                            <a runat="server" href="CarEdit.aspx" class="nav-item nav-link">ניהול רכבים</a>
                             <a runat="server" href="ManageFleet.aspx" class="nav-item nav-link">ניהול מלאי</a>
                             <a runat="server" href="ManageOrders.aspx" class="nav-item nav-link">ניהול הזמנות</a>
                             <a runat="server" href="ManageBranches.aspx" class="nav-item nav-link">ניהול סניפים</a>
