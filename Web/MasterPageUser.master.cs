@@ -4,7 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.HtmlControls; 
+using System.Web.UI.HtmlControls;
+using System.ServiceModel;
+using ServiceReference1;
 
 public partial class MasterPageUser : System.Web.UI.MasterPage
 {
@@ -14,13 +16,18 @@ public partial class MasterPageUser : System.Web.UI.MasterPage
         Response.Cache.SetNoStore();
         Response.Cache.SetExpires(DateTime.UtcNow.AddHours(-1));
 
-        if (Session["username"] == null)
+        string username = Convert.ToString(Session["username"] ?? Session["Username"]);
+        if (string.IsNullOrWhiteSpace(username))
         {
-            Response.Redirect("SignInVisitor.aspx");
+            Response.Redirect("SignInVisitor.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
+            return;
         }
 
-        if (Session["isAdmin"] != null)
-            phAdminLinks.Visible = Convert.ToBoolean(Session["isAdmin"]);
+        Session["username"] = username;
+        Session["Username"] = username;
+
+        phAdminLinks.Visible = ResolveAdminVisibility(username);
 
         if (!IsPostBack)
         {
@@ -51,6 +58,49 @@ public partial class MasterPageUser : System.Web.UI.MasterPage
     {
         Response.Redirect("Logout.aspx", false);
         Context.ApplicationInstance.CompleteRequest();
+    }
+
+    private bool ResolveAdminVisibility(string username)
+    {
+        bool isAdmin;
+        if (bool.TryParse(Convert.ToString(Session["isAdmin"]), out isAdmin))
+        {
+            try
+            {
+                using (var client = new Service1Client("BasicHttpBinding_IService1"))
+                {
+                    bool freshAdminState = client.IsUserAdmin(username);
+                    Session["isAdmin"] = freshAdminState;
+                    return freshAdminState;
+                }
+            }
+            catch (CommunicationException)
+            {
+                return isAdmin;
+            }
+            catch (TimeoutException)
+            {
+                return isAdmin;
+            }
+        }
+
+        try
+        {
+            using (var client = new Service1Client("BasicHttpBinding_IService1"))
+            {
+                bool freshAdminState = client.IsUserAdmin(username);
+                Session["isAdmin"] = freshAdminState;
+                return freshAdminState;
+            }
+        }
+        catch (CommunicationException)
+        {
+            return false;
+        }
+        catch (TimeoutException)
+        {
+            return false;
+        }
     }
 
     private void SetActiveClass()

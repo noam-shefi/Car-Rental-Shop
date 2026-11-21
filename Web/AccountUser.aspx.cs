@@ -217,23 +217,7 @@ public partial class AccountUser : System.Web.UI.Page
                 lblDetailNotes.Text = string.IsNullOrWhiteSpace(order.MyAdditionalInstructions) ? "No additional notes provided." : order.MyAdditionalInstructions;
                 lblDetailTotalSum.Text = order.MyTotalPrice.ToString();
 
-                var orderDetailsItems = _ws.showAllOrderDetails()
-                                           .Where(od => od.MyOrderID == orderId)
-                                           .ToList();
-
-                var allProducts = _ws.GetAllFleetCars();
-
-                var detailedItemsWithNames = orderDetailsItems.Join(
-                    allProducts,
-                    od => od.MyCarID,
-                    p => p.MyCarID,
-                    (od, p) => new {
-                        MyModelName = p.MyModelName,
-                        MyQuantity = od.MyQuantity,
-                        MyUnitPrice = od.MyUnitPrice
-                    }).ToList();
-
-                rptOrderItems.DataSource = detailedItemsWithNames;
+                rptOrderItems.DataSource = new object[0];
                 rptOrderItems.DataBind();
 
                 mvOrders.SetActiveView(viewOrderDetails);

@@ -1,4 +1,4 @@
-﻿<%@ master language="C#" autoeventwireup="true" inherits="MasterPageVisitor, App_Web_k2rtupwj" %>
+﻿<%@ master language="C#" autoeventwireup="true" inherits="MasterPageVisitor, App_Web_ams1e4hc" %>
 
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
@@ -74,19 +74,21 @@
         .navbar .nav-link {
             color: #ffffff !important;
             transition: all 0.3s ease;
-            position: relative; 
-            border-bottom: none !important; 
+            position: relative;
+            border-bottom: none !important;
+            text-align: center;
         }
 
         .navbar .nav-link::after {
             content: '';
             position: absolute;
-            left: 0;
-            right: 0;
-            height: 3px; 
+            left: 10px;
+            right: 10px;
+            height: 3px;
             background-color: #ffffff;
-            bottom: 12px; 
+            bottom: 12px;
             transform: scaleX(0);
+            transform-origin: center;
             opacity: 0;
             transition: all 0.3s ease;
         }

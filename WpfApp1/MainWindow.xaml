@@ -56,17 +56,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button Content="Shared Legacy Categories" 
-                    Margin="10" Background="#1E293B" Foreground="#E2E8F0" BorderBrush="#334155" BorderThickness="1"
-                    FontSize="16" FontWeight="SemiBold" Cursor="Hand" Click="OpenCategories_Click">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="8"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-
-            <Button Content="Contact" 
+            <Button Content="Contact"
                     Margin="10" Background="#1E293B" Foreground="#E2E8F0" BorderBrush="#334155" BorderThickness="1"
                     FontSize="16" FontWeight="SemiBold" Cursor="Hand" Click="OpenContacts_Click">
                 <Button.Resources>
@@ -96,17 +86,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button Content="Legacy Order Line Items" 
-                    Margin="10" Background="#1E293B" Foreground="#E2E8F0" BorderBrush="#334155" BorderThickness="1"
-                    FontSize="16" FontWeight="SemiBold" Cursor="Hand" Click="OpenOrderDetails_Click">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="8"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-
-            <Button Content="Legacy Shopping Carts" 
+            <Button Content="Legacy Shopping Carts"
                     Margin="10" Background="#1E293B" Foreground="#E2E8F0" BorderBrush="#334155" BorderThickness="1"
                     FontSize="16" FontWeight="SemiBold" Cursor="Hand" Click="OpenCarts_Click">
                 <Button.Resources>
@@ -119,16 +99,6 @@
             <Button Content="Reviews" 
                     Margin="10" Background="#1E293B" Foreground="#E2E8F0" BorderBrush="#334155" BorderThickness="1"
                     FontSize="16" FontWeight="SemiBold" Cursor="Hand" Click="OpenReviews_Click">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="8"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-
-            <Button Content="Legacy Shipping Addresses" 
-                    Margin="10" Background="#1E293B" Foreground="#E2E8F0" BorderBrush="#334155" BorderThickness="1"
-                    FontSize="16" FontWeight="SemiBold" Cursor="Hand" Click="OpenShippingAddresses_Click">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="8"/>

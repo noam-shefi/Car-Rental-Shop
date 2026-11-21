@@ -12,9 +12,9 @@ public partial class Register : Page
         string email = txtEmail.Text.Trim();
         string password = txtPass.Text;
 
-        if (username.Length < 3 || string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) || string.IsNullOrWhiteSpace(email) || password.Length < 6 || password != txtConfirmPass.Text)
+        if (username.Length < 3 || string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) || string.IsNullOrWhiteSpace(email) || password != txtConfirmPass.Text)
         {
-            ShowMessage("יש להזין שם משתמש בן 3 תווים לפחות, שם פרטי ושם משפחה, דוא״ל, סיסמה בת 6 תווים לפחות ואישור סיסמה תואם.");
+            ShowMessage("יש להזין שם משתמש בן 3 תווים לפחות, שם פרטי ושם משפחה, דוא״ל ואישור סיסמה תואם.");
             return;
         }
         if (email.IndexOf('@') < 0)

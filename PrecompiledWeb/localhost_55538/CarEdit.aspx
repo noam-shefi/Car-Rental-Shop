@@ -1,4 +1,4 @@
-﻿<%@ page title="ניהול רכב" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="CarEdit, App_Web_mis1waoc" %>
+﻿<%@ page title="ניהול רכב" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="CarEdit, App_Web_vkkzr0a4" %>
 
 <asp:Content ID="CarEditContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <main class="container py-4" dir="rtl">

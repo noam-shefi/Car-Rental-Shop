@@ -156,43 +156,6 @@ namespace WcfServiceCarRental
             c.DecreaseQuantityByOne(Username, CarID);
         }
 
-        // VehicleCategory
-        public bool VehicleCategoryExists(int VehicleCategoryID)
-        {
-            VehicleCategoryDB c = new VehicleCategoryDB();
-            return c.VehicleCategoryExists(VehicleCategoryID);
-        }
-        public void AddVehicleCategory(string VehicleCategoryName, string Description)
-        {
-            VehicleCategoryDB c = new VehicleCategoryDB();
-            c.AddVehicleCategory(VehicleCategoryName, Description);
-        }
-        public void DeleteVehicleCategory(int VehicleCategoryID)
-        {
-            VehicleCategoryDB c = new VehicleCategoryDB();
-            c.DeleteVehicleCategory(VehicleCategoryID);
-        }
-        public void UpdateVehicleCategory(string VehicleCategoryName, string Description, int VehicleCategoryID)
-        {
-            VehicleCategoryDB c = new VehicleCategoryDB();
-            c.UpdateVehicleCategory(VehicleCategoryName, Description, VehicleCategoryID);
-        }
-        public List<VehicleCategory> GetAllVehicleCategories()
-        {
-            VehicleCategoryDB c = new VehicleCategoryDB();
-            return c.GetAllVehicleCategories();
-        }
-        public VehicleCategory GetVehicleCategory(int VehicleCategoryID)
-        {
-            VehicleCategoryDB c = new VehicleCategoryDB();
-            return c.GetVehicleCategory(VehicleCategoryID);
-        }
-        public void AddCarFromVehicleCategory(int VehicleCategoryID)
-        {
-            VehicleCategoryDB c = new VehicleCategoryDB();
-            c.AddCarFromVehicleCategory(VehicleCategoryID);
-        }
-
         // Contact
         public bool isExistContact(int ContactID)
         {
@@ -283,63 +246,31 @@ namespace WcfServiceCarRental
             return o.showOrdersByUsername(Username);
         }
 
-        // OrderDetails
-        public bool isExistOrderDetails(int OrderDetailsID)
-        {
-            OrderDetailsDB o = new OrderDetailsDB();
-            return o.isExistOrderDetails(OrderDetailsID);
-        }
-        public void AddOrderDetails(int OrderID, int CarID, int Quantity, decimal UnitPrice)
-        {
-            OrderDetailsDB o = new OrderDetailsDB();
-            o.AddOrderDetails(OrderID, CarID, Quantity, UnitPrice);
-        }
-        public void DeleteOrderDetails(int OrderDetailsID)
-        {
-            OrderDetailsDB o = new OrderDetailsDB();
-            o.DeleteOrderDetails(OrderDetailsID);
-        }
-        public void UpdateOrderDetails(int OrderID, int CarID, int Quantity, decimal UnitPrice, int OrderDetailsID)
-        {
-            OrderDetailsDB o = new OrderDetailsDB();
-            o.UpdateOrderDetails(OrderID, CarID, Quantity, UnitPrice, OrderDetailsID);
-        }
-        public List<OrderDetails> showAllOrderDetails()
-        {
-            OrderDetailsDB o = new OrderDetailsDB();
-            return o.showAllOrderDetails();
-        }
-        public OrderDetails showOrderDetails(int OrderDetailsID)
-        {
-            OrderDetailsDB o = new OrderDetailsDB();
-            return o.showOrderDetails(OrderDetailsID);
-        }
-
         // Car
         public bool FleetCarExists(int CarID)
         {
             CarDB p = new CarDB();
             return p.FleetCarExists(CarID);
         }
-        public int GetNextCarID(int VehicleCategoryID)
+        public int GetNextCarID()
         {
             CarDB p = new CarDB();
-            return p.GetNextCarID(VehicleCategoryID);
+            return p.GetNextCarID();
         }
-        public void CreateFleetCar(int CarID, string ModelName, int VehicleCategoryID, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture)
+        public void CreateFleetCar(int CarID, string ModelName, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture)
         {
             CarDB p = new CarDB();
-            p.CreateFleetCar(CarID, ModelName, VehicleCategoryID, MakeID, Price, FleetQuantity, Description, Picture);
+            p.CreateFleetCar(CarID, ModelName, MakeID, Price, FleetQuantity, Description, Picture);
         }
         public void DeleteFleetCar(int CarID)
         {
             CarDB p = new CarDB();
             p.DeleteFleetCar(CarID);
         }
-        public void UpdateFleetCar(string ModelName, int VehicleCategoryID, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture, int CarID)
+        public void UpdateFleetCar(string ModelName, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture, int CarID)
         {
             CarDB p = new CarDB();
-            p.UpdateFleetCar(ModelName, VehicleCategoryID, MakeID, Price, FleetQuantity, Description, Picture, CarID);
+            p.UpdateFleetCar(ModelName, MakeID, Price, FleetQuantity, Description, Picture, CarID);
         }
         public List<Car> GetAllFleetCars()
         {
@@ -350,16 +281,6 @@ namespace WcfServiceCarRental
         {
             CarDB p = new CarDB();
             return p.GetFleetCarByID(CarID);
-        }
-        public List<Car> GetFleetCarsWithCategoryAndMake()
-        {
-            CarDB p = new CarDB();
-            return p.GetFleetCarsWithCategoryAndMake();
-        }
-        public List<Car> GetFleetCarsByCategoryID(int VehicleCategoryID)
-        {
-            CarDB p = new CarDB();
-            return p.GetFleetCarsByCategoryID(VehicleCategoryID);
         }
         public List<Car> GetFleetCarsByMakeID(int MakeID)
         {
@@ -452,38 +373,6 @@ namespace WcfServiceCarRental
         {
             ReviewDB r = new ReviewDB();
             return r.ShowAllCarReviews(CarID);
-        }
-
-        // ShippingAddress
-        public bool isExistShippingAddress(string Username)
-        {
-            ShippingAddressDB db = new ShippingAddressDB();
-            return db.IsExistShippingAddress(Username);
-        }
-        public void AddShippingAddress(string Username, string CountryRegion, string City, string StreetAddress, string Floor, string ZipCode, string AdditionalInstructions)
-        {
-            ShippingAddressDB db = new ShippingAddressDB();
-            db.AddShippingAddress(Username, CountryRegion, City, StreetAddress, Floor, ZipCode, AdditionalInstructions);
-        }
-        public void UpdateShippingAddress(string Username, string CountryRegion, string City, string StreetAddress, string Floor, string ZipCode, string AdditionalInstructions)
-        {
-            ShippingAddressDB db = new ShippingAddressDB();
-            db.UpdateShippingAddress(Username, CountryRegion, City, StreetAddress, Floor, ZipCode, AdditionalInstructions);
-        }
-        public void DeleteShippingAddress(string Username)
-        {
-            ShippingAddressDB db = new ShippingAddressDB();
-            db.DeleteShippingAddress(Username);
-        }
-        public List<ShippingAddress> ShowAllShippingAddress()
-        {
-            ShippingAddressDB db = new ShippingAddressDB();
-            return db.ShowAllShippingAddress();
-        }
-        public ShippingAddress ShowShippingAddress(string Username)
-        {
-            ShippingAddressDB db = new ShippingAddressDB();
-            return db.ShowShippingAddress(Username);
         }
 
         // User

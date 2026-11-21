@@ -50,37 +50,13 @@ public partial class CheckoutUser : System.Web.UI.Page
 
     private void LoadUserShippingAddress()
     {
-        string username = Session["Username"].ToString();
-
-        var addressInfo = _shopWS.ShowShippingAddress(username);
-
-        if (addressInfo != null)
-        {
-            txtCountry.Text = addressInfo.MyCountryRegion;
-            txtCity.Text = addressInfo.MyCity;
-            txtStreet.Text = addressInfo.MyStreetAddress;
-            txtFloor.Text = addressInfo.MyFloor;
-            txtZip.Text = addressInfo.MyZipCode;
-            txtNotes.Text = addressInfo.MyAdditionalInstructions;
-
-            Session["OldCountry"] = addressInfo.MyCountryRegion;
-            Session["OldCity"] = addressInfo.MyCity;
-            Session["OldStreet"] = addressInfo.MyStreetAddress;
-            Session["OldFloor"] = addressInfo.MyFloor;
-            Session["OldZip"] = addressInfo.MyZipCode;
-            Session["OldNotes"] = addressInfo.MyAdditionalInstructions;
-            Session["HasAddressRecord"] = true;
-        }
-        else
-        {
-            Session["OldCountry"] = "";
-            Session["OldCity"] = "";
-            Session["OldStreet"] = "";
-            Session["OldFloor"] = "";
-            Session["OldZip"] = "";
-            Session["OldNotes"] = "";
-            Session["HasAddressRecord"] = false;
-        }
+        Session["OldCountry"] = "";
+        Session["OldCity"] = "";
+        Session["OldStreet"] = "";
+        Session["OldFloor"] = "";
+        Session["OldZip"] = "";
+        Session["OldNotes"] = "";
+        Session["HasAddressRecord"] = false;
     }
 
     protected void btnPay_Click(object sender, EventArgs e)
@@ -146,15 +122,6 @@ public partial class CheckoutUser : System.Web.UI.Page
             var cartItems = _shopWS.ListCartWithCarDetails(username);
             if (cartItems == null || cartItems.Length == 0) return;
 
-            if (!Convert.ToBoolean(Session["HasAddressRecord"]))
-            {
-                _shopWS.AddShippingAddress(username, currentCountry, currentCity, currentStreet, currentFloor, currentZip, currentNotes);
-            }
-            else if (isAddressChanged)
-            {
-                _shopWS.UpdateShippingAddress(username, currentCountry, currentCity, currentStreet, currentFloor, currentZip, currentNotes);
-            }
-
             creditWS.UpdateTotal(cardNum, moneyToPay);
 
             decimal totalPriceDecimal = Convert.ToDecimal(moneyToPay);
@@ -178,18 +145,6 @@ public partial class CheckoutUser : System.Web.UI.Page
                             newOrderID = o.MyOrderID;
                         }
                     }
-                }
-            }
-
-            if (newOrderID != -1)
-            {
-                foreach (var item in cartItems)
-                {
-                    int prodID = Convert.ToInt32(item.MyCarID);
-                    int qty = Convert.ToInt32(item.MyQuantity);
-                    decimal finalUnitPrice = Convert.ToDecimal(Convert.ToDouble(item.MyPrice));
-
-                    _shopWS.AddOrderDetails(newOrderID, prodID, qty, finalUnitPrice);
                 }
             }
 

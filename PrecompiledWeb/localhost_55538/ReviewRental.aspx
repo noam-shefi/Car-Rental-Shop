@@ -1,4 +1,4 @@
-﻿<%@ page title="כתיבת ביקורת" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="ReviewRental, App_Web_mis1waoc" %>
+﻿<%@ page title="כתיבת ביקורת" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="ReviewRental, App_Web_vkkzr0a4" %>
 
 <asp:Content ID="ReviewContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <main class="container py-4" dir="rtl">

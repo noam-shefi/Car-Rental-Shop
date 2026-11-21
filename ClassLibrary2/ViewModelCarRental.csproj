@@ -73,15 +73,12 @@
   <ItemGroup>
     <Compile Include="MakeDB.cs" />
     <Compile Include="CartDB.cs" />
-    <Compile Include="VehicleCategoryDB.cs" />
     <Compile Include="ContactDB.cs" />
     <Compile Include="DBfunction.cs" />
     <Compile Include="OrderDB.cs" />
-    <Compile Include="OrderDetailsDB.cs" />
     <Compile Include="CarDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReviewDB.cs" />
-    <Compile Include="ShippingAddressDB.cs" />
     <Compile Include="UserDB.cs" />
   </ItemGroup>
   <ItemGroup>

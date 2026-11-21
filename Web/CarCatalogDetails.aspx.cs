@@ -37,16 +37,7 @@ public partial class CarCatalogDetails : System.Web.UI.Page
         lblPrice.InnerText = "₪" + car.MyPrice;
         imgProduct.ImageUrl = GetImageUrl(car.MyPicture);
 
-        var allCategories = _ws.GetAllVehicleCategories();
-        if (allCategories != null)
-        {
-            var vehicleCategory = allCategories.FirstOrDefault(c => c.MyVehicleCategoryID == car.MyVehicleCategoryID);
-            litCategory.Text = vehicleCategory != null ? vehicleCategory.MyVehicleCategoryName : "General";
-        }
-        else
-        {
-            litCategory.Text = "General";
-        }
+        litCategory.Text = !string.IsNullOrWhiteSpace(car.MyCarCategory) ? car.MyCarCategory : "General";
 
         var allBrands = _ws.GetAllMakes();
         if (allBrands != null)

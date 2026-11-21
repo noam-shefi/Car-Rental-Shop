@@ -106,20 +106,11 @@ public partial class CarEdit : Page
         try
         {
             int makeID = GetOrCreateBrand(txtManufacturer.Text.Trim());
-            int vehicleCategoryID;
-            using (var legacy = new ServiceReference1.Service1Client("BasicHttpBinding_IService1"))
-            {
-                var vehicleCategories = legacy.GetAllVehicleCategories();
-                if (vehicleCategories == null || vehicleCategories.Length == 0)
-                    throw new InvalidOperationException("יש ליצור קטגוריה לפני הוספת רכב.");
-                vehicleCategoryID = vehicleCategories[0].MyVehicleCategoryID;
-            }
 
             var car = new Car
             {
                 MyCarID = carID,
                 MyModelName = txtModel.Text.Trim(),
-                MyVehicleCategoryID = vehicleCategoryID,
                 MyMakeID = makeID,
                 MyPrice = price,
                 MyFleetQuantity = fleetQuantity,

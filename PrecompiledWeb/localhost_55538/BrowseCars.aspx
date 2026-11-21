@@ -1,4 +1,4 @@
-﻿<%@ page title="ByteForge Shop" language="C#" masterpagefile="~/MasterPageUser.master" autoeventwireup="true" inherits="BrowseCars, App_Web_mis1waoc" %>
+﻿<%@ page title="ByteForge Shop" language="C#" masterpagefile="~/MasterPageUser.master" autoeventwireup="true" inherits="BrowseCars, App_Web_vkkzr0a4" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="container-fluid py-4">

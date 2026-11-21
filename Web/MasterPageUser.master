@@ -398,7 +398,7 @@
 <script src="js/main.js"></script>
 
 <script>
-    $(document).ready(function () {
+    document.addEventListener('DOMContentLoaded', function () {
         var url = window.location.pathname;
         var pageName = url.substring(url.lastIndexOf('/') + 1);
 
@@ -406,11 +406,11 @@
             pageName = "HomeUser.aspx";
         }
 
-        $('.navbar-nav a, .navbar .gradient-btn, .outline-dark-btn').each(function () {
-            var href = $(this).attr('href');
+        document.querySelectorAll('.navbar-nav a, .navbar .gradient-btn, .outline-dark-btn').forEach(function (element) {
+            var href = element.getAttribute('href');
 
             if (href && href.indexOf(pageName) !== -1) {
-                $(this).addClass('active');
+                element.classList.add('active');
             }
         });
     });

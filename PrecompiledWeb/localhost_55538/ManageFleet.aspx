@@ -1,4 +1,4 @@
-﻿<%@ page title="ניהול מלאי" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="ManageFleet, App_Web_mis1waoc" %>
+﻿<%@ page title="ניהול מלאי" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="ManageFleet, App_Web_vkkzr0a4" %>
 
 <asp:Content ID="StockContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <main class="container py-4" dir="rtl">

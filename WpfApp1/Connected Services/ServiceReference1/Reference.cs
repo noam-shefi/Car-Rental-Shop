@@ -77,25 +77,7 @@ namespace WpfApp1.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteShippingAddress", ReplyAction="http://tempuri.org/IService1/DeleteShippingAddressResponse")]
-        void DeleteShippingAddress(string Username);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteShippingAddress", ReplyAction="http://tempuri.org/IService1/DeleteShippingAddressResponse")]
-        System.Threading.Tasks.Task DeleteShippingAddressAsync(string Username);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ShowAllShippingAddress", ReplyAction="http://tempuri.org/IService1/ShowAllShippingAddressResponse")]
-        BusinessModelCarRental.ShippingAddress[] ShowAllShippingAddress();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ShowAllShippingAddress", ReplyAction="http://tempuri.org/IService1/ShowAllShippingAddressResponse")]
-        System.Threading.Tasks.Task<BusinessModelCarRental.ShippingAddress[]> ShowAllShippingAddressAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ShowShippingAddress", ReplyAction="http://tempuri.org/IService1/ShowShippingAddressResponse")]
-        BusinessModelCarRental.ShippingAddress ShowShippingAddress(string Username);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ShowShippingAddress", ReplyAction="http://tempuri.org/IService1/ShowShippingAddressResponse")]
-        System.Threading.Tasks.Task<BusinessModelCarRental.ShippingAddress> ShowShippingAddressAsync(string Username);
-        
+
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/isExistUser", ReplyAction="http://tempuri.org/IService1/isExistUserResponse")]
         bool isExistUser(string Username);
         
@@ -305,49 +287,7 @@ namespace WpfApp1.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DecreaseQuantityByOne", ReplyAction="http://tempuri.org/IService1/DecreaseQuantityByOneResponse")]
         System.Threading.Tasks.Task DecreaseQuantityByOneAsync(string Username, int CarID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/VehicleCategoryExists", ReplyAction="http://tempuri.org/IService1/isExistCategoryResponse")]
-        bool VehicleCategoryExists(int VehicleCategoryID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/VehicleCategoryExists", ReplyAction="http://tempuri.org/IService1/isExistCategoryResponse")]
-        System.Threading.Tasks.Task<bool> isExistCategoryAsync(int VehicleCategoryID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddVehicleCategory", ReplyAction="http://tempuri.org/IService1/AddCategoryResponse")]
-        void AddVehicleCategory(string VehicleCategoryName, string Description);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddVehicleCategory", ReplyAction="http://tempuri.org/IService1/AddCategoryResponse")]
-        System.Threading.Tasks.Task AddCategoryAsync(string VehicleCategoryName, string Description);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteVehicleCategory", ReplyAction="http://tempuri.org/IService1/DeleteCategoryResponse")]
-        void DeleteVehicleCategory(int VehicleCategoryID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteVehicleCategory", ReplyAction="http://tempuri.org/IService1/DeleteCategoryResponse")]
-        System.Threading.Tasks.Task DeleteCategoryAsync(int VehicleCategoryID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateVehicleCategory", ReplyAction="http://tempuri.org/IService1/UpdateCategoryResponse")]
-        void UpdateVehicleCategory(string VehicleCategoryName, string Description, int VehicleCategoryID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateVehicleCategory", ReplyAction="http://tempuri.org/IService1/UpdateCategoryResponse")]
-        System.Threading.Tasks.Task UpdateCategoryAsync(string VehicleCategoryName, string Description, int VehicleCategoryID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllVehicleCategories", ReplyAction="http://tempuri.org/IService1/showAllCategoryResponse")]
-        BusinessModelCarRental.VehicleCategory[] GetAllVehicleCategories();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllVehicleCategories", ReplyAction="http://tempuri.org/IService1/showAllCategoryResponse")]
-        System.Threading.Tasks.Task<BusinessModelCarRental.VehicleCategory[]> showAllCategoryAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetVehicleCategory", ReplyAction="http://tempuri.org/IService1/showCategoryResponse")]
-        BusinessModelCarRental.VehicleCategory GetVehicleCategory(int VehicleCategoryID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetVehicleCategory", ReplyAction="http://tempuri.org/IService1/showCategoryResponse")]
-        System.Threading.Tasks.Task<BusinessModelCarRental.VehicleCategory> showCategoryAsync(int VehicleCategoryID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddCarFromVehicleCategory", ReplyAction="http://tempuri.org/IService1/AddProductFromCategoryResponse")]
-        void AddCarFromVehicleCategory(int VehicleCategoryID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddCarFromVehicleCategory", ReplyAction="http://tempuri.org/IService1/AddProductFromCategoryResponse")]
-        System.Threading.Tasks.Task AddProductFromCategoryAsync(int VehicleCategoryID);
-        
+
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/isExistContact", ReplyAction="http://tempuri.org/IService1/isExistContactResponse")]
         bool isExistContact(int ContactID);
         
@@ -443,97 +383,49 @@ namespace WpfApp1.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/showOrdersByUsername", ReplyAction="http://tempuri.org/IService1/showOrdersByUsernameResponse")]
         System.Threading.Tasks.Task<BusinessModelCarRental.Order[]> showOrdersByUsernameAsync(string Username);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/isExistOrderDetails", ReplyAction="http://tempuri.org/IService1/isExistOrderDetailsResponse")]
-        bool isExistOrderDetails(int OrderDetailsID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/isExistOrderDetails", ReplyAction="http://tempuri.org/IService1/isExistOrderDetailsResponse")]
-        System.Threading.Tasks.Task<bool> isExistOrderDetailsAsync(int OrderDetailsID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddOrderDetails", ReplyAction="http://tempuri.org/IService1/AddOrderDetailsResponse")]
-        void AddOrderDetails(int OrderID, int CarID, int Quantity, decimal UnitPrice);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddOrderDetails", ReplyAction="http://tempuri.org/IService1/AddOrderDetailsResponse")]
-        System.Threading.Tasks.Task AddOrderDetailsAsync(int OrderID, int CarID, int Quantity, decimal UnitPrice);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteOrderDetails", ReplyAction="http://tempuri.org/IService1/DeleteOrderDetailsResponse")]
-        void DeleteOrderDetails(int OrderDetailsID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteOrderDetails", ReplyAction="http://tempuri.org/IService1/DeleteOrderDetailsResponse")]
-        System.Threading.Tasks.Task DeleteOrderDetailsAsync(int OrderDetailsID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateOrderDetails", ReplyAction="http://tempuri.org/IService1/UpdateOrderDetailsResponse")]
-        void UpdateOrderDetails(int OrderID, int CarID, int Quantity, decimal UnitPrice, int OrderDetailsID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateOrderDetails", ReplyAction="http://tempuri.org/IService1/UpdateOrderDetailsResponse")]
-        System.Threading.Tasks.Task UpdateOrderDetailsAsync(int OrderID, int CarID, int Quantity, decimal UnitPrice, int OrderDetailsID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/showAllOrderDetails", ReplyAction="http://tempuri.org/IService1/showAllOrderDetailsResponse")]
-        BusinessModelCarRental.OrderDetails[] showAllOrderDetails();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/showAllOrderDetails", ReplyAction="http://tempuri.org/IService1/showAllOrderDetailsResponse")]
-        System.Threading.Tasks.Task<BusinessModelCarRental.OrderDetails[]> showAllOrderDetailsAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/showOrderDetails", ReplyAction="http://tempuri.org/IService1/showOrderDetailsResponse")]
-        BusinessModelCarRental.OrderDetails showOrderDetails(int OrderDetailsID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/showOrderDetails", ReplyAction="http://tempuri.org/IService1/showOrderDetailsResponse")]
-        System.Threading.Tasks.Task<BusinessModelCarRental.OrderDetails> showOrderDetailsAsync(int OrderDetailsID);
-        
+
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/FleetCarExists", ReplyAction="http://tempuri.org/IService1/isExistProductResponse")]
         bool FleetCarExists(int CarID);
-        
+
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/FleetCarExists", ReplyAction="http://tempuri.org/IService1/isExistProductResponse")]
         System.Threading.Tasks.Task<bool> isExistProductAsync(int CarID);
-        
+
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetNextCarID", ReplyAction="http://tempuri.org/IService1/GetNextProductIDResponse")]
-        int GetNextCarID(int VehicleCategoryID);
-        
+        int GetNextCarID();
+
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetNextCarID", ReplyAction="http://tempuri.org/IService1/GetNextProductIDResponse")]
-        System.Threading.Tasks.Task<int> GetNextProductIDAsync(int VehicleCategoryID);
-        
+        System.Threading.Tasks.Task<int> GetNextProductIDAsync();
+
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateFleetCar", ReplyAction="http://tempuri.org/IService1/AddProductResponse")]
-        void CreateFleetCar(int CarID, string ModelName, int VehicleCategoryID, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture);
-        
+        void CreateFleetCar(int CarID, string ModelName, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture);
+
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateFleetCar", ReplyAction="http://tempuri.org/IService1/AddProductResponse")]
-        System.Threading.Tasks.Task AddProductAsync(int CarID, string ModelName, int VehicleCategoryID, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture);
-        
+        System.Threading.Tasks.Task AddProductAsync(int CarID, string ModelName, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture);
+
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteFleetCar", ReplyAction="http://tempuri.org/IService1/DeleteProductResponse")]
         void DeleteFleetCar(int CarID);
-        
+
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteFleetCar", ReplyAction="http://tempuri.org/IService1/DeleteProductResponse")]
         System.Threading.Tasks.Task DeleteProductAsync(int CarID);
-        
+
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateFleetCar", ReplyAction="http://tempuri.org/IService1/UpdateProductResponse")]
-        void UpdateFleetCar(string ModelName, int VehicleCategoryID, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture, int CarID);
-        
+        void UpdateFleetCar(string ModelName, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture, int CarID);
+
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateFleetCar", ReplyAction="http://tempuri.org/IService1/UpdateProductResponse")]
-        System.Threading.Tasks.Task UpdateProductAsync(string ModelName, int VehicleCategoryID, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture, int CarID);
-        
+        System.Threading.Tasks.Task UpdateProductAsync(string ModelName, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture, int CarID);
+
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllFleetCars", ReplyAction="http://tempuri.org/IService1/showAllProductResponse")]
         BusinessModelCarRental.Car[] GetAllFleetCars();
-        
+
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllFleetCars", ReplyAction="http://tempuri.org/IService1/showAllProductResponse")]
         System.Threading.Tasks.Task<BusinessModelCarRental.Car[]> showAllProductAsync();
-        
+
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetFleetCarByID", ReplyAction="http://tempuri.org/IService1/showProductResponse")]
         BusinessModelCarRental.Car GetFleetCarByID(int CarID);
-        
+
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetFleetCarByID", ReplyAction="http://tempuri.org/IService1/showProductResponse")]
         System.Threading.Tasks.Task<BusinessModelCarRental.Car> showProductAsync(int CarID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetFleetCarsWithCategoryAndMake", ReplyAction="http://tempuri.org/IService1/showAllProductsInnerJoinResponse")]
-        BusinessModelCarRental.Car[] GetFleetCarsWithCategoryAndMake();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetFleetCarsWithCategoryAndMake", ReplyAction="http://tempuri.org/IService1/showAllProductsInnerJoinResponse")]
-        System.Threading.Tasks.Task<BusinessModelCarRental.Car[]> GetFleetCarsWithCategoryAndMakeAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetFleetCarsByCategoryID", ReplyAction="http://tempuri.org/IService1/showAllProductByCategoryIDResponse")]
-        BusinessModelCarRental.Car[] GetFleetCarsByCategoryID(int VehicleCategoryID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetFleetCarsByCategoryID", ReplyAction="http://tempuri.org/IService1/showAllProductByCategoryIDResponse")]
-        System.Threading.Tasks.Task<BusinessModelCarRental.Car[]> GetFleetCarsByCategoryIDAsync(int VehicleCategoryID);
-        
+
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetFleetCarsByMakeID", ReplyAction="http://tempuri.org/IService1/showAllProductByBrandIDResponse")]
         BusinessModelCarRental.Car[] GetFleetCarsByMakeID(int MakeID);
         
@@ -687,31 +579,7 @@ namespace WpfApp1.ServiceReference1 {
         public Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
-        
-        public void DeleteShippingAddress(string Username) {
-            base.Channel.DeleteShippingAddress(Username);
-        }
-        
-        public System.Threading.Tasks.Task DeleteShippingAddressAsync(string Username) {
-            return base.Channel.DeleteShippingAddressAsync(Username);
-        }
-        
-        public BusinessModelCarRental.ShippingAddress[] ShowAllShippingAddress() {
-            return base.Channel.ShowAllShippingAddress();
-        }
-        
-        public System.Threading.Tasks.Task<BusinessModelCarRental.ShippingAddress[]> ShowAllShippingAddressAsync() {
-            return base.Channel.ShowAllShippingAddressAsync();
-        }
-        
-        public BusinessModelCarRental.ShippingAddress ShowShippingAddress(string Username) {
-            return base.Channel.ShowShippingAddress(Username);
-        }
-        
-        public System.Threading.Tasks.Task<BusinessModelCarRental.ShippingAddress> ShowShippingAddressAsync(string Username) {
-            return base.Channel.ShowShippingAddressAsync(Username);
-        }
-        
+
         public bool isExistUser(string Username) {
             return base.Channel.isExistUser(Username);
         }
@@ -991,63 +859,7 @@ namespace WpfApp1.ServiceReference1 {
         public System.Threading.Tasks.Task DecreaseQuantityByOneAsync(string Username, int CarID) {
             return base.Channel.DecreaseQuantityByOneAsync(Username, CarID);
         }
-        
-        public bool VehicleCategoryExists(int VehicleCategoryID) {
-            return base.Channel.VehicleCategoryExists(VehicleCategoryID);
-        }
-        
-        public System.Threading.Tasks.Task<bool> isExistCategoryAsync(int VehicleCategoryID) {
-            return base.Channel.isExistCategoryAsync(VehicleCategoryID);
-        }
-        
-        public void AddVehicleCategory(string VehicleCategoryName, string Description) {
-            base.Channel.AddVehicleCategory(VehicleCategoryName, Description);
-        }
-        
-        public System.Threading.Tasks.Task AddCategoryAsync(string VehicleCategoryName, string Description) {
-            return base.Channel.AddCategoryAsync(VehicleCategoryName, Description);
-        }
-        
-        public void DeleteVehicleCategory(int VehicleCategoryID) {
-            base.Channel.DeleteVehicleCategory(VehicleCategoryID);
-        }
-        
-        public System.Threading.Tasks.Task DeleteCategoryAsync(int VehicleCategoryID) {
-            return base.Channel.DeleteCategoryAsync(VehicleCategoryID);
-        }
-        
-        public void UpdateVehicleCategory(string VehicleCategoryName, string Description, int VehicleCategoryID) {
-            base.Channel.UpdateVehicleCategory(VehicleCategoryName, Description, VehicleCategoryID);
-        }
-        
-        public System.Threading.Tasks.Task UpdateCategoryAsync(string VehicleCategoryName, string Description, int VehicleCategoryID) {
-            return base.Channel.UpdateCategoryAsync(VehicleCategoryName, Description, VehicleCategoryID);
-        }
-        
-        public BusinessModelCarRental.VehicleCategory[] GetAllVehicleCategories() {
-            return base.Channel.GetAllVehicleCategories();
-        }
-        
-        public System.Threading.Tasks.Task<BusinessModelCarRental.VehicleCategory[]> showAllCategoryAsync() {
-            return base.Channel.showAllCategoryAsync();
-        }
-        
-        public BusinessModelCarRental.VehicleCategory GetVehicleCategory(int VehicleCategoryID) {
-            return base.Channel.GetVehicleCategory(VehicleCategoryID);
-        }
-        
-        public System.Threading.Tasks.Task<BusinessModelCarRental.VehicleCategory> showCategoryAsync(int VehicleCategoryID) {
-            return base.Channel.showCategoryAsync(VehicleCategoryID);
-        }
-        
-        public void AddCarFromVehicleCategory(int VehicleCategoryID) {
-            base.Channel.AddCarFromVehicleCategory(VehicleCategoryID);
-        }
-        
-        public System.Threading.Tasks.Task AddProductFromCategoryAsync(int VehicleCategoryID) {
-            return base.Channel.AddProductFromCategoryAsync(VehicleCategoryID);
-        }
-        
+
         public bool isExistContact(int ContactID) {
             return base.Channel.isExistContact(ContactID);
         }
@@ -1175,127 +987,63 @@ namespace WpfApp1.ServiceReference1 {
         public System.Threading.Tasks.Task<BusinessModelCarRental.Order[]> showOrdersByUsernameAsync(string Username) {
             return base.Channel.showOrdersByUsernameAsync(Username);
         }
-        
-        public bool isExistOrderDetails(int OrderDetailsID) {
-            return base.Channel.isExistOrderDetails(OrderDetailsID);
-        }
-        
-        public System.Threading.Tasks.Task<bool> isExistOrderDetailsAsync(int OrderDetailsID) {
-            return base.Channel.isExistOrderDetailsAsync(OrderDetailsID);
-        }
-        
-        public void AddOrderDetails(int OrderID, int CarID, int Quantity, decimal UnitPrice) {
-            base.Channel.AddOrderDetails(OrderID, CarID, Quantity, UnitPrice);
-        }
-        
-        public System.Threading.Tasks.Task AddOrderDetailsAsync(int OrderID, int CarID, int Quantity, decimal UnitPrice) {
-            return base.Channel.AddOrderDetailsAsync(OrderID, CarID, Quantity, UnitPrice);
-        }
-        
-        public void DeleteOrderDetails(int OrderDetailsID) {
-            base.Channel.DeleteOrderDetails(OrderDetailsID);
-        }
-        
-        public System.Threading.Tasks.Task DeleteOrderDetailsAsync(int OrderDetailsID) {
-            return base.Channel.DeleteOrderDetailsAsync(OrderDetailsID);
-        }
-        
-        public void UpdateOrderDetails(int OrderID, int CarID, int Quantity, decimal UnitPrice, int OrderDetailsID) {
-            base.Channel.UpdateOrderDetails(OrderID, CarID, Quantity, UnitPrice, OrderDetailsID);
-        }
-        
-        public System.Threading.Tasks.Task UpdateOrderDetailsAsync(int OrderID, int CarID, int Quantity, decimal UnitPrice, int OrderDetailsID) {
-            return base.Channel.UpdateOrderDetailsAsync(OrderID, CarID, Quantity, UnitPrice, OrderDetailsID);
-        }
-        
-        public BusinessModelCarRental.OrderDetails[] showAllOrderDetails() {
-            return base.Channel.showAllOrderDetails();
-        }
-        
-        public System.Threading.Tasks.Task<BusinessModelCarRental.OrderDetails[]> showAllOrderDetailsAsync() {
-            return base.Channel.showAllOrderDetailsAsync();
-        }
-        
-        public BusinessModelCarRental.OrderDetails showOrderDetails(int OrderDetailsID) {
-            return base.Channel.showOrderDetails(OrderDetailsID);
-        }
-        
-        public System.Threading.Tasks.Task<BusinessModelCarRental.OrderDetails> showOrderDetailsAsync(int OrderDetailsID) {
-            return base.Channel.showOrderDetailsAsync(OrderDetailsID);
-        }
-        
+
         public bool FleetCarExists(int CarID) {
             return base.Channel.FleetCarExists(CarID);
         }
-        
+
         public System.Threading.Tasks.Task<bool> isExistProductAsync(int CarID) {
             return base.Channel.isExistProductAsync(CarID);
         }
-        
-        public int GetNextCarID(int VehicleCategoryID) {
-            return base.Channel.GetNextCarID(VehicleCategoryID);
+
+        public int GetNextCarID() {
+            return base.Channel.GetNextCarID();
         }
-        
-        public System.Threading.Tasks.Task<int> GetNextProductIDAsync(int VehicleCategoryID) {
-            return base.Channel.GetNextProductIDAsync(VehicleCategoryID);
+
+        public System.Threading.Tasks.Task<int> GetNextProductIDAsync() {
+            return base.Channel.GetNextProductIDAsync();
         }
-        
-        public void CreateFleetCar(int CarID, string ModelName, int VehicleCategoryID, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture) {
-            base.Channel.CreateFleetCar(CarID, ModelName, VehicleCategoryID, MakeID, Price, FleetQuantity, Description, Picture);
+
+        public void CreateFleetCar(int CarID, string ModelName, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture) {
+            base.Channel.CreateFleetCar(CarID, ModelName, MakeID, Price, FleetQuantity, Description, Picture);
         }
-        
-        public System.Threading.Tasks.Task AddProductAsync(int CarID, string ModelName, int VehicleCategoryID, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture) {
-            return base.Channel.AddProductAsync(CarID, ModelName, VehicleCategoryID, MakeID, Price, FleetQuantity, Description, Picture);
+
+        public System.Threading.Tasks.Task AddProductAsync(int CarID, string ModelName, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture) {
+            return base.Channel.AddProductAsync(CarID, ModelName, MakeID, Price, FleetQuantity, Description, Picture);
         }
-        
+
         public void DeleteFleetCar(int CarID) {
             base.Channel.DeleteFleetCar(CarID);
         }
-        
+
         public System.Threading.Tasks.Task DeleteProductAsync(int CarID) {
             return base.Channel.DeleteProductAsync(CarID);
         }
-        
-        public void UpdateFleetCar(string ModelName, int VehicleCategoryID, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture, int CarID) {
-            base.Channel.UpdateFleetCar(ModelName, VehicleCategoryID, MakeID, Price, FleetQuantity, Description, Picture, CarID);
+
+        public void UpdateFleetCar(string ModelName, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture, int CarID) {
+            base.Channel.UpdateFleetCar(ModelName, MakeID, Price, FleetQuantity, Description, Picture, CarID);
         }
-        
-        public System.Threading.Tasks.Task UpdateProductAsync(string ModelName, int VehicleCategoryID, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture, int CarID) {
-            return base.Channel.UpdateProductAsync(ModelName, VehicleCategoryID, MakeID, Price, FleetQuantity, Description, Picture, CarID);
+
+        public System.Threading.Tasks.Task UpdateProductAsync(string ModelName, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture, int CarID) {
+            return base.Channel.UpdateProductAsync(ModelName, MakeID, Price, FleetQuantity, Description, Picture, CarID);
         }
-        
+
         public BusinessModelCarRental.Car[] GetAllFleetCars() {
             return base.Channel.GetAllFleetCars();
         }
-        
+
         public System.Threading.Tasks.Task<BusinessModelCarRental.Car[]> showAllProductAsync() {
             return base.Channel.showAllProductAsync();
         }
-        
+
         public BusinessModelCarRental.Car GetFleetCarByID(int CarID) {
             return base.Channel.GetFleetCarByID(CarID);
         }
-        
+
         public System.Threading.Tasks.Task<BusinessModelCarRental.Car> showProductAsync(int CarID) {
             return base.Channel.showProductAsync(CarID);
         }
-        
-        public BusinessModelCarRental.Car[] GetFleetCarsWithCategoryAndMake() {
-            return base.Channel.GetFleetCarsWithCategoryAndMake();
-        }
-        
-        public System.Threading.Tasks.Task<BusinessModelCarRental.Car[]> GetFleetCarsWithCategoryAndMakeAsync() {
-            return base.Channel.GetFleetCarsWithCategoryAndMakeAsync();
-        }
-        
-        public BusinessModelCarRental.Car[] GetFleetCarsByCategoryID(int VehicleCategoryID) {
-            return base.Channel.GetFleetCarsByCategoryID(VehicleCategoryID);
-        }
-        
-        public System.Threading.Tasks.Task<BusinessModelCarRental.Car[]> GetFleetCarsByCategoryIDAsync(int VehicleCategoryID) {
-            return base.Channel.GetFleetCarsByCategoryIDAsync(VehicleCategoryID);
-        }
-        
+
         public BusinessModelCarRental.Car[] GetFleetCarsByMakeID(int MakeID) {
             return base.Channel.GetFleetCarsByMakeID(MakeID);
         }

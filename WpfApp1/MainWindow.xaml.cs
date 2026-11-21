@@ -35,13 +35,6 @@ namespace WpfApp1
             win.Show();
         }
 
-        // 3. Categories
-        private void OpenCategories_Click(object sender, RoutedEventArgs e)
-        {
-            VehicleCategoryWindow win = new VehicleCategoryWindow();
-            win.Show();
-        }
-
         // 4. Contact
         private void OpenContacts_Click(object sender, RoutedEventArgs e)
         {
@@ -63,13 +56,6 @@ namespace WpfApp1
             win.Show();
         }
 
-        // 7. Order Details
-        private void OpenOrderDetails_Click(object sender, RoutedEventArgs e)
-        {
-            OrderDetailWindow win = new OrderDetailWindow();
-            win.Show();
-        }
-
         // 8. Cart
         private void OpenCarts_Click(object sender, RoutedEventArgs e)
         {
@@ -81,13 +67,6 @@ namespace WpfApp1
         private void OpenReviews_Click(object sender, RoutedEventArgs e)
         {
             ReviewWindow win = new ReviewWindow();
-            win.Show();
-        }
-
-        // 10. Shipping Addresses
-        private void OpenShippingAddresses_Click(object sender, RoutedEventArgs e)
-        {
-            ShippingAddressWindow win = new ShippingAddressWindow();
             win.Show();
         }
     }

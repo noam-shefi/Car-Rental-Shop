@@ -1,19 +1,15 @@
 [
   {
-	"Name": "Web and local services",
-	"Projects": [
-	  {
-		"Path": "WcfServiceCarRental\\WcfServiceCarRental.csproj",
-		"Action": "StartWithoutDebugging"
-	  },
-	  {
-		"Path": "visa\\",
-		"Action": "StartWithoutDebugging"
-	  },
-	  {
-		"Path": "Web\\",
-		"Action": "Start"
-	  }
-	]
+    "Name": "Web and local services",
+    "Projects": [
+      {
+        "Path": "Web\\",
+        "Action": "Start"
+      },
+      {
+        "Path": "WpfApp1\\WpfApp1.csproj",
+        "Action": "Start"
+      }
+    ]
   }
 ]

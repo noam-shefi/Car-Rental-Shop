@@ -15,11 +15,6 @@ public partial class BrowseCars : System.Web.UI.Page
 
     private void LoadFilterData()
     {
-        cblCategories.DataSource = _ws.GetAllVehicleCategories();
-        cblCategories.DataTextField = "MyCategoryName";
-        cblCategories.DataValueField = "MyCategoryID";
-        cblCategories.DataBind();
-
         cblBrands.DataSource = _ws.GetAllMakes();
         cblBrands.DataTextField = "MyBrandName";
         cblBrands.DataValueField = "MyBrandID";
@@ -72,18 +67,6 @@ public partial class BrowseCars : System.Web.UI.Page
                 (p.MyModelName != null && p.MyModelName.ToLower().Contains(term)) ||
                 (p.MyDescription != null && p.MyDescription.ToLower().Contains(term))
             ).ToList();
-        }
-
-        var selectedCategories = cblCategories.Items.Cast<ListItem>().Where(i => i.Selected).Select(i => Convert.ToInt32(i.Value)).ToList();
-        if (selectedCategories.Count > 0)
-        {
-            var categoryResults = new List<object>();
-            foreach (int catId in selectedCategories)
-            {
-                var productsFromCat = _ws.GetFleetCarsByCategoryID(catId);
-                if (productsFromCat != null) categoryResults.AddRange(productsFromCat);
-            }
-            filteredProducts = filteredProducts.Where(p => categoryResults.Any(cr => ((dynamic)cr).MyCarID == p.MyCarID)).ToList();
         }
 
         var selectedBrands = cblBrands.Items.Cast<ListItem>().Where(i => i.Selected).Select(i => Convert.ToInt32(i.Value)).ToList();

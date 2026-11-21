@@ -35,7 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ClassLibrary1, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
@@ -96,17 +95,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="OrderDetailWindow.xaml.cs">
-      <DependentUpon>OrderDetailWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="OrderWindow.xaml.cs">
       <DependentUpon>OrderWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ReviewWindow.xaml.cs">
       <DependentUpon>ReviewWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ShippingAddressWindow.xaml.cs">
-      <DependentUpon>ShippingAddressWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
@@ -116,10 +109,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CartWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="VehicleCategoryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -142,9 +131,6 @@
     <Compile Include="MakeWindow.xaml.cs">
       <DependentUpon>MakeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VehicleCategoryWindow.xaml.cs">
-      <DependentUpon>VehicleCategoryWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ContactWindow.xaml.cs">
       <DependentUpon>ContactWindow.xaml</DependentUpon>
     </Compile>
@@ -155,10 +141,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="OrderDetailWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="OrderWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -168,10 +150,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ReviewWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ShippingAddressWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,13 +200,10 @@
     <None Include="Properties\DataSources\BusinessModelCarRental.Make.datasource" />
     <None Include="Properties\DataSources\BusinessModelCarRental.BuildMyPC.datasource" />
     <None Include="Properties\DataSources\BusinessModelCarRental.Cart.datasource" />
-    <None Include="Properties\DataSources\BusinessModelCarRental.VehicleCategory.datasource" />
     <None Include="Properties\DataSources\BusinessModelCarRental.Contact.datasource" />
     <None Include="Properties\DataSources\BusinessModelCarRental.Order.datasource" />
-    <None Include="Properties\DataSources\BusinessModelCarRental.OrderDetails.datasource" />
     <None Include="Properties\DataSources\BusinessModelCarRental.Car.datasource" />
     <None Include="Properties\DataSources\BusinessModelCarRental.Review.datasource" />
-    <None Include="Properties\DataSources\BusinessModelCarRental.ShippingAddress.datasource" />
     <None Include="Properties\DataSources\BusinessModelCarRental.User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

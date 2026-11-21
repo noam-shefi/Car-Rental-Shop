@@ -1,4 +1,4 @@
-﻿<%@ page title="ההזמנות שלי" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="MyOrders, App_Web_mis1waoc" %>
+﻿<%@ page title="ההזמנות שלי" language="C#" masterpagefile="~/MasterPageVisitor.master" autoeventwireup="true" inherits="MyOrders, App_Web_vkkzr0a4" %>
 
 <asp:Content ID="OrdersContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <main class="container py-4" dir="rtl">

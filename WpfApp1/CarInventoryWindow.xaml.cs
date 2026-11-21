@@ -60,19 +60,18 @@ namespace WpfApp1
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(TxtModelName.Text) || string.IsNullOrWhiteSpace(TxtCategoryID.Text))
+                if (string.IsNullOrWhiteSpace(TxtModelName.Text) || string.IsNullOrWhiteSpace(TxtBrandID.Text))
                 {
-                    MessageBox.Show("Please fill Vehicle Name and Category ID.");
+                    MessageBox.Show("Please fill Vehicle Name and Make ID.");
                     return;
                 }
 
-                int catID = int.Parse(TxtCategoryID.Text);
                 int makeID = int.Parse(TxtBrandID.Text);
                 decimal price = decimal.Parse(TxtPrice.Text);
                 int fleetQuantity = int.Parse(TxtStock.Text);
-                int nextID = ws.GetNextCarID(catID);
+                int nextID = ws.GetNextCarID();
 
-                ws.CreateFleetCar(nextID, TxtModelName.Text, catID, makeID, price, fleetQuantity, TxtDescription.Text, stImage);
+                ws.CreateFleetCar(nextID, TxtModelName.Text, makeID, price, fleetQuantity, TxtDescription.Text, stImage);
 
                 MessageBox.Show($"Legacy catalog item {nextID} added. Add rental cars on the website.");
                 LoadProducts();
@@ -95,7 +94,6 @@ namespace WpfApp1
                 if (current == null) return;
 
                 string name = string.IsNullOrWhiteSpace(TxtModelName.Text) ? current.MyModelName : TxtModelName.Text;
-                int catID = string.IsNullOrWhiteSpace(TxtCategoryID.Text) ? current.MyVehicleCategoryID : int.Parse(TxtCategoryID.Text);
                 int makeID = string.IsNullOrWhiteSpace(TxtBrandID.Text) ? current.MyMakeID : int.Parse(TxtBrandID.Text);
                 decimal price = string.IsNullOrWhiteSpace(TxtPrice.Text) ? current.MyPrice : decimal.Parse(TxtPrice.Text);
                 int fleetQuantity = string.IsNullOrWhiteSpace(TxtStock.Text) ? current.MyFleetQuantity : int.Parse(TxtStock.Text);
@@ -103,7 +101,7 @@ namespace WpfApp1
 
                 string picToSave = string.IsNullOrEmpty(stImage) ? current.MyPicture : stImage;
 
-                ws.UpdateFleetCar(name, catID, makeID, price, fleetQuantity, desc, picToSave, idToUpdate);
+                ws.UpdateFleetCar(name, makeID, price, fleetQuantity, desc, picToSave, idToUpdate);
 
                 MessageBox.Show("Updated!");
                 LoadProducts();
@@ -139,7 +137,6 @@ namespace WpfApp1
                 selectedProductIDFromGrid = selected.MyCarID;
                 TxtTargetID.Text = selected.MyCarID.ToString();
                 TxtModelName.Text = selected.MyModelName;
-                TxtCategoryID.Text = selected.MyVehicleCategoryID.ToString();
                 TxtBrandID.Text = selected.MyMakeID.ToString();
                 TxtPrice.Text = selected.MyPrice.ToString();
                 TxtStock.Text = selected.MyFleetQuantity.ToString();
@@ -170,7 +167,6 @@ namespace WpfApp1
             selectedProductIDFromGrid = -1;
             TxtTargetID.Clear();
             TxtModelName.Clear();
-            TxtCategoryID.Clear();
             TxtBrandID.Clear();
             TxtPrice.Clear();
             TxtStock.Clear();

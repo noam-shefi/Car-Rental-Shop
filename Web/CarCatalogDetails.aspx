@@ -109,13 +109,13 @@
 
     <style>
         .gradient-text {
-            background: linear-gradient(45deg, #00aaff 0%, #9900ff 100%);
+            background: linear-gradient(45deg, #00aaff 0%, #ffb347 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
         }
         .btn-gradient {
-            background: linear-gradient(45deg, #00aaff 0%, #9900ff 100%);
+            background: linear-gradient(45deg, #00aaff 0%, #ffb347 100%);
             color: white !important;
             border: none;
             transition: opacity 0.2s ease, transform 0.1s ease;

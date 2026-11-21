@@ -30,13 +30,6 @@
                 <asp:TextBox ID="txtConfirmPass" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Confirm password" />
             </div>
 
-            <div class="password-strength-wrapper">
-                <div class="password-strength-bar">
-                    <div id="strengthBar" class="strength-fill"></div>
-                </div>
-                <span id="strengthText" class="strength-text"></span>
-            </div>
-
             <div class="form-group">
                 <label for="txtEmail" class="form-label">Email Address</label>
                 <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email" Placeholder="Enter your email" />
@@ -45,13 +38,6 @@
             <div class="form-group">
                 <label for="txtPhoneNumber" class="form-label">Phone Number (optional)</label>
                 <asp:TextBox ID="txtPhoneNumber" runat="server" CssClass="form-control" Placeholder="Enter your phone number" />
-            </div>
-
-            <div class="password-requirements">
-                <p class="req-title"><i class="fas fa-shield-alt"></i> Password Requirements</p>
-                <ul>
-                    <li id="req-length"><i class="fas fa-circle req-icon"></i> At least 6 characters</li>
-                </ul>
             </div>
 
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Register" CssClass="btn-register" />
@@ -79,47 +65,7 @@
                 passwordField.classList.toggle('highlight-password');
             });
 
-            passwordField.addEventListener('input', function () {
-                const val = this.value;
-                const hasLength = val.length >= 6;
-                const score = hasLength ? 4 : Math.min(3, Math.floor(val.length / 2));
-                const requirement = document.getElementById('req-length');
-                if (requirement) {
-                    requirement.classList.toggle('met', hasLength);
-                    requirement.querySelector('.req-icon').className = hasLength ? 'fas fa-check-circle req-icon' : 'fas fa-circle req-icon';
-                }
-
-                const bar = document.getElementById('strengthBar');
-                const text = document.getElementById('strengthText');
-
-                if (val.length === 0) {
-                    bar.style.width = '0%';
-                    bar.className = 'strength-fill';
-                    text.textContent = '';
-                } else if (score <= 1) {
-                    bar.style.width = '25%';
-                    bar.className = 'strength-fill weak';
-                    text.textContent = 'Weak';
-                    text.style.color = '#f87171';
-                } else if (score <= 2) {
-                    bar.style.width = '50%';
-                    bar.className = 'strength-fill fair';
-                    text.textContent = 'Fair';
-                    text.style.color = '#fbbf24';
-                } else if (score <= 3) {
-                    bar.style.width = '75%';
-                    bar.className = 'strength-fill good';
-                    text.textContent = 'Good';
-                    text.style.color = '#34d399';
-                } else {
-                    bar.style.width = '100%';
-                    bar.className = 'strength-fill strong';
-                    text.textContent = 'Strong';
-                    text.style.color = '#a855f7';
-                }
-            });
-
-            const formElements = document.querySelectorAll('.form-group, .btn-register, .btn-goto-signin, .password-requirements');
+            const formElements = document.querySelectorAll('.form-group, .btn-register, .btn-goto-signin');
             formElements.forEach((element, index) => {
                 element.style.animationDelay = `${index * 0.15}s`;
                 element.classList.add('fade-in');
@@ -252,88 +198,6 @@
             background-color: rgba(124, 58, 237, 0.2);
             border-color: #7c3aed;
             transition: background-color 0.3s ease;
-        }
-
-        .password-strength-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .password-strength-bar {
-            flex: 1;
-            height: 6px;
-            background-color: rgba(124, 58, 237, 0.15);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .strength-fill {
-            height: 100%;
-            width: 0%;
-            border-radius: 10px;
-            transition: width 0.4s ease, background-color 0.4s ease;
-        }
-
-        .strength-fill.weak   { background-color: #f87171; }
-        .strength-fill.fair   { background-color: #fbbf24; }
-        .strength-fill.good   { background-color: #34d399; }
-        .strength-fill.strong { background: linear-gradient(45deg, #a855f7, #7c3aed); }
-
-        .strength-text {
-            font-size: 12px;
-            font-weight: 600;
-            min-width: 45px;
-            text-align: right;
-        }
-
-        .password-requirements {
-            background-color: rgba(124, 58, 237, 0.07);
-            border: 1px solid rgba(124, 58, 237, 0.2);
-            border-radius: 12px;
-            padding: 14px 18px;
-            margin-bottom: 25px;
-        }
-
-        .req-title {
-            color: #c4b5fd;
-            font-size: 13px;
-            font-weight: 600;
-            margin: 0 0 10px 0;
-        }
-
-        .req-title .fas {
-            margin-right: 6px;
-            color: #a855f7;
-        }
-
-        .password-requirements ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .password-requirements li {
-            color: #9ca3af;
-            font-size: 12px;
-            padding: 3px 0;
-            transition: color 0.3s ease;
-        }
-
-        .password-requirements li.met {
-            color: #34d399;
-        }
-
-        .req-icon {
-            margin-right: 7px;
-            font-size: 10px;
-            color: #6b7280;
-            transition: color 0.3s ease;
-        }
-
-        .password-requirements li.met .req-icon {
-            color: #34d399;
         }
 
         .btn-register, .btn-goto-signin {

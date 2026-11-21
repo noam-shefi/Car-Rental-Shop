@@ -1,4 +1,4 @@
-﻿<%@ page title="ForgePC - Guided AI Assistant" language="C#" masterpagefile="~/MasterPageUser.master" autoeventwireup="true" inherits="ForgePCUser, App_Web_mis1waoc" %>
+﻿<%@ page title="ForgePC - Guided AI Assistant" language="C#" masterpagefile="~/MasterPageUser.master" autoeventwireup="true" inherits="ForgePCUser, App_Web_vkkzr0a4" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 <style>

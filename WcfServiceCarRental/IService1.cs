@@ -75,22 +75,6 @@ namespace WcfServiceCarRental
         [OperationContract]
         void DecreaseQuantityByOne(string Username, int CarID);
 
-        // VehicleCategory
-        [OperationContract]
-        bool VehicleCategoryExists(int VehicleCategoryID);
-        [OperationContract]
-        void AddVehicleCategory(string VehicleCategoryName, string Description);
-        [OperationContract]
-        void DeleteVehicleCategory(int VehicleCategoryID);
-        [OperationContract]
-        void UpdateVehicleCategory(string VehicleCategoryName, string Description, int VehicleCategoryID);
-        [OperationContract]
-        List<VehicleCategory> GetAllVehicleCategories();
-        [OperationContract]
-        VehicleCategory GetVehicleCategory(int VehicleCategoryID);
-        [OperationContract]
-        void AddCarFromVehicleCategory(int VehicleCategoryID);
-
         // Contact
         [OperationContract]
         bool isExistContact(int ContactID);
@@ -132,39 +116,21 @@ namespace WcfServiceCarRental
         [OperationContract]
         List<Order> showOrdersByUsername(string Username);
 
-        // OrderDetails
-        [OperationContract]
-        bool isExistOrderDetails(int OrderDetailsID);
-        [OperationContract]
-        void AddOrderDetails(int OrderID, int CarID, int Quantity, decimal UnitPrice);
-        [OperationContract]
-        void DeleteOrderDetails(int OrderDetailsID);
-        [OperationContract]
-        void UpdateOrderDetails(int OrderID, int CarID, int Quantity, decimal UnitPrice, int OrderDetailsID);
-        [OperationContract]
-        List<OrderDetails> showAllOrderDetails();
-        [OperationContract]
-        OrderDetails showOrderDetails(int OrderDetailsID);
-
         // Car
         [OperationContract]
         bool FleetCarExists(int CarID);
         [OperationContract]
-        int GetNextCarID(int VehicleCategoryID);
+        int GetNextCarID();
         [OperationContract]
-        void CreateFleetCar(int CarID, string ModelName, int VehicleCategoryID, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture);
+        void CreateFleetCar(int CarID, string ModelName, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture);
         [OperationContract]
         void DeleteFleetCar(int CarID);
         [OperationContract]
-        void UpdateFleetCar(string ModelName, int VehicleCategoryID, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture, int CarID);
+        void UpdateFleetCar(string ModelName, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture, int CarID);
         [OperationContract]
         List<Car> GetAllFleetCars();
         [OperationContract]
         Car GetFleetCarByID(int CarID);
-        [OperationContract]
-        List<Car> GetFleetCarsWithCategoryAndMake();
-        [OperationContract]
-        List<Car> GetFleetCarsByCategoryID(int VehicleCategoryID);
         [OperationContract]
         List<Car> GetFleetCarsByMakeID(int MakeID);
         [OperationContract]
@@ -203,20 +169,6 @@ namespace WcfServiceCarRental
         List<Review> ShowAllUserReview(string Username);
         [OperationContract]
         List<Review> ShowAllCarReviews(int CarID);
-
-        // ShippingAddress
-        [OperationContract]
-        bool isExistShippingAddress(string Username);
-        [OperationContract]
-        void AddShippingAddress(string Username, string CountryRegion, string City, string StreetAddress, string Floor, string ZipCode, string AdditionalInstructions);
-        [OperationContract]
-        void UpdateShippingAddress(string Username, string CountryRegion, string City, string StreetAddress, string Floor, string ZipCode, string AdditionalInstructions);
-        [OperationContract]
-        void DeleteShippingAddress(string Username);
-        [OperationContract]
-        List<ShippingAddress> ShowAllShippingAddress();
-        [OperationContract]
-        ShippingAddress ShowShippingAddress(string Username);
 
         // User
         [OperationContract]

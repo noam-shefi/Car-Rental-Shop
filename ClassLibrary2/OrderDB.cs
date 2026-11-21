@@ -255,11 +255,6 @@ namespace ViewModelCarRental
                 if (car == null || !IsRentalAvailable(carID, startDate, endDate, car.MyFleetQuantity))
                     throw new InvalidOperationException("The selected car is not available for those dates.");
 
-                // The original Order table requires every customer to have a shipping-address row.
-                ShippingAddressDB addressDB = new ShippingAddressDB { db = this.db };
-                if (!addressDB.IsExistShippingAddress(username))
-                    addressDB.AddShippingAddress(username, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
-
                 decimal total = car.MyPrice * Convert.ToInt32((endDate.Date - startDate.Date).TotalDays);
                 OleDbCommand command = new OleDbCommand("INSERT INTO [Order] ([Username],[OrderDate],[TotalPrice],[Address],[AdditionalInstructions],[Delivered],[IsRental],[CarID],[RentalStartDate],[RentalEndDate],[RentalStatus],[CancellationRequested]) VALUES (?,?,?,'','',false,true,?,?,?,'pending',false)");
                 command.Parameters.AddWithValue("?", username);

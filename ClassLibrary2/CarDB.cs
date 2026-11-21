@@ -24,36 +24,29 @@ namespace ViewModelCarRental
         }
 
         // GetNextCarID
-        public int GetNextCarID(int VehicleCategoryID)
+        public int GetNextCarID()
         {
-            int baseNumber = VehicleCategoryID * 10000;
-            int nextID = baseNumber + 1;
+            int nextID = 1;
 
-            string sql = "SELECT MAX(ProductID) FROM [Product] WHERE [CategoryID] = ? AND ProductID >= ? AND ProductID < ?";
+            string sql = "SELECT MAX(ProductID) FROM [Product]";
             OleDbCommand cmd = new OleDbCommand(sql);
-            cmd.Parameters.AddWithValue("?", VehicleCategoryID);
-            cmd.Parameters.AddWithValue("?", baseNumber);
-            cmd.Parameters.AddWithValue("?", baseNumber + 10000);
 
             DataSet ds = db.SelectcommandInjection(cmd);
             if (ds.Tables[0].Rows[0][0] != DBNull.Value)
             {
-                int maxID = Convert.ToInt32(ds.Tables[0].Rows[0][0]);
-                if (maxID >= baseNumber)
-                    nextID = maxID + 1;
+                nextID = Convert.ToInt32(ds.Tables[0].Rows[0][0]) + 1;
             }
 
             return nextID;
         }
 
         // CreateFleetCar
-        public void CreateFleetCar(int CarID, string ModelName, int VehicleCategoryID, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture)
+        public void CreateFleetCar(int CarID, string ModelName, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture)
         {
-            string sql = "INSERT INTO [Product] ([ProductID], [ProductName], [CategoryID], [BrandID], [Price], [StockQuantity], [Description], [Picture]) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            string sql = "INSERT INTO [Product] ([ProductID], [ProductName], [BrandID], [Price], [StockQuantity], [Description], [Picture]) VALUES (?, ?, ?, ?, ?, ?, ?)";
             OleDbCommand cmd = new OleDbCommand(sql);
             cmd.Parameters.AddWithValue("?", CarID);
             cmd.Parameters.AddWithValue("?", ModelName);
-            cmd.Parameters.AddWithValue("?", VehicleCategoryID);
             cmd.Parameters.AddWithValue("?", MakeID);
             cmd.Parameters.AddWithValue("?", Price);
             cmd.Parameters.AddWithValue("?", FleetQuantity);
@@ -74,12 +67,11 @@ namespace ViewModelCarRental
         }
 
         // UpdateFleetCar
-        public void UpdateFleetCar(string ModelName, int VehicleCategoryID, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture, int CarID)
+        public void UpdateFleetCar(string ModelName, int MakeID, decimal Price, int FleetQuantity, string Description, string Picture, int CarID)
         {
-            string sql = "UPDATE [Product] SET [ProductName] = ?, [CategoryID] = ?, [BrandID] = ?, [Price] = ?, [StockQuantity] = ?, [Description] = ?, [Picture] = ? WHERE [ProductID] = ?";
+            string sql = "UPDATE [Product] SET [ProductName] = ?, [BrandID] = ?, [Price] = ?, [StockQuantity] = ?, [Description] = ?, [Picture] = ? WHERE [ProductID] = ?";
             OleDbCommand cmd = new OleDbCommand(sql);
             cmd.Parameters.AddWithValue("?", ModelName);
-            cmd.Parameters.AddWithValue("?", VehicleCategoryID);
             cmd.Parameters.AddWithValue("?", MakeID);
             cmd.Parameters.AddWithValue("?", Price);
             cmd.Parameters.AddWithValue("?", FleetQuantity);
@@ -104,7 +96,6 @@ namespace ViewModelCarRental
                 {
                     MyCarID = Convert.ToInt32(row["ProductID"]),
                     MyModelName = row["ProductName"].ToString(),
-                    MyVehicleCategoryID = Convert.ToInt32(row["CategoryID"]),
                     MyMakeID = Convert.ToInt32(row["BrandID"]),
                     MyPrice = Convert.ToDecimal(row["Price"]),
                     MyFleetQuantity = Convert.ToInt32(row["StockQuantity"]),
@@ -131,70 +122,12 @@ namespace ViewModelCarRental
             {
                 MyCarID = Convert.ToInt32(row["ProductID"]),
                 MyModelName = row["ProductName"].ToString(),
-                MyVehicleCategoryID = Convert.ToInt32(row["CategoryID"]),
                 MyMakeID = Convert.ToInt32(row["BrandID"]),
                 MyPrice = Convert.ToDecimal(row["Price"]),
                 MyFleetQuantity = Convert.ToInt32(row["StockQuantity"]),
                 MyDescription = row["Description"].ToString(),
                 MyPicture = row["Picture"].ToString()
             };
-        }
-
-        // GetFleetCarsWithCategoryAndMake
-        public List<Car> GetFleetCarsWithCategoryAndMake()
-        {
-            string sql =
-                "SELECT Product.ProductID, Product.ProductName, Category.CategoryName, Brand.BrandName, " +
-                "Product.Price, Product.Description, Product.StockQuantity, Product.Picture " +
-                "FROM (Product INNER JOIN Category ON Product.CategoryID = Category.CategoryID) " +
-                "INNER JOIN Brand ON Product.BrandID = Brand.BrandID";
-
-            OleDbCommand cmd = new OleDbCommand(sql);
-            DataSet ds = db.SelectcommandInjection(cmd);
-
-            List<Car> list = new List<Car>();
-            foreach (DataRow row in ds.Tables[0].Rows)
-            {
-                list.Add(new Car
-                {
-                    MyCarID = Convert.ToInt32(row["ProductID"]),
-                    MyModelName = row["ProductName"].ToString(),
-                    MyVehicleCategoryID = Convert.ToInt32(row["CategoryID"]),
-                    MyMakeID = Convert.ToInt32(row["BrandID"]),
-                    MyPrice = Convert.ToDecimal(row["Price"]),
-                    MyFleetQuantity = Convert.ToInt32(row["StockQuantity"]),
-                    MyDescription = row["Description"].ToString(),
-                    MyPicture = row["Picture"].ToString()
-                });
-            }
-
-            return list;
-        }
-
-        // GetFleetCarsByCategoryID
-        public List<Car> GetFleetCarsByCategoryID(int VehicleCategoryID)
-        {
-            string sql = "SELECT * FROM [Product] WHERE [CategoryID] = ?";
-            OleDbCommand cmd = new OleDbCommand(sql);
-            cmd.Parameters.AddWithValue("?", VehicleCategoryID);
-            DataSet ds = db.SelectcommandInjection(cmd);
-
-            List<Car> list = new List<Car>();
-            foreach (DataRow row in ds.Tables[0].Rows)
-            {
-                list.Add(new Car
-                {
-                    MyCarID = Convert.ToInt32(row["ProductID"]),
-                    MyModelName = row["ProductName"].ToString(),
-                    MyVehicleCategoryID = Convert.ToInt32(row["CategoryID"]),
-                    MyMakeID = Convert.ToInt32(row["BrandID"]),
-                    MyPrice = Convert.ToDecimal(row["Price"]),
-                    MyFleetQuantity = Convert.ToInt32(row["StockQuantity"]),
-                    MyDescription = row["Description"].ToString(),
-                    MyPicture = row["Picture"].ToString()
-                });
-            }
-            return list;
         }
 
         // GetFleetCarsByMakeID
@@ -212,7 +145,6 @@ namespace ViewModelCarRental
                 {
                     MyCarID = Convert.ToInt32(row["ProductID"]),
                     MyModelName = row["ProductName"].ToString(),
-                    MyVehicleCategoryID = Convert.ToInt32(row["CategoryID"]),
                     MyMakeID = Convert.ToInt32(row["BrandID"]),
                     MyPrice = Convert.ToDecimal(row["Price"]),
                     MyFleetQuantity = Convert.ToInt32(row["StockQuantity"]),
@@ -237,7 +169,6 @@ namespace ViewModelCarRental
                 {
                     MyCarID = Convert.ToInt32(row["ProductID"]),
                     MyModelName = row["ProductName"].ToString(),
-                    MyVehicleCategoryID = Convert.ToInt32(row["CategoryID"]),
                     MyMakeID = Convert.ToInt32(row["BrandID"]),
                     MyPrice = Convert.ToDecimal(row["Price"]),
                     MyFleetQuantity = Convert.ToInt32(row["StockQuantity"]),
@@ -262,7 +193,6 @@ namespace ViewModelCarRental
                 {
                     MyCarID = Convert.ToInt32(row["ProductID"]),
                     MyModelName = row["ProductName"].ToString(),
-                    MyVehicleCategoryID = Convert.ToInt32(row["CategoryID"]),
                     MyMakeID = Convert.ToInt32(row["BrandID"]),
                     MyPrice = Convert.ToDecimal(row["Price"]),
                     MyFleetQuantity = Convert.ToInt32(row["StockQuantity"]),
@@ -289,7 +219,6 @@ namespace ViewModelCarRental
                 {
                     MyCarID = Convert.ToInt32(row["ProductID"]),
                     MyModelName = row["ProductName"].ToString(),
-                    MyVehicleCategoryID = Convert.ToInt32(row["CategoryID"]),
                     MyMakeID = Convert.ToInt32(row["BrandID"]),
                     MyPrice = Convert.ToDecimal(row["Price"]),
                     MyFleetQuantity = Convert.ToInt32(row["StockQuantity"]),
@@ -316,7 +245,6 @@ namespace ViewModelCarRental
                 {
                     MyCarID = Convert.ToInt32(row["ProductID"]),
                     MyModelName = row["ProductName"].ToString(),
-                    MyVehicleCategoryID = Convert.ToInt32(row["CategoryID"]),
                     MyMakeID = Convert.ToInt32(row["BrandID"]),
                     MyPrice = Convert.ToDecimal(row["Price"]),
                     MyFleetQuantity = Convert.ToInt32(row["StockQuantity"]),
@@ -341,7 +269,6 @@ namespace ViewModelCarRental
                 {
                     MyCarID = Convert.ToInt32(row["ProductID"]),
                     MyModelName = row["ProductName"].ToString(),
-                    MyVehicleCategoryID = Convert.ToInt32(row["CategoryID"]),
                     MyMakeID = Convert.ToInt32(row["BrandID"]),
                     MyPrice = Convert.ToDecimal(row["Price"]),
                     MyFleetQuantity = Convert.ToInt32(row["StockQuantity"]),
@@ -366,7 +293,6 @@ namespace ViewModelCarRental
                 {
                     MyCarID = Convert.ToInt32(row["ProductID"]),
                     MyModelName = row["ProductName"].ToString(),
-                    MyVehicleCategoryID = Convert.ToInt32(row["CategoryID"]),
                     MyMakeID = Convert.ToInt32(row["BrandID"]),
                     MyPrice = Convert.ToDecimal(row["Price"]),
                     MyFleetQuantity = Convert.ToInt32(row["StockQuantity"]),
@@ -391,7 +317,6 @@ namespace ViewModelCarRental
                 {
                     MyCarID = Convert.ToInt32(row["ProductID"]),
                     MyModelName = row["ProductName"].ToString(),
-                    MyVehicleCategoryID = Convert.ToInt32(row["CategoryID"]),
                     MyMakeID = Convert.ToInt32(row["BrandID"]),
                     MyPrice = Convert.ToDecimal(row["Price"]),
                     MyFleetQuantity = Convert.ToInt32(row["StockQuantity"]),
@@ -416,7 +341,6 @@ namespace ViewModelCarRental
                 {
                     MyCarID = Convert.ToInt32(row["ProductID"]),
                     MyModelName = row["ProductName"].ToString(),
-                    MyVehicleCategoryID = Convert.ToInt32(row["CategoryID"]),
                     MyMakeID = Convert.ToInt32(row["BrandID"]),
                     MyPrice = Convert.ToDecimal(row["Price"]),
                     MyFleetQuantity = Convert.ToInt32(row["StockQuantity"]),
@@ -441,7 +365,6 @@ namespace ViewModelCarRental
                 {
                     MyCarID = Convert.ToInt32(row["ProductID"]),
                     MyModelName = row["ProductName"].ToString(),
-                    MyVehicleCategoryID = Convert.ToInt32(row["CategoryID"]),
                     MyMakeID = Convert.ToInt32(row["BrandID"]),
                     MyPrice = Convert.ToDecimal(row["Price"]),
                     MyFleetQuantity = Convert.ToInt32(row["StockQuantity"]),
@@ -513,12 +436,11 @@ namespace ViewModelCarRental
 
         public int AddCar(Car car)
         {
-            int carID = GetNextCarID(car.MyVehicleCategoryID);
-            const string sql = "INSERT INTO [Product] ([ProductID], [ProductName], [CategoryID], [BrandID], [Price], [StockQuantity], [Description], [Picture], [IsCar], [CarYear], [CarCategory], [BranchID], [Seats], [FuelType], [RangeKm], [Transmission], [LuggageCapacity]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, true, ?, ?, ?, ?, ?, ?, ?, ?)";
+            int carID = GetNextCarID();
+            const string sql = "INSERT INTO [Product] ([ProductID], [ProductName], [BrandID], [Price], [StockQuantity], [Description], [Picture], [IsCar], [CarYear], [CarCategory], [BranchID], [Seats], [FuelType], [RangeKm], [Transmission], [LuggageCapacity]) VALUES (?, ?, ?, ?, ?, ?, ?, true, ?, ?, ?, ?, ?, ?, ?, ?)";
             OleDbCommand command = new OleDbCommand(sql);
             command.Parameters.AddWithValue("?", carID);
             command.Parameters.AddWithValue("?", car.MyModelName);
-            command.Parameters.AddWithValue("?", car.MyVehicleCategoryID);
             command.Parameters.AddWithValue("?", car.MyMakeID);
             command.Parameters.AddWithValue("?", car.MyPrice);
             command.Parameters.AddWithValue("?", car.MyFleetQuantity);
@@ -538,10 +460,9 @@ namespace ViewModelCarRental
 
         public void UpdateCar(Car car)
         {
-            const string sql = "UPDATE [Product] SET [ProductName]=?, [CategoryID]=?, [BrandID]=?, [Price]=?, [StockQuantity]=?, [Description]=?, [Picture]=?, [CarYear]=?, [CarCategory]=?, [BranchID]=?, [Seats]=?, [FuelType]=?, [RangeKm]=?, [Transmission]=?, [LuggageCapacity]=? WHERE [ProductID]=? AND [IsCar]=true";
+            const string sql = "UPDATE [Product] SET [ProductName]=?, [BrandID]=?, [Price]=?, [StockQuantity]=?, [Description]=?, [Picture]=?, [CarYear]=?, [CarCategory]=?, [BranchID]=?, [Seats]=?, [FuelType]=?, [RangeKm]=?, [Transmission]=?, [LuggageCapacity]=? WHERE [ProductID]=? AND [IsCar]=true";
             OleDbCommand command = new OleDbCommand(sql);
             command.Parameters.AddWithValue("?", car.MyModelName);
-            command.Parameters.AddWithValue("?", car.MyVehicleCategoryID);
             command.Parameters.AddWithValue("?", car.MyMakeID);
             command.Parameters.AddWithValue("?", car.MyPrice);
             command.Parameters.AddWithValue("?", car.MyFleetQuantity);
@@ -653,7 +574,6 @@ namespace ViewModelCarRental
             {
                 MyCarID = Convert.ToInt32(row["ProductID"]),
                 MyModelName = row["ProductName"].ToString(),
-                MyVehicleCategoryID = Convert.ToInt32(row["CategoryID"]),
                 MyMakeID = Convert.ToInt32(row["BrandID"]),
                 MyPrice = Convert.ToDecimal(row["Price"]),
                 MyFleetQuantity = Convert.ToInt32(row["StockQuantity"]),
